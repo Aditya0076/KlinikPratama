@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Des 2019 pada 08.33
+-- Waktu pembuatan: 30 Des 2019 pada 09.22
 -- Versi server: 10.3.16-MariaDB
 -- Versi PHP: 7.3.6
 
@@ -54,14 +54,26 @@ CREATE TABLE `data_pasien` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `desa`
+--
+
+CREATE TABLE `desa` (
+  `kode_desa` int(11) NOT NULL,
+  `nama_desa` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `dusun`
 --
 
 CREATE TABLE `dusun` (
   `kode_dusun` int(3) NOT NULL,
   `nama_dusun` varchar(30) NOT NULL,
-  `nama_desa` varchar(64) NOT NULL,
-  `jabatan` varchar(32) NOT NULL
+  `jabatan` varchar(32) NOT NULL,
+  `kode_desa` int(11) NOT NULL,
+  `rt` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -74,7 +86,6 @@ CREATE TABLE `kepala_keluarga` (
   `kode_keluarga` int(11) NOT NULL,
   `kode_dusun` int(11) NOT NULL,
   `nama_kepala` varchar(50) NOT NULL,
-  `rt` varchar(3) NOT NULL,
   `alamat` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -136,11 +147,18 @@ ALTER TABLE `data_pasien`
   ADD KEY `fk_kode_keluarga` (`kode_keluarga`);
 
 --
+-- Indeks untuk tabel `desa`
+--
+ALTER TABLE `desa`
+  ADD PRIMARY KEY (`kode_desa`);
+
+--
 -- Indeks untuk tabel `dusun`
 --
 ALTER TABLE `dusun`
   ADD PRIMARY KEY (`kode_dusun`),
-  ADD KEY `fk_kode_jabatan` (`jabatan`);
+  ADD KEY `fk_kode_jabatan` (`jabatan`),
+  ADD KEY `fk_kode_desa` (`kode_desa`);
 
 --
 -- Indeks untuk tabel `kepala_keluarga`
@@ -179,6 +197,12 @@ ALTER TABLE `transaksi`
 --
 ALTER TABLE `data_pasien`
   MODIFY `kode_pasien` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `desa`
+--
+ALTER TABLE `desa`
+  MODIFY `kode_desa` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `dusun`
@@ -224,6 +248,7 @@ ALTER TABLE `data_pasien`
 -- Ketidakleluasaan untuk tabel `dusun`
 --
 ALTER TABLE `dusun`
+  ADD CONSTRAINT `fk_kode_desa` FOREIGN KEY (`kode_desa`) REFERENCES `desa` (`kode_desa`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_kode_jabatan` FOREIGN KEY (`jabatan`) REFERENCES `admin` (`jabatan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
