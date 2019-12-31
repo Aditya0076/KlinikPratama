@@ -1,5 +1,5 @@
 <?php
-class ClassName extends CI_Controller
+class Desa extends CI_Controller
 {
 	
 	function __construct()
@@ -8,8 +8,8 @@ class ClassName extends CI_Controller
 		$this->load->model('DesaModel', 'Model');
 	}
 
-	public function create()
+	public function index()
 	{
-		$this->load->view('')
+		$this->load->view('desa/read');
 	}
 }
