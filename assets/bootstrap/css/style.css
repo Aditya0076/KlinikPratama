@@ -1,0 +1,18 @@
+body, html {
+	height: 100%;
+}
+.background{
+	background-size: cover;
+	background-image: url('/assets/doctor-4068134_960_720.jpg');
+	background-repeat: no-repeat;
+	height: 100%;
+}
+.kotak{
+	position: absolute;
+	width: 444px;
+	height: 263px;
+	left: 684px;
+	top: 249px;
+	background: #1C3387;
+	border-radius: 20px;
+}
