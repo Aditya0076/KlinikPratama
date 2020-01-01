@@ -14,7 +14,7 @@ class Kepala_keluargaModel extends CI_Model
 	public function delete($kode_keluarga)
 	{
 		$this->db->where('kode_keluarga',$kode_keluarga)
-				 ->delete($this::TABLE_NAME)
+				 ->delete($this::TABLE_NAME);
 	}
 
 	public function getAll()

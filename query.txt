@@ -1,0 +1,8 @@
+//how to combine two column into one column
+SELECT concat(nama_dusun, ',', d.nama_desa) as Dusun FROM dusun_coba ds
+JOIN desa_coba d ON d.kode_desa = ds.kode_desa
+
+//how to showing up lists of pasien on only one KK
+SELECT d.kode_pasien, d.nama_pasien FROM data_pasien d
+JOIN kepala_keluarga k on k.kode_keluarga = d.kode_keluarga
+WHERE d.kode_keluarga = "A01"

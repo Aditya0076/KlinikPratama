@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 30 Des 2019 pada 09.22
--- Versi server: 10.3.16-MariaDB
--- Versi PHP: 7.3.6
+-- Host: localhost
+-- Waktu pembuatan: 01 Jan 2020 pada 08.56
+-- Versi server: 10.1.30-MariaDB
+-- Versi PHP: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -45,7 +45,7 @@ CREATE TABLE `admin` (
 
 CREATE TABLE `data_pasien` (
   `kode_pasien` int(11) NOT NULL,
-  `kode_keluarga` int(11) NOT NULL,
+  `kode_keluarga` varchar(3) NOT NULL,
   `nama_pasien` varchar(50) NOT NULL,
   `umur` varchar(2) NOT NULL,
   `jenis_kelamin` varchar(10) NOT NULL
@@ -65,13 +65,25 @@ CREATE TABLE `desa` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `detail_transaksi`
+--
+
+CREATE TABLE `detail_transaksi` (
+  `id_detail` int(11) NOT NULL,
+  `id_transaksi` int(11) NOT NULL,
+  `id_obat` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `dusun`
 --
 
 CREATE TABLE `dusun` (
   `kode_dusun` int(3) NOT NULL,
   `nama_dusun` varchar(30) NOT NULL,
-  `jabatan` varchar(32) NOT NULL,
   `kode_desa` int(11) NOT NULL,
   `rt` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -83,7 +95,7 @@ CREATE TABLE `dusun` (
 --
 
 CREATE TABLE `kepala_keluarga` (
-  `kode_keluarga` int(11) NOT NULL,
+  `kode_keluarga` varchar(3) NOT NULL,
   `kode_dusun` int(11) NOT NULL,
   `nama_kepala` varchar(50) NOT NULL,
   `alamat` text NOT NULL
@@ -110,11 +122,12 @@ CREATE TABLE `obat` (
 
 CREATE TABLE `rekam_medis` (
   `kode_rekam` int(11) NOT NULL,
+  `waktu` date DEFAULT NULL,
+  `kode_keluarga` varchar(3) NOT NULL,
   `kode_pasien` int(11) NOT NULL,
-  `id_obat` int(11) NOT NULL,
-  `waktu` varchar(50) NOT NULL,
-  `ciri` text NOT NULL,
-  `diagnosa` varchar(50) NOT NULL
+  `anamnese` text NOT NULL,
+  `diagnosa` varchar(100) NOT NULL,
+  `terapi` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -125,8 +138,10 @@ CREATE TABLE `rekam_medis` (
 
 CREATE TABLE `transaksi` (
   `id_transaksi` int(11) NOT NULL,
-  `harga_transaksi` int(11) NOT NULL,
-  `id_obat` int(11) NOT NULL
+  `waktu` date NOT NULL,
+  `kode_keluarga` varchar(3) NOT NULL,
+  `kode_pasien` int(11) NOT NULL,
+  `harga_transaksi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -137,7 +152,7 @@ CREATE TABLE `transaksi` (
 -- Indeks untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`jabatan`);
+  ADD PRIMARY KEY (`username`);
 
 --
 -- Indeks untuk tabel `data_pasien`
@@ -153,18 +168,24 @@ ALTER TABLE `desa`
   ADD PRIMARY KEY (`kode_desa`);
 
 --
+-- Indeks untuk tabel `detail_transaksi`
+--
+ALTER TABLE `detail_transaksi`
+  ADD PRIMARY KEY (`id_detail`),
+  ADD KEY `fk_id_transaksi` (`id_transaksi`);
+
+--
 -- Indeks untuk tabel `dusun`
 --
 ALTER TABLE `dusun`
   ADD PRIMARY KEY (`kode_dusun`),
-  ADD KEY `fk_kode_jabatan` (`jabatan`),
   ADD KEY `fk_kode_desa` (`kode_desa`);
 
 --
 -- Indeks untuk tabel `kepala_keluarga`
 --
 ALTER TABLE `kepala_keluarga`
-  ADD PRIMARY KEY (`kode_keluarga`),
+  ADD UNIQUE KEY `kode_keluarga` (`kode_keluarga`),
   ADD KEY `fk_kode_dusun` (`kode_dusun`);
 
 --
@@ -179,14 +200,14 @@ ALTER TABLE `obat`
 ALTER TABLE `rekam_medis`
   ADD PRIMARY KEY (`kode_rekam`),
   ADD KEY `fk_kode_pasien` (`kode_pasien`),
-  ADD KEY `rekam_medis_ibfk_1` (`id_obat`);
+  ADD KEY `fk_kode_keluarga` (`kode_keluarga`);
 
 --
 -- Indeks untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`id_transaksi`),
-  ADD KEY `fk_id_obat` (`id_obat`);
+  ADD UNIQUE KEY `kode_keluarga` (`kode_keluarga`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -205,16 +226,16 @@ ALTER TABLE `desa`
   MODIFY `kode_desa` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `detail_transaksi`
+--
+ALTER TABLE `detail_transaksi`
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `dusun`
 --
 ALTER TABLE `dusun`
   MODIFY `kode_dusun` int(3) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `kepala_keluarga`
---
-ALTER TABLE `kepala_keluarga`
-  MODIFY `kode_keluarga` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `obat`
@@ -245,11 +266,16 @@ ALTER TABLE `data_pasien`
   ADD CONSTRAINT `fk_kode_keluarga` FOREIGN KEY (`kode_keluarga`) REFERENCES `kepala_keluarga` (`kode_keluarga`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Ketidakleluasaan untuk tabel `detail_transaksi`
+--
+ALTER TABLE `detail_transaksi`
+  ADD CONSTRAINT `fk_id_transaksi` FOREIGN KEY (`id_transaksi`) REFERENCES `transaksi` (`id_transaksi`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Ketidakleluasaan untuk tabel `dusun`
 --
 ALTER TABLE `dusun`
-  ADD CONSTRAINT `fk_kode_desa` FOREIGN KEY (`kode_desa`) REFERENCES `desa` (`kode_desa`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_kode_jabatan` FOREIGN KEY (`jabatan`) REFERENCES `admin` (`jabatan`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_kode_desa` FOREIGN KEY (`kode_desa`) REFERENCES `desa` (`kode_desa`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `kepala_keluarga`
@@ -261,14 +287,7 @@ ALTER TABLE `kepala_keluarga`
 -- Ketidakleluasaan untuk tabel `rekam_medis`
 --
 ALTER TABLE `rekam_medis`
-  ADD CONSTRAINT `fk_kode_pasien` FOREIGN KEY (`kode_pasien`) REFERENCES `data_pasien` (`kode_pasien`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `rekam_medis_ibfk_1` FOREIGN KEY (`id_obat`) REFERENCES `obat` (`id_obat`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `transaksi`
---
-ALTER TABLE `transaksi`
-  ADD CONSTRAINT `fk_id_obat` FOREIGN KEY (`id_obat`) REFERENCES `obat` (`id_obat`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_kode_pasien` FOREIGN KEY (`kode_pasien`) REFERENCES `data_pasien` (`kode_pasien`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
