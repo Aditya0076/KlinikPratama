@@ -1,7 +1,5 @@
 <?php
-
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,11 +7,11 @@
 	<meta name="viewport"
 		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<title>Halaman Tambah Data Kepala Keluarga</title>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<script src="bootstrap/js/jquery.min.js"></script>
+	<script src="bootstrap/js/popper.min.js"></script>
+	<script src="bootstrap/js/bootstrap.js"></script>
+	<title>Halaman Beranda</title>
 </head>
 <body>
 <style>
@@ -51,10 +49,10 @@
 
 <div class="navbar navbar-expand-sm navbar-dark" style="width: 1266px;height: 82px;left: 46px;top: 45px; background: #1C3387;border-radius: 20px;">
 	<ul class="navbar-nav m-auto">
-		<li class="nav-item " style="color: ghostwhite;">
+		<li class="nav-item "style="">
 			<a class="nav-link" href="#">Beranda</a>
 		</li>
-		<li class="nav-item dropdown" style="color: ghostwhite;">
+		<li class="nav-item dropdown" style="">
 			<a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				Data Pasien
 			</a>
@@ -65,7 +63,7 @@
 				<a class="dropdown-item" href="#">Tampil Data Pasien</a>
 			</div>
 		</li>
-		<li class="nav-item dropdown"style="color: ghostwhite;">
+		<li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
 				Data Medis
 			</a>
@@ -76,7 +74,7 @@
 				<a class="dropdown-item" href="#">Tampil Data Rekam</a>
 			</div>
 		</li>
-		<li class="nav-item dropdown" style="color: ghostwhite;">
+		<li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
 				Laporan
 			</a>
@@ -85,7 +83,7 @@
 				<a class="dropdown-item" href="#">Tampil Data Transaksi</a>
 			</div>
 		</li>
-		<li class="nav-item" style="color: ghostwhite;">
+		<li class="nav-item">
 			<a class="nav-link" href="#">Logout</a>
 		</li>
 	</ul>
@@ -95,46 +93,31 @@
 
 		<table class="text-justify m-auto">
 			<tr>
-				<td colspan="2"> <center><h3 class="font-weight-bold">Tambah Kepala Keluarga</h3></center></td>
-			</tr>
-
-			<tr>
-
-				<form class="form-control-sm form-group" action="">
-					<td></td>
-					<td>
-						<table class="text-justify m-auto">
-							<tr>
-								<td>Nama Kepala Keluarga</td>
-								<td>:</td>
-								<td><input class="form-control" type="text" name="dusun" placeholder="masukkan nama kepala keluarga"></td>
-							</tr>
-							<tr>
-								<td>Dusun</td>
-								<td>:</td>
-								<td>
-									<select class="form-control">
-										<option>Default select</option>
-									</select>
-								</td>
-							</tr>
-							</tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							</tr>
-
-							<tr>
-								<td></td>
-							</tr>
-
-							<tr>
-								<td colspan="3"> <center><input class="btn-success" type="button" value="Kirim"></center></td>
-							</tr>
-						</table>
-					</td>
-				</form>
-
+				<td><img src="Foto-Kartun-Dokter.gif" class="img-thumbnail" alt="Cinque Terre" width="158" height="158"></td>
+				<td>
+					<table class="text-justify m-auto">
+						<tr>
+							<td>Nama</td>
+							<td>:</td>
+							<td> Aditya Bayu Prabowo</td>
+						</tr>
+						<tr>
+							<td>Umur</td>
+							<td>:</td>
+							<td>22</td>
+						</tr>
+						<tr>
+							<td>Jabatan</td>
+							<td>:</td>
+							<td>Dokter</td>
+						</tr>
+						<tr>
+							<td>Alamat</td>
+							<td>:</td>
+							<td>Jalan Gorongan</td>
+						</tr>
+					</table>
+				</td>
 			</tr>
 		</table>
 
