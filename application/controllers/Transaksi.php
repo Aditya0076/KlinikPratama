@@ -24,6 +24,19 @@ class Transaksi extends CI_Controller
 
 	public function insert()
 	{
-		
+		$waktu = $this->input->post('waktu');
+		$kode_keluarga = $this->input->post('kode_keluarga');
+		$kode_pasien = $this->input->post('kode_pasien');
+		$harga_transaksi = $this->input->post('harga_transaksi');
+
+		$transaksi = array(
+			'waktu' => $waktu,
+			'kode_keluarga' => $kode_keluarga,
+			'kode_pasien' => $kode_pasien,
+			'harga_transaksi' => $harga_transaksi
+		);
+
+		$this->model->insert($transaksi);
+		redirect('transaksi');
 	}
 }

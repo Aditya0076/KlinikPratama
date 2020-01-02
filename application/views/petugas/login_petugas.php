@@ -17,7 +17,7 @@
 	<div class="kotak">
 		<div class="container">
 			<center><h3>KLINIK PRATAMA AVICENA</h3></center>
-			<form class="form-horizontal" action="#">
+			<form class="form-horizontal" action="<?= base_url('petugas/authenticate')?>" method="post" >
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="username">Username</label>
 					<div class="col-sm-10">

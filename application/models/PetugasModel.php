@@ -26,4 +26,12 @@ class PetugasModel extends CI_Model
 	{
 		$this->db->replace($this::TABLE_NAME,$admin);
 	}
+
+	public function getUser($username)
+	{
+		$query = $this->db->where('username',$username)
+						  ->get($this::TABLE_NAME)
+						  ->row_array();
+		return $query;
+	}
 }

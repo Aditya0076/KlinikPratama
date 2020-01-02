@@ -13,6 +13,41 @@ class Petugas extends CI_Controller
 
 	public function index()
 	{
+		$this->load->view('petugas/login_petugas');
+	}
+
+	public function authenticate()
+	{
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+
+		$result = $this->model->getUser($username);
+		if(!$result)
+		{
+			$this->session->set_flashdata('failed','<div style="color: red">username not found ! </div>');
+			redirect('petugas');
+		}else{
+			if($password == $result['password'])
+			{
+				$user = array(
+					'username' => $username,
+					'role' => $result['jabatan'],
+					'logged_in' => TRUE
+				);
+				$this->session->set_userdata($user);
+				redirect('petugas/read');
+
+			}else
+			{
+				$this->session->set_flashdata('failed','<div style="color: red">Password not match ! </div>');
+			die(var_dump($result));
+				redirect('petugas');
+			}
+		}
+	}
+
+	public function read()
+	{
 		$data['petugas'] = $this->model->getAll();
 		$this->load->view('petugas/read',$data);
 	}
