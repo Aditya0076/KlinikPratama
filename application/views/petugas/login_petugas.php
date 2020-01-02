@@ -18,6 +18,7 @@
 		<div class="container">
 			<center><h3>KLINIK PRATAMA AVICENA</h3></center>
 			<form class="form-horizontal" action="<?= base_url('petugas/authenticate')?>" method="post" >
+				<?= $this->session->flashdata('succeded'); ?>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="username">Username</label>
 					<div class="col-sm-10">
@@ -30,6 +31,7 @@
 						<input type="password" class="form-control" id="password" placeholder="masukkan password" name="password">
 					</div>
 				</div>
+				<?= $this->session->userdata('failed'); ?>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="submit" class="btn btn-success">Login</button>

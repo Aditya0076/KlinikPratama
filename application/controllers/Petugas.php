@@ -31,6 +31,7 @@ class Petugas extends CI_Controller
 			{
 				$user = array(
 					'username' => $username,
+					'nama' => $result['nama'],
 					'role' => $result['jabatan'],
 					'logged_in' => TRUE
 				);
@@ -40,16 +41,28 @@ class Petugas extends CI_Controller
 			}else
 			{
 				$this->session->set_flashdata('failed','<div style="color: red">Password not match ! </div>');
-			die(var_dump($result));
 				redirect('petugas');
 			}
 		}
 	}
 
+	public function logout()
+	{
+		$data = array('username','nama','role');
+		$this->session->unset_userdata($data);
+		$this->session->set_userdata('logged_in', FALSE);
+		redirect('petugas');
+
+	}
+
 	public function read()
 	{
-		$data['petugas'] = $this->model->getAll();
-		$this->load->view('petugas/read',$data);
+		if($this->session->userdata('logged_in'))
+		{
+			$data['petugas'] = $this->model->getUser($this->session->userdata('username'));
+			$this->load->view('petugas/read',$data);
+		}else
+			redirect('petugas');
 	}
 
 	public function create()
@@ -75,7 +88,36 @@ class Petugas extends CI_Controller
 			'password' => $password
 		);
 
-		$this->model->insert($petugas);
+		if ($this->model->insert($petugas))
+			$this->session->set_flashdata('succeded','<div style="color: blue">Data petugas has been created</div>');
 		redirect('petugas');
+	}
+
+	public function update($username)
+	{
+		$data['petugas'] = $this->model->getUser($username);
+		$this->load->view('petugas/update',$data);
+	}
+
+	public function replace()
+	{
+		$nama_admin = $this->input->post('nama_admin');
+		$umur = $this->input->post('umur');
+		$jabatan = $this->input->post('jabatan');
+		$alamat = $this->input->post('alamat');
+		$username = $this->input->post('username');
+		$password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+
+		$petugas = array(
+			'nama_admin' => $nama_admin,
+			'umur' => $umur,
+			'jabatan' => $jabatan,
+			'alamat' => $alamat,
+			'username' => $username,
+			'password' => $password
+		);
+
+		$this->model->replace($petugas);
+		redirect('petugas/read');
 	}
 }

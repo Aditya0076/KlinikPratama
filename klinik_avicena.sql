@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 01 Jan 2020 pada 08.56
+-- Waktu pembuatan: 02 Jan 2020 pada 12.54
 -- Versi server: 10.1.30-MariaDB
 -- Versi PHP: 7.2.1
 
@@ -34,8 +34,15 @@ CREATE TABLE `admin` (
   `jabatan` varchar(32) NOT NULL,
   `alamat` text NOT NULL,
   `username` varchar(32) NOT NULL,
-  `password` varchar(64) NOT NULL
+  `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `admin`
+--
+
+INSERT INTO `admin` (`nama_admin`, `umur`, `jabatan`, `alamat`, `username`, `password`) VALUES
+('Aditya Bayu Prabowo', 20, 'karyawan', 'barat UPNVY condong catur', 'adit', 'adit');
 
 -- --------------------------------------------------------
 

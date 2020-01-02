@@ -38,7 +38,7 @@
 			</div>
 		</li>
 		<li class="nav-item" style="color: ghostwhite;">
-			<a class="nav-link" href="#">Logout</a>
+			<a class="nav-link" href="<?= base_url('petugas/logout');?>">Logout</a>
 		</li>
 	</ul>
 </div>
