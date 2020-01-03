@@ -28,4 +28,11 @@ class DusunModel extends CI_Model
 	{
 		$this->db->replace($this::TABLE_NAME, $dusun);
 	}
+
+	public function getDesa()
+	{
+		$query = $this->db->get('desa')
+						  ->result_array();
+		return $query;
+	}
 }

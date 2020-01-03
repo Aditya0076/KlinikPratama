@@ -27,4 +27,12 @@ class Kepala_keluargaModel extends CI_Model
 	{
 		$this->db->replace($this::TABLE_NAME, $kepala_keluarga);
 	}
+
+	public function getDusun()
+	{
+		$query = $this->db->from('dusun')
+						  ->get()
+						  ->result_array();
+		return $query;
+	}
 }

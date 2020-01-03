@@ -12,7 +12,7 @@ require 'application/views/templete/navbar.php';
 
 			<tr>
 
-				<form class="form-control-sm form-group" action="">
+				<form class="form-control-sm form-group" method="post" action="<?=base_url('pasien/insert');?>">
 					<td></td>
 					<td>
 						<table class="text-justify m-auto">
@@ -66,7 +66,7 @@ require 'application/views/templete/navbar.php';
 							</tr>
 
 							<tr>
-								<td colspan="4"> <center><input class="btn-success" type="button" value="Tambah"></center></td>
+								<td colspan="4"> <center><input class="btn-success" type="submit" value="Tambah"></center></td>
 							</tr>
 						</table>
 					</td>

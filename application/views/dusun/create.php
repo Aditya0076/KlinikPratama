@@ -13,14 +13,14 @@ require 'application/views/templete/navbar.php';
 
 			<tr>
 
-				<form class="form-control-sm form-group" action="">
+				<form class="form-control-sm form-group" method="post" action="<?=base_url('dusun/insert');?>">
 					<td></td>
 					<td>
 						<table class="text-justify m-auto">
 							<tr>
 								<td>Dusun</td>
 								<td>:</td>
-								<td><input class="form-control" type="text" name="dusun" placeholder="masukkan dusun"></td>
+								<td><input class="form-control" type="text" name="nama_dusun" placeholder="masukkan dusun"></td>
 							</tr>
 							<tr>
 								<td>RT</td>
@@ -30,7 +30,16 @@ require 'application/views/templete/navbar.php';
 							</tr>
 							<td>Desa</td>
 							<td>:</td>
-							<td><input class="form-control" type="text" name="desa" placeholder="masukkan desa"></td>
+							<td>
+								<!-- <input class="form-control" type="text" name="desa" placeholder="masukkan desa"> -->
+								<select class="form-control" type="text" name="kode_desa" >
+								<?php foreach ($desa as $desa) : ?>
+									<option value="<?= $desa['kode_desa'];?>">
+										<?=$desa['nama_desa'];?>
+									</option>
+								<?php endforeach; ?>
+								</select>
+							</td>
 							</tr>
 
 							<tr>
@@ -38,7 +47,7 @@ require 'application/views/templete/navbar.php';
 							</tr>
 
 							<tr>
-								<td colspan="3"> <center><input class="btn-success" type="button" value="Tambah"></center></td>
+								<td colspan="3"> <center><input class="btn-success" type="submit" value="Tambah"></center></td>
 							</tr>
 						</table>
 					</td>

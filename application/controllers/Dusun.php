@@ -19,7 +19,8 @@ class Dusun extends CI_Controller
 
 	public function create()
 	{
-		$this->load->view('dusun/create');
+		$data['desa'] = $this->model->getDesa();
+		$this->load->view('dusun/create',$data);
 	}
 
 	public function insert()

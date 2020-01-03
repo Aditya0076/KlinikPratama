@@ -19,7 +19,8 @@ class Kepala_keluarga extends CI_Controller
 
 	public function create()
 	{
-		$this->load->view('kepala_keluarga/create');
+		$data['dusun'] = $this->model->getDusun();
+		$this->load->view('kepala_keluarga/create',$data);
 	}
 
 	public function insert()

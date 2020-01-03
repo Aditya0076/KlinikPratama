@@ -13,7 +13,7 @@
 
 			<tr>
 
-				<form class="form-control-sm form-group" action="">
+				<form class="form-control-sm form-group" method="post" action="<?=base_url('kepala_keluarga/insert');?>">
 					<td></td>
 					<td>
 						<table class="text-justify m-auto">
@@ -26,8 +26,12 @@
 								<td>Dusun</td>
 								<td>:</td>
 								<td>
-									<select class="form-control">
-										<option>Default select</option>
+									<select class="form-control" name="kode_dusun" >
+									<?php foreach ($dusun as $dusun) : ?>
+										<option value="<?=$dusun['kode_dusun'];?>">
+											<?=$dusun['nama_dusun'];?>
+										</option>
+									<?php endforeach; ?>
 									</select>
 								</td>
 							</tr>
@@ -42,7 +46,7 @@
 							</tr>
 
 							<tr>
-								<td colspan="3"> <center><input class="btn-success" type="button" value="Tambah"></center></td>
+								<td colspan="3"> <center><input class="btn-success" type="submit" value="Tambah"></center></td>
 							</tr>
 						</table>
 					</td>
