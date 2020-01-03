@@ -21,6 +21,7 @@ class Petugas extends CI_Controller
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 
+
 		$result = $this->model->getUser($username);
 		if(!$result)
 		{
