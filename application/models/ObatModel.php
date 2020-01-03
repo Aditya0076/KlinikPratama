@@ -18,7 +18,8 @@ class ObatModel extends CI_Model
 
 	public function getAll()
 	{
-		$query = $this->db->get($this::TABLE_NAME);
+		$query = $this->db->get($this::TABLE_NAME)
+						  ->result_array();
 		return $query;
 	}
 
