@@ -35,7 +35,14 @@ require 'application/views/templete/navbar.php';
 				</tr>
 				</thead>
 				<tbody class="table-light">
-
+				<?php foreach ($obat as $obat) : ?>
+					<tr>
+						<td><?=$obat['id_obat'];?></td>
+						<td><?=$obat['nama_obat'];?></td>
+						<td><?=$obat['jenis_obat'];?></td>
+						<td><?=$obat['harga_obat'];?></td>
+					</tr>
+				<?php endforeach; ?>
 				</tbody>
 			</table>
 

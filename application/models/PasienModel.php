@@ -19,12 +19,24 @@ class PasienModel extends CI_Model
 
 	public function getAll()
 	{
-		$query = $this->db->get($this::TABLE_NAME);
+		$query = $this->db->select('*')
+						  ->from($this::TABLE_NAME)
+						  ->join('kepala_keluarga', 'kepala_keluarga.kode_keluarga =  data_pasien.kode_keluarga')
+						  ->get()
+						  ->result_array();
 		return $query;
 	}
 
 	public function update($pasien)
 	{
 		$this->db->replace($this::TABLE_NAME,$pasien);
+	}
+
+	public function getKepala_keluarga()
+	{
+		$query = $this->db->from('kepala_keluarga')
+						  ->get()
+						  ->result_array();
+		return $query;
 	}
 }
