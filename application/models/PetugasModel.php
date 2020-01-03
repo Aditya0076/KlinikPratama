@@ -34,7 +34,6 @@ class PetugasModel extends CI_Model
 						  ->get($this::TABLE_NAME)
 						  ->row_array();
 
-		return $this->db-> select ('nama_admin,umur,jabatan,alamat')->where('username',$username)->get($this::TABLE_NAME)->result();
-
+			return $query;
 	}
 }
