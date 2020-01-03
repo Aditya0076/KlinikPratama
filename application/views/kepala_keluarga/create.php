@@ -42,7 +42,7 @@
 							</tr>
 
 							<tr>
-								<td colspan="3"> <center><input class="btn-success" type="button" value="Kirim"></center></td>
+								<td colspan="3"> <center><input class="btn-success" type="button" value="Tambah"></center></td>
 							</tr>
 						</table>
 					</td>

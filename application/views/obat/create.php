@@ -7,7 +7,7 @@ require 'application/views/templete/navbar.php';
 
 		<table class="text-justify m-auto">
 			<tr>
-				<td colspan="2"> <center><h3 class="font-weight-bold">Tambah Data Transaksi</h3></center></td>
+				<td colspan="2"> <center><h3 class="font-weight-bold">Tambah Data Obat</h3></center></td>
 			</tr>
 
 			<tr>
@@ -16,19 +16,12 @@ require 'application/views/templete/navbar.php';
 					<td>
 						<table class="text-justify m-auto">
 							<tr>
-								<td>Tanggal</td>
+								<td>Nama Obat</td>
 								<td>:</td>
-								<td>
-									<input class="form-control" id="datepicker" name="tanggal" placeholder="masukkan tanggal"width="276">
-									<script>
-                                        $('#datepicker').datepicker({
-                                            uiLibrary: 'bootstrap4'
-                                        });
-									</script>
-								</td>
+								<td><input class="form-control" type="text" name="nama_obat" placeholder="masukkan nama obat"></td>
 							</tr>
 							<tr>
-								<td>Nama Pasien</td>
+								<td>Jenis Obat</td>
 								<td>:</td>
 								<td>
 									<select class="form-control" name="jenis_obat" >
@@ -37,7 +30,7 @@ require 'application/views/templete/navbar.php';
 								</td>
 							</tr>
 							</tr>
-							<td>Total Pembayaran </td>
+							<td>Harga Obat</td>
 							<td>:</td>
 							<td><input class="form-control" type="text" name="harga_obat" placeholder="masukkan harga obat"></td>
 							</tr>
