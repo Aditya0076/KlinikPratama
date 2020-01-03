@@ -42,6 +42,9 @@ require 'application/views/templete/navbar.php';
 		</tr>
 		</table>
 	</div>
+	<div class="jumbotron">
+
+	</div>
 </div>
 
 
