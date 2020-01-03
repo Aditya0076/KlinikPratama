@@ -36,4 +36,9 @@ class PetugasModel extends CI_Model
 
 			return $query;
 	}
+
+	public function delete($username)
+	{
+		$this->db->where('username',$username)->delete($this::TABLE_NAME);
+	}
 }

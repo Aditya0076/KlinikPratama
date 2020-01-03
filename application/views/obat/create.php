@@ -11,7 +11,7 @@ require 'application/views/templete/navbar.php';
 			</tr>
 
 			<tr>
-				<form class="form-control-sm form-group" action="">
+				<form class="form-control-sm form-group" method="post" action="<?= base_url('obat/insert');?>">
 					<td></td>
 					<td>
 						<table class="text-justify m-auto">

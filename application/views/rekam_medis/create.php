@@ -11,7 +11,7 @@ require 'application/views/templete/navbar.php';
 			</tr>
 
 			<tr>
-				<form class="form-control-sm form-group" action="">
+				<form class="form-control-sm form-group" method="post" action="<?= base_url('rekam_medis/insert');?>" >
 					<td></td>
 					<td>
 						<table class="text-justify m-auto">
@@ -19,7 +19,7 @@ require 'application/views/templete/navbar.php';
 								<td>Tanggal</td>
 								<td>:</td>
 								<td>
-									<input class="form-control" id="datepicker" name="tanggal" placeholder="masukkan tanggal"width="276">
+									<input class="form-control" id="datepicker" type="date" name="waktu" placeholder="masukkan tanggal"width="276">
 									<script>
                                         $('#datepicker').datepicker({
                                             uiLibrary: 'bootstrap4'

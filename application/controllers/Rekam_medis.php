@@ -2,10 +2,10 @@
 /**
  * 
  */
-class RekamMedis extends CI_Controller
+class Rekam_medis extends CI_Controller
 {
 	
-	function __construct
+	function __construct()
 	{
 		parent::__construct();
 		$this->load->model('Rekam_medisModel', 'model');
