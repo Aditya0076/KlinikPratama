@@ -37,7 +37,16 @@ require 'application/views/templete/navbar.php';
 				</tr>
 				</thead>
 				<tbody class="table-light">
-
+				<?php foreach ($pasien as $pasien) : ?>
+					<tr>
+						<td><?=$pasien['kode_pasien'];?></td>
+						<td><?=$pasien['nama_kepala'];?></td>
+						<td><?=$pasien['nama_pasien'];?></td>
+						<td><?=$pasien['umur'];?></td>
+						<td><?=$pasien['jenis_kelamin'];?></td>
+						<td><?=$pasien['alamat'];?></td>
+					</tr>
+				<?php endforeach; ?>
 				</tbody>
 			</table>
 

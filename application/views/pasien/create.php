@@ -33,13 +33,13 @@ require 'application/views/templete/navbar.php';
 							<td>:</td>
 							<td>
 								<div class="custom-control custom-radio custom-control-inline">
-									<input type="radio" class="custom-control-input" id="customRadio" name="jenis_kelamin" >
+									<input type="radio" class="custom-control-input" id="customRadio" value="laki-laki" name="jenis_kelamin" >
 									<label class="custom-control-label" for="customRadio">Laki_laki</label>
 								</div>
 							</td>
 							<td>
 								<div class="custom-control custom-radio custom-control-inline">
-									<input type="radio" class="custom-control-input" id="customRadio2" name="jenis_kelamin" >
+									<input type="radio" class="custom-control-input" id="customRadio2" value="perempuan" name="jenis_kelamin" >
 									<label class="custom-control-label" for="customRadio2">Perempuan</label>
 								</div>
 							</td>
@@ -50,8 +50,13 @@ require 'application/views/templete/navbar.php';
 								<td>Nama Kepala Keluarga</td>
 								<td>:</td>
 								<td>
-									<select class="form-control">
+									<select class="form-control" name="kode_keluarga">
 										<option>Default select</option>
+									<?php foreach ($kepala_keluarga as $kepala_keluarga) : ?>
+										<option value="<?=$kepala_keluarga['kode_keluarga'];?>">
+											<?=$kepala_keluarga['nama_kepala'];?>
+										</option>
+									<?php endforeach; ?>
 									</select>
 								</td>
 							</tr>
