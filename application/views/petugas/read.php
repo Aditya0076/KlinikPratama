@@ -10,26 +10,31 @@ require 'application/views/templete/navbar.php';
 				<td><img src="<?= base_url();?>/assets/Foto-Kartun-Dokter.gif" class="img-thumbnail" alt="Cinque Terre" width="158" height="158"></td>
 				<td>
 					<table class="text-justify m-auto">
+						<?php
+						$no = 1;
+						foreach($petugas  as $u){
+						?>
 						<tr>
 							<td>Nama</td>
 							<td>:</td>
-							<td> Aditya Bayu Prabowo</td>
+							<td><?php echo $u->nama_admin;?></td>
 						</tr>
 						<tr>
 							<td>Umur</td>
 							<td>:</td>
-							<td>22</td>
+							<td><?php echo $u->umur;?></td>
 						</tr>
 						<tr>
 							<td>Jabatan</td>
 							<td>:</td>
-							<td>Dokter</td>
+							<td><?php echo $u->jabatan;?></td>
 						</tr>
 						<tr>
 							<td>Alamat</td>
 							<td>:</td>
-							<td>Jalan Gorongan</td>
+							<td><?php echo $u->alamat;?></td>
 						</tr>
+						<?php } ?>
 					</table>
 				</td>
 			</tr>

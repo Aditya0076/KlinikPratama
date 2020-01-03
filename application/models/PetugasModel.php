@@ -4,7 +4,7 @@
  */
 class PetugasModel extends CI_Model
 {
-	private const TABLE_NAME = "admin";
+	public const TABLE_NAME = "admin";
 	public function insert($admin)
 	{
 		$this->db->insert($this::TABLE_NAME, $admin);
@@ -29,9 +29,12 @@ class PetugasModel extends CI_Model
 
 	public function getUser($username)
 	{
-		$query = $this->db->where('username',$username)
+
+			$query = $this->db->where('username',$username)
 						  ->get($this::TABLE_NAME)
 						  ->row_array();
-		return $query;
+
+		return $this->db-> select ('nama_admin,umur,jabatan,alamat')->where('username',$username)->get($this::TABLE_NAME)->result();
+
 	}
 }
