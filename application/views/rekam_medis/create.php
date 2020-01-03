@@ -11,7 +11,6 @@ require 'application/views/templete/navbar.php';
 			</tr>
 
 			<tr>
-
 				<form class="form-control-sm form-group" action="">
 					<td></td>
 					<td>
@@ -36,7 +35,9 @@ require 'application/views/templete/navbar.php';
 							</tr>
 							<td>Anamnese Pasien</td>
 							<td>:</td>
-							<td><input class="form-control" type="text" name="anamnese" placeholder="masukkan anamnese pasien"></td>
+							<td>
+								<textarea class="form-control" name="anamnese"></textarea>
+							</td>
 							</tr>
 
 							<tr>
@@ -46,9 +47,9 @@ require 'application/views/templete/navbar.php';
 							</tr>
 
 							<tr>
-								<td>Obat</td>
+								<td>Terapi</td>
 								<td>:</td>
-								<td><input class="form-control" type="text" name="obat" placeholder="masukkan obat"></td>
+								<td><textarea class="form-control" name="terapi"></textarea></td>
 							</tr>
 
 							<tr>
