@@ -24,6 +24,14 @@ class DusunModel extends CI_Model
 		return $query;
 	}
 
+	public function getDusun($kode_dusun)
+	{
+		$query = $this->db->where('kode_dusun',$kode_dusun)
+						  ->get($this::TABLE_NAME)
+						  ->row_array();
+		return $query;
+	}
+
 	public function update($dusun)
 	{
 		$this->db->replace($this::TABLE_NAME, $dusun);

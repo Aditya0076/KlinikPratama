@@ -23,6 +23,24 @@ class Kepala_keluargaModel extends CI_Model
 		return $query;
 	}
 
+	public function getKepala($kode_keluarga)
+	{
+		$query = $this->db->where('kode_keluarga',$kode_keluarga)
+						  ->get($this::TABLE_NAME)
+						  ->row_array();
+		return $query;
+	}
+
+	public function searchKepala($nama_kepala)
+	{
+		$query = $this->db->select('*')
+						  ->from($this::TABLE_NAME)
+						  ->like('nama_kepala',$nama_kepala,'first')
+						  ->get()
+						  ->result_array();
+		return $query;
+	}
+
 	public function update($kepala_keluarga)
 	{
 		$this->db->replace($this::TABLE_NAME, $kepala_keluarga);

@@ -27,6 +27,24 @@ class PasienModel extends CI_Model
 		return $query;
 	}
 
+	public function getPasien($kode_pasien)
+	{
+		$query = $this->db->where('kode_pasien',$kode_pasien)
+						  ->get($this::TABLE_NAME)
+						  ->row_array();
+		return $query;
+	}
+
+	public function searchPasien($name)
+	{
+		$query = $this->db->select('*')
+						  ->from($this::TABLE_NAME)
+						  ->like('name_pasien',$name,'after')
+						  ->get()
+						  ->result_array();
+		return $query;
+	}
+
 	public function update($pasien)
 	{
 		$this->db->replace($this::TABLE_NAME,$pasien);

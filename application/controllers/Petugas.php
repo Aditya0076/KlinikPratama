@@ -125,5 +125,6 @@ class Petugas extends CI_Controller
 	public function delete($username)
 	{
 		$this->model->delete($username);
+		redirect('petugas');
 	}
 }

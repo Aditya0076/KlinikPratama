@@ -23,6 +23,14 @@ class ObatModel extends CI_Model
 		return $query;
 	}
 
+	public function getObat($id_obat)
+	{
+		$query = $this->db->where('id_obat',$id_obat)
+						  ->get($this::TABLE_NAME)
+						  ->row_array();
+		return $query;
+	}
+
 	public function update($obat)
 	{
 		$this->db->replace($this::TABLE_NAME,$obat);

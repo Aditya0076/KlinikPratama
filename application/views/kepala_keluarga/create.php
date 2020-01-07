@@ -18,9 +18,9 @@
 					<td>
 						<table class="text-justify m-auto">
 							<tr>
-								<td>Nama Kepala Keluarga</td>
+								<td>Kode Keluarga</td>
 								<td>:</td>
-								<td><input class="form-control" type="text" name="dusun" placeholder="masukkan nama kepala keluarga"></td>
+								<td><input class="form-control" type="text" name="kode_keluarga" placeholder="masukkan kode kepala keluarga"></td>
 							</tr>
 							<tr>
 								<td>Dusun</td>
@@ -35,14 +35,15 @@
 									</select>
 								</td>
 							</tr>
-							</tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							</tr>
-
 							<tr>
-								<td></td>
+								<td>Nama Kepala Keluarga</td>
+								<td>:</td>
+								<td><input class="form-control" type="text" name="nama_kepala" placeholder="masukkan nama kepala keluarga"></td>
+							</tr>
+							<tr>
+								<td>Alamat</td>
+								<td>:</td>
+								<td><input class="form-control" type="text" name="alamat" placeholder="masukkan alamat"></td>
 							</tr>
 
 							<tr>

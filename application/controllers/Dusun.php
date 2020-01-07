@@ -27,14 +27,45 @@ class Dusun extends CI_Controller
 	{
 		$nama_dusun = $this->input->post('nama_dusun');
 		$kode_desa = $this->input->post('kode_desa');
+		$rt = $this->input->post('rt');
 
 		$dusun = array(
 			'nama_dusun' => $nama_dusun,
-			'kode_desa' => $kode_desa
+			'kode_desa' => $kode_desa,
+			'rt' => $rt
 		);
 
 		$this->model->insert($dusun);
+		redirect('dusun');
+	}
 
+	public function update($kode_dusun)
+	{
+		$data['dusun'] = $this->model->getDusun($kode_dusun);
+		$this->load->view('dusun/read',$data);
+	}
+
+	public function replace()
+	{
+		$kode_dusun = $this->input->post('kode_dusun');
+		$nama_dusun = $this->input->post('nama_dusun');
+		$kode_desa = $this->input->post('kode_desa');
+		$rt = $this->input->post('rt');
+
+		$dusun = array(
+			'kode_dusun' => $kode_dusun,
+			'nama_dusun' => $nama_dusun,
+			'kode_desa' => $kode_desa,
+			'rt' => $rt
+		);
+
+		$this->model->update($dusun);
+		redirect('dusun');
+	}
+
+	public function delete($kode_dusun)
+	{
+		$this->model->delete($kode_dusun);
 		redirect('dusun');
 	}
 }

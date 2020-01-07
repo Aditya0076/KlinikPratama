@@ -35,6 +35,12 @@ require 'application/views/templete/navbar.php';
 							<td><input class="form-control" type="text" name="harga_obat" placeholder="masukkan harga obat"></td>
 							</tr>
 
+							</tr>
+							<td>Jumlah Obat</td>
+							<td>:</td>
+							<td><input class="form-control" type="text" name="jumlah_obat" placeholder="masukkan jumlah obat"></td>
+							</tr>
+
 							<tr>
 								<td></td>
 							</tr>

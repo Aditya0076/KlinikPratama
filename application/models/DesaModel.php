@@ -23,6 +23,14 @@ class DesaModel extends CI_Model
 		return $query;
 	}
 
+	public function getDesa($kode_desa)
+	{
+		$query = $this->db->where('kode_desa',$kode_desa)
+						  ->get($this::TABLE_NAME)
+						  ->row_array();
+		return $query;
+	}
+
 	public function update($desa)
 	{
 		$this->db->replace($this::TABLE_NAME, $desa);

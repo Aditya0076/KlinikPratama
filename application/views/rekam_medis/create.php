@@ -19,7 +19,7 @@ require 'application/views/templete/navbar.php';
 								<td>Tanggal</td>
 								<td>:</td>
 								<td>
-									<input class="form-control" id="datepicker" type="date" name="waktu" placeholder="masukkan tanggal"width="276">
+									<input class="form-control" id="datepicker" type="date" name="waktu" placeholder="masukkan tanggal" width="276">
 									<script>
                                         $('#datepicker').datepicker({
                                             uiLibrary: 'bootstrap4'
