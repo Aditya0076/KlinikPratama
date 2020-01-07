@@ -17,7 +17,7 @@ class Transaksi extends CI_Controller
 		$this->load->view('transaksi/read',$data);
 	}
 
-	public function crete()
+	public function create()
 	{
 		$this->load->view('transaksi/create');
 	}
