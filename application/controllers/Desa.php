@@ -8,13 +8,13 @@ class Desa extends CI_Controller
 		$this->load->model('DesaModel', 'model');
 	}
 
-	public function index()
+	/*public function index()
 	{
 		$data['desa'] = $this->model->getAll();
-		$this->load->view('desa/read',$data);
-	}
+		$this->load->view('desa/create',$data);
+	}*/
 
-	public function create()
+	public function index()
 	{
 		$this->load->view('desa/create');
 	}

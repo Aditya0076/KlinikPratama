@@ -39,4 +39,10 @@ class Transaksi extends CI_Controller
 		$this->model->insert($transaksi);
 		redirect('transaksi');
 	}
+
+	public function getPasienonKeluarga($kode_keluarga)
+	{
+		$data = $this->model->getPasienonKeluarga($kode_keluarga);
+		echo json_encode($data);
+	}
 }

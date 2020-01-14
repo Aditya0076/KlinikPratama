@@ -35,11 +35,12 @@ class PasienModel extends CI_Model
 		return $query;
 	}
 
-	public function searchPasien($name)
+	public function searchPasien($nama_pasien)
 	{
 		$query = $this->db->select('*')
 						  ->from($this::TABLE_NAME)
-						  ->like('name_pasien',$name,'after')
+						  ->join('kepala_keluarga','kepala_keluarga.kode_keluarga = data_pasien.kode_keluarga')
+						  ->like('nama_pasien',$nama_pasien,'after')
 						  ->get()
 						  ->result_array();
 		return $query;

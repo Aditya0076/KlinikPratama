@@ -28,12 +28,20 @@ require 'application/views/templete/navbar.php';
 								</td>
 							</tr>
 							<tr>
+								<td>Kode Keluarga</td>
+								<td>:</td>
+								<td>
+									<input class="form-control" type="text" name="kode_keluarga" placeholder="kode keluarga" onchange="getPasienonKeluarga(this.value);" >
+								</td>
+							</tr>
+							<tr>
 								<td>Nama Pasien</td>
 								<td>:</td>
 								<td>
-									<select class="form-control" name="jenis_obat" >
+									<input type="text" name="nama_pasien" id="nama_pasien" placeholder="nama pasien" class="form-control">
+									<!-- <select id="nama_pasien" class="form-control" name="jenis_obat" >
 										<option value=""> Default </option>
-									</select>
+									</select> -->
 								</td>
 							</tr>
 							</tr>
@@ -55,6 +63,23 @@ require 'application/views/templete/navbar.php';
 
 			</tr>
 		</table>
+
+		<script>
+			function getPasienonKeluarga($kode_keluarga){
+				if(window.XMLHttprequest){
+					xmlhttp = new XMLHttprequest();
+				}else{
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.onreadystatechange = function(){
+					if(this.readystate == 4 && this.status == 200){
+						document.getElementById('nama_pasien').innerHTML = thiis.responseText;
+					}
+				};
+				xmlhttp.open("<?= base_url('transaksi/getPasienonKeluarga/') . $kode_keluarga?>");
+				xmlhttp.send();
+			}
+		</script>
 
 	</div>
 </div>

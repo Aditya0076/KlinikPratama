@@ -9,8 +9,8 @@ require 'application/views/templete/navbar.php';
 			<td>Nama Pasien</td>
 			<td>:</td>
 			<td>
-				<form class="form-inline" action="/action_page.php">
-					<input class="form-control mr-sm-2" type="text" placeholder="masukkan nama pasien">
+				<form class="form-inline" method="post" action="<?= base_url('pasien/search');?>">
+					<input class="form-control mr-sm-2" type="text" placeholder="masukkan nama pasien" name="nama_pasien" >
 					<button class="btn btn-success" type="submit">Cari</button>
 				</form>
 			</td>
@@ -37,9 +37,12 @@ require 'application/views/templete/navbar.php';
 				</tr>
 				</thead>
 				<tbody class="table-light">
-				<?php foreach ($pasien as $pasien) : ?>
+				<?php 
+					$id = 1;
+					foreach ($pasien as $pasien) : 
+				?>
 					<tr>
-						<td><?=$pasien['kode_pasien'];?></td>
+						<td><?= $id;?></td>
 						<td><?=$pasien['nama_kepala'];?></td>
 						<td><?=$pasien['nama_pasien'];?></td>
 						<td><?=$pasien['umur'];?></td>
@@ -47,10 +50,13 @@ require 'application/views/templete/navbar.php';
 						<td><?=$pasien['alamat'];?></td>
 						<td>
 							<a type="button" class="btn btn-warning" href="<?= base_url('pasien/update/' . $pasien['kode_pasien']);?>">Update</a>
-							<a type="button" class="btn btn-danger" href="<?= base_url('pasien/delete' . $pasien['kode_pasien']);?>">Delete</a>	
+							<a type="button" class="btn btn-danger" href="<?= base_url('pasien/delete/' . $pasien['kode_pasien']);?>">Delete</a>	
 						</td>
 					</tr>
-				<?php endforeach; ?>
+				<?php 
+					$id++;
+					endforeach; 
+				?>
 				</tbody>
 			</table>
 

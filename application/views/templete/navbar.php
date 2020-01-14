@@ -11,7 +11,8 @@
 				Data Pasien
 			</a>
 			<div class="dropdown-menu"aria-labelledby="navbarDropdown">
-				<a class="dropdown-item" href="<?= base_url('');?>dusun/create">Tambah Dusun</a>
+				<a class="dropdown-item" href="<?= base_url('');?>desa">Tambah Desa</a>
+				<a class="dropdown-item" href="<?= base_url('');?>dusun">Tambah Dusun</a>
 				<a class="dropdown-item" href="<?= base_url('');?>kepala_keluarga/create">Tambah Kepala Keluarga</a>
 				<a class="dropdown-item" href="<?= base_url('');?>pasien/create">Tambah Pasien</a>
 				<a class="dropdown-item" href="<?= base_url('');?>pasien">Tampil Data Pasien</a>

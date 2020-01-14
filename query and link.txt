@@ -6,3 +6,6 @@ JOIN desa_coba d ON d.kode_desa = ds.kode_desa
 SELECT d.kode_pasien, d.nama_pasien FROM data_pasien d
 JOIN kepala_keluarga k on k.kode_keluarga = d.kode_keluarga
 WHERE d.kode_keluarga = "A01"
+
+//how to implementating ajax on codeigniter
+http://mfikri.com/artikel/select-ajax-codeigniter

@@ -20,7 +20,7 @@ class Pasien extends CI_Controller
 	public function search()
 	{
 		$nama_pasien = $this->input->post('nama_pasien');
-		$data['pasien'] = $this->model->searchPasien($nama);
+		$data['pasien'] = $this->model->searchPasien($nama_pasien);
 		$this->load->view('pasien/read',$data);
 	}
 

@@ -11,13 +11,13 @@ class Dusun extends CI_Controller
 		$this->load->model('DusunModel', 'model');
 	}
 
-	public function index()
+	/*public function index()
 	{
-		$data['dusun'] = $this->model->getAll();
-		$this->load->view('dusun/read',$data);
-	}
+		// $data['dusun'] = $this->model->getAll();
+		$this->load->view('dusun/create',$data);
+	}*/
 
-	public function create()
+	public function index()
 	{
 		$data['desa'] = $this->model->getDesa();
 		$this->load->view('dusun/create',$data);

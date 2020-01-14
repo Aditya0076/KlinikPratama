@@ -12,7 +12,7 @@ require 'application/views/templete/navbar.php';
 			</tr>
 
 			<tr>
-
+				<?= $this->session->flashdata('messenger'); ?>
 				<form class="form-control-sm form-group" method="post" action="<?=base_url('dusun/insert');?>">
 					<td></td>
 					<td>
