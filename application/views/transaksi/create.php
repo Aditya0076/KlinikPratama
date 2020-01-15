@@ -11,7 +11,7 @@ require 'application/views/templete/navbar.php';
 			</tr>
 
 			<tr>
-				<form class="form-control-sm form-group" action="">
+				<form class="form-control-sm form-group" method="post" action="<?=base_url('transaksi/insert');?>">
 					<td></td>
 					<td>
 						<table class="text-justify m-auto">
@@ -19,43 +19,39 @@ require 'application/views/templete/navbar.php';
 								<td>Tanggal</td>
 								<td>:</td>
 								<td>
-									<input class="form-control" id="datepicker" name="tanggal" placeholder="masukkan tanggal"width="276">
-									<script>
+									<input type="date" class="form-control" id="datepicker" name="waktu" placeholder="masukkan tanggal"width="276">
+									<!-- <script>
                                         $('#datepicker').datepicker({
                                             uiLibrary: 'bootstrap4'
                                         });
-									</script>
+									</script> -->
 								</td>
 							</tr>
 							<tr>
 								<td>Kode Keluarga</td>
 								<td>:</td>
 								<td>
-									<input class="form-control" type="text" name="kode_keluarga" placeholder="kode keluarga" onchange="getPasienonKeluarga(this.value);" >
+									<input class="form-control" type="text" name="kode_keluarga" placeholder="kode keluarga" id="kode_keluarga" >
 								</td>
 							</tr>
 							<tr>
 								<td>Nama Pasien</td>
 								<td>:</td>
 								<td>
-									<input type="text" name="nama_pasien" id="nama_pasien" placeholder="nama pasien" class="form-control">
-									<!-- <select id="nama_pasien" class="form-control" name="jenis_obat" >
+									<!-- <input type="text" name="nama_pasien" id="nama_pasien" placeholder="nama pasien" class="form-control"> -->
+									<select id="nama_pasien" class="form-control" name="kode_pasien" >
 										<option value=""> Default </option>
-									</select> -->
+										
+									</select>
 								</td>
 							</tr>
 							</tr>
 							<td>Total Pembayaran </td>
 							<td>:</td>
-							<td><input class="form-control" type="text" name="harga_obat" placeholder="masukkan harga obat"></td>
+							<td><input class="form-control" type="text" name="biaya_administrasi" placeholder="masukkan biaya administrasi"></td>
 							</tr>
-
 							<tr>
-								<td></td>
-							</tr>
-
-							<tr>
-								<td colspan="3"> <center><input class="btn-success" type="button" value="Tambah"></center></td>
+								<td colspan="3"> <center><input class="btn-success" type="submit" value="Tambah"></center></td>
 							</tr>
 						</table>
 					</td>
@@ -64,21 +60,58 @@ require 'application/views/templete/navbar.php';
 			</tr>
 		</table>
 
-		<script>
-			function getPasienonKeluarga($kode_keluarga){
-				if(window.XMLHttprequest){
-					xmlhttp = new XMLHttprequest();
-				}else{
-					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-				}
-				xmlhttp.onreadystatechange = function(){
-					if(this.readystate == 4 && this.status == 200){
-						document.getElementById('nama_pasien').innerHTML = thiis.responseText;
-					}
-				};
-				xmlhttp.open("<?= base_url('transaksi/getPasienonKeluarga/') . $kode_keluarga?>");
-				xmlhttp.send();
-			}
+		<div class="row">
+			<div id="showData">
+				
+			</div>
+		</div>
+
+		<!-- <script type="text/javascript"></script> -->
+		<script type="text/javascript" >
+			$(document).ready(function(){
+				$('#kode_keluarga').change(function(){
+					var kode_keluarga = $(this).val();
+					// alert(id);
+					$.ajax({
+						url : '<?=base_url('transaksi/getPasienonKeluarga');?>',
+						method : 'post',
+						data : {kode_keluarga: kode_keluarga},
+						async : true,
+						dataType : 'json',
+						success : function(data){
+							// alert(data[1].kode_pasien);
+							console.log(data);
+							var html = '';
+							var i;
+							 //html += '<table><tr><th>'+data[1].kode_pasien+'</th><th>Kode Pasien</th><th>Harga Transaksi</th></tr>';
+							for(i=0; i<data.length; i++){
+								html += '<option value='+data[i].kode_pasien+'>'+data[i].nama_pasien+'</option>';
+							}
+							$('#nama_pasien').html(html);
+						}
+					});
+					return false;
+				});
+				/*showData();
+				function showData(){
+					$.ajax({
+						url : "< base_url('transaksi/showData');?>",
+						method : "POST",
+						dataType : "json",
+						success : function(data){
+							var html='';
+							var i;
+							html += '<table><tr><th>Kode Keluarga</th><th>Kode Pasien</th><th>Harga Transaksi</th></tr>';
+							for (i in data){
+								html += '<tr><td>'+data[i].kode_keluarga+'</td><td>'+data[i].kode_pasien+'</td><td>'+data[i].harga_transaksi+'</td></tr>';
+							}
+							html += '</table>';
+							$('#showData').html(html);
+						}
+					})
+				}*/
+			});
+
 		</script>
 
 	</div>

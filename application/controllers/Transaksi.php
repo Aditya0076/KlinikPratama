@@ -14,6 +14,7 @@ class Transaksi extends CI_Controller
 	public function index()
 	{
 		$data['transaksi'] = $this->model->getAll();
+		die(var_dump($data));
 		$this->load->view('transaksi/read',$data);
 	}
 
@@ -27,22 +28,25 @@ class Transaksi extends CI_Controller
 		$waktu = $this->input->post('waktu');
 		$kode_keluarga = $this->input->post('kode_keluarga');
 		$kode_pasien = $this->input->post('kode_pasien');
-		$harga_transaksi = $this->input->post('harga_transaksi');
+		$biaya_administrasi = $this->input->post('biaya_administrasi');
 
 		$transaksi = array(
 			'waktu' => $waktu,
 			'kode_keluarga' => $kode_keluarga,
 			'kode_pasien' => $kode_pasien,
-			'harga_transaksi' => $harga_transaksi
+			'biaya_administrasi' => $biaya_administrasi
 		);
 
+		// die(var_dump($transaksi));
 		$this->model->insert($transaksi);
-		redirect('transaksi');
+		// redirect('transaksi');
 	}
 
-	public function getPasienonKeluarga($kode_keluarga)
+	public function getPasienonKeluarga()
 	{
+		$kode_keluarga = $this->input->post('kode_keluarga');
 		$data = $this->model->getPasienonKeluarga($kode_keluarga);
+		// die(var_dump($data));
 		echo json_encode($data);
 	}
 }
