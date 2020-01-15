@@ -1,42 +1,61 @@
-<?php 
-	// require 'application/views/template/header.php';
-	// require 'application/views/template/navbar.php';
- ?>
+<?php
+require 'application/views/templete/header.php';
+require 'application/views/templete/navbar.php';
+?>
 <div class="jumbotron m-lg-auto ">
-	<div class="container">
+	<div class="jumbotron">
 		<table class="text-justify m-auto">
 			<tr>
-				<td colspan="2"> <center><h3 class="font-weight-bold">Data Pasien</h3></center></td>
+				<td colspan="2"> <center><h3 class="font-weight-bold">Edit Data Pasien</h3></center></td>
 			</tr>
-	</div>
-	<div class="jumbotron-fluid">
-		<tr>
-			<table class="container table  table-responsive-lg table-active">
+			</div>
+			<div class="jumbotron-fluid">
+			<tr>
+				<form class="form-control-sm form-group" method="post" action="<?=base_url('pasien/insert');?>">
+				<table class="text-justify m-auto">
+
 				<tr>
-					<th>Kode Pasien</th>
+					<td>Kode Pasien</td>
+					<td>:</td>
 					<td>
 						<input type="text" name="kode_pasien" value="<?=$pasien['kode_pasien'];?>">
 					</td>
 				</tr>
+
 				<tr>
-					<th>Nama Kepala Keluarga</th>
-					<td><?//=$pasien['nama_kepala'];?></td>
-						
+					<td>Nama Kepala Keluarga</td>
+					<td>:</td>
+					<td>
+						<select class="form-control" name="kode_keluarga">
+							<?php foreach ($kepala_keluarga as $kepala_keluarga) : ?>
+								<option value="<?=$kepala_keluarga['kode_keluarga'];?>">
+									<?=$kepala_keluarga['nama_kepala'];?>
+								</option>
+							<?php endforeach; ?>
+						</select>
+					</td>
 				</tr>
+
 				<tr>
-					<th>Nama Pasien</th>
+					<td>Nama Pasien</td>
+					<td>:</td>
 					<td>
 						<input type="text" name="nama_pasien" value="<?=$pasien['nama_pasien'];?>">
 					</td>
 				</tr>
+
 				<tr>
-					<th>Umur</th>
+					<td>Umur</td>
+					<td>:</td>
 					<td>
 						<input type="text" name="umur" value="<?=$pasien['umur'];?>">
 					</td>
+					<td>Tahun</td>
 				</tr>
+
 				<tr>
-					<th>Jenis Kelamin</th>
+					<td>Jenis Kelamin</td>
+					<td>:</td>
 					<td>
 						<div class="custom-control custom-radio custom-control-inline">
 							<input type="radio" class="custom-control-input" id="customRadio" value="laki-laki" name="jenis_kelamin" >
@@ -50,13 +69,26 @@
 						</div>
 					</td>
 				</tr>
-			</table>
 
-		</tr>
+				</tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				</tr>
+
+				<tr>
+					<td></td>
+				</tr>
+
+				<tr>
+					<td colspan="3"> <center><input class="btn-success" type="submit" value="Tambah"></center></td>
+				</tr>
+				</table>
+				</form>
 		</table>
 	</div>
 </div>
 
- <?php 
- 	// require 'application/views/template/footer.php';
-  ?>
+<?php
+require 'application/views/templete/footer.php';
+?>

@@ -14,7 +14,7 @@
 	<script src="<?php echo base_url('');?>/assets/bootstrap/js/popper.min.js" ></script>
 	<script src="<?php echo base_url('');?>/assets/bootstrap/js/bootstrap.js" ></script>
 	<script type="text/javascript" src="<?php echo base_url('');?>/assets/DataTables/datatables.min.js"></script>
-	<title>Halaman Tambah Data Kepala Keluarga</title>
+	<title>Klinik Pratama Avicena</title>
 </head>
 <body>
 <style>

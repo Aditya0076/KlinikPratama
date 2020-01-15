@@ -28,8 +28,8 @@
 								<td>
 									<select class="form-control" name="kode_dusun" >
 									<?php foreach ($dusun as $dusun) : ?>
-										<option value="<?=$dusun['kode_dusun'];?>">
-											<?=$dusun['nama_dusun'];?>
+										<option value="<?=$dusun['kode_dusun'];?>,<?=$desa['kode_desa'];?>">
+											<?=$dusun['nama_dusun'];?>,<?=$desa['nama_desa'];?>
 										</option>
 									<?php endforeach; ?>
 									</select>

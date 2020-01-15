@@ -31,7 +31,6 @@ require 'application/views/templete/navbar.php';
 							<td>Desa</td>
 							<td>:</td>
 							<td>
-								<!-- <input class="form-control" type="text" name="desa" placeholder="masukkan desa"> -->
 								<select class="form-control" type="text" name="kode_desa" >
 								<?php foreach ($desa as $desa) : ?>
 									<option value="<?= $desa['kode_desa'];?>">

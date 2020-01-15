@@ -51,7 +51,6 @@ require 'application/views/templete/navbar.php';
 								<td>:</td>
 								<td>
 									<select class="form-control" name="kode_keluarga">
-										<option>Default select</option>
 									<?php foreach ($kepala_keluarga as $kepala_keluarga) : ?>
 										<option value="<?=$kepala_keluarga['kode_keluarga'];?>">
 											<?=$kepala_keluarga['nama_kepala'];?>
