@@ -26,7 +26,8 @@ require 'application/views/templete/navbar.php';
 					<td>Nama Kepala Keluarga</td>
 					<td>:</td>
 					<td>
-						<input type="text" name="nama_kepala" value="<?=$pasien['nama_kepala'];?>">
+						<input type="text" name="kode_keluarga" value="<?=$pasien['nama_kepala'];?>" disabled>
+						<input type="text" name="kode_keluarga" value="<?=$pasien['kode_keluarga'];?>" hidden>
 					</td>
 				</tr>
 
