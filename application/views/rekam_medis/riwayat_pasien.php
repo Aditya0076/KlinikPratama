@@ -37,7 +37,25 @@ require 'application/views/templete/navbar.php';
 				</tr>
 				</thead>
 				<tbody class="table-light">
-
+				<?php
+				$id = 1;
+				foreach ($rekam_medis as $rekam_medis) :
+					?>
+					<tr>
+						<td><?= $id++;?></td>
+						<td><?=$rekam_medis['tanggal'];?></td>
+						<td><?=$rekam_medis['anamnesa'];?></td>
+						<td><?=$rekam_medis['diagnosa'];?></td>
+						<td><?=$rekam_medis['terapi'];?></td>
+						<td>
+							<a type="button" class="btn btn-warning" href="<?= base_url('rekam_medis/update/' . $pasien['kode_pasien']);?>">Update</a>
+							<a type="button" class="btn btn-danger" href="<?= base_url('rekam_medis/delete/' . $pasien['kode_pasien']);?>">Delete</a>
+						</td>
+					</tr>
+					<?php
+					$id++;
+				endforeach;
+				?>
 				</tbody>
 			</table>
 

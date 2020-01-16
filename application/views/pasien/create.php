@@ -33,13 +33,13 @@ require 'application/views/templete/navbar.php';
 							<td>:</td>
 							<td>
 								<div class="custom-control custom-radio custom-control-inline">
-									<input type="radio" class="custom-control-input" id="customRadio" value="laki-laki" name="jenis_kelamin" >
+									<input type="radio" class="custom-control-input" id="customRadio" value="Laki-laki" name="jenis_kelamin" >
 									<label class="custom-control-label" for="customRadio">Laki_laki</label>
 								</div>
 							</td>
 							<td>
 								<div class="custom-control custom-radio custom-control-inline">
-									<input type="radio" class="custom-control-input" id="customRadio2" value="perempuan" name="jenis_kelamin" >
+									<input type="radio" class="custom-control-input" id="customRadio2" value="Perempuan" name="jenis_kelamin" >
 									<label class="custom-control-label" for="customRadio2">Perempuan</label>
 								</div>
 							</td>

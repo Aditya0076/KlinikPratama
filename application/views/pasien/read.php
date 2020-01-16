@@ -42,7 +42,7 @@ require 'application/views/templete/navbar.php';
 					foreach ($pasien as $pasien) : 
 				?>
 					<tr>
-						<td><?= $id;?></td>
+						<td><?= $id++;?></td>
 						<td><?=$pasien['nama_kepala'];?></td>
 						<td><?=$pasien['nama_pasien'];?></td>
 						<td><?=$pasien['umur'];?></td>

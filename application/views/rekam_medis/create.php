@@ -30,7 +30,15 @@ require 'application/views/templete/navbar.php';
 							<tr>
 								<td>Nama Pasien</td>
 								<td>:</td>
-								<td><input class="form-control" type="text" name="nama_pasien" placeholder="masukkan nama pasien "></td>
+								<td>
+									<select class="form-control" name="nama_pasien" >
+										<?php foreach ($pasien as $pasien) : ?>
+											<option value="<?=$pasien['kode_pasien'];?>">
+												<?=$pasien['nama_pasien'];?>?>
+											</option>
+										<?php endforeach; ?>
+									</select>
+								</td>
 							</tr>
 							</tr>
 							<td>Anamnese Pasien</td>

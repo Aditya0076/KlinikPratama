@@ -31,16 +31,22 @@ require 'application/views/templete/navbar.php';
 					<th>Nama obat</th>
 					<th>Jenis Obat</th>
 					<th>Harga</th>
+					<th>Jumlah</th>
 					<th>Pilihan</th>
 				</tr>
 				</thead>
 				<tbody class="table-light">
-				<?php foreach ($obat as $obat) : ?>
+				<?php $id = 1; foreach ($obat as $obat) : ?>
 					<tr>
-						<td><?=$obat['id_obat'];?></td>
+						<td><?=$id++;?></td>
 						<td><?=$obat['nama_obat'];?></td>
 						<td><?=$obat['jenis_obat'];?></td>
 						<td><?=$obat['harga_obat'];?></td>
+						<td><?=$obat['jumlah_obat'];?></td>
+						<td>
+							<a type="button" class="btn btn-warning" href="<?= base_url('obat/update/' . $obat['id_obat']);?>">Update</a>
+							<a type="button" class="btn btn-danger" href="<?= base_url('obat/delete/' . $obat['id_obat']);?>">Delete</a>
+						</td>
 					</tr>
 				<?php endforeach; ?>
 				</tbody>

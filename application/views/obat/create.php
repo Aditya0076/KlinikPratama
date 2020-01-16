@@ -24,9 +24,10 @@ require 'application/views/templete/navbar.php';
 								<td>Jenis Obat</td>
 								<td>:</td>
 								<td>
-									<select class="form-control" name="jenis_obat" >
-										<option value=""> Default </option>
-									</select>
+									<input class="form-control" type="text" name="jenis_obat" placeholder="masukkan jenis obat">
+<!--									<select class="form-control" name="jenis_obat" >-->
+<!--										<option value=""> Default </option>-->
+<!--									</select>-->
 								</td>
 							</tr>
 							</tr>
