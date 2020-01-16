@@ -9,7 +9,7 @@ require 'application/views/templete/navbar.php';
 			<td>Nama Kepala Keluarga</td>
 			<td>:</td>
 			<td>
-				<form class="form-inline" method="post" action="<?= base_url('pasien/search');?>">
+				<form class="form-inline" method="post" action="<?= base_url('kepala_keluarga/search');?>">
 					<input class="form-control mr-sm-2" type="text" placeholder="masukkan nama kepala keluarga" name="nama_kepala" >
 					<button class="btn btn-success" type="submit">Cari</button>
 				</form>
@@ -30,33 +30,31 @@ require 'application/views/templete/navbar.php';
 				<tr>
 					<th>No</th>
 					<th>Nama Kepala Keluarga</th>
-					<th>Nama Pasien</th>
-					<th>Umur</th>
-					<th>Jenis Kelamin</th>
-					<th>Alamat</th>
+					<th>Dusun</th>
+					<th>Desa</th>
+					<th>Alamat Lengkap</th>
 					<th>Pilihan</th>
 				</tr>
 				</thead>
 				<tbody class="table-light">
 				<?php
 				$id = 1;
-				foreach ($pasien as $pasien) :
+				foreach ($kepala_keluarga as $kepala_keluarga) :
 					?>
 					<tr>
 						<td><?= $id++;?></td>
-						<td><?=$pasien['nama_kepala'];?></td>
-						<td><?=$pasien['nama_pasien'];?></td>
-						<td><?=$pasien['umur'];?></td>
-						<td><?=$pasien['jenis_kelamin'];?></td>
-						<td><?=$pasien['alamat'];?></td>
+						<td><?=$kepala_keluarga['nama_kepala'];?></td>
+						<td><?=$kepala_keluarga['dusun'];?></td>
+						<td><?=$kepala_keluarga['desa'];?></td>
+						<td><?=$kepala_keluarga['alamat'];?></td>
 						<td>
-							<a type="button" class="btn btn-warning" href="<?= base_url('pasien/update/' . $pasien['kode_pasien']);?>">Update</a>
-							<a type="button" class="btn btn-danger" href="<?= base_url('pasien/delete/' . $pasien['kode_pasien']);?>">Delete</a>
+							<a type="button" class="btn btn-warning" href="<?= base_url('kepala_keluarga/update/' . $kepala_keluarga['kode_keluarga']);?>">Update</a>
+							<a type="button" class="btn btn-danger" href="<?= base_url('kepala_keluarga/delete/' . $kepala_keluarga['kode_keluarga']);?>">Delete</a>
 						</td>
 					</tr>
 					<?php
-					$id++;
 				endforeach;
+				$id++;
 				?>
 				</tbody>
 			</table>
@@ -68,7 +66,6 @@ require 'application/views/templete/navbar.php';
 
 	</div>
 </div>
-
 
 
 <?php

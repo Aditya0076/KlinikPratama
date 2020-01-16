@@ -6,17 +6,15 @@
 		<li class="nav-item " style="color: ghostwhite;">
 			<a class="nav-link" href="<?= base_url('');?>petugas/read">Beranda</a>
 		</li>
-		<li class="nav-item " style="color: ghostwhite;">
-			<a class="nav-link" href="<?= base_url('');?>kepala_keluarga/read">Data Kepala Keluarga</a>
-		</li>
 		<li class="nav-item dropdown" style="color: ghostwhite;">
 			<a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Data Pasien
+				Data Kepala Keluarga
 			</a>
 			<div class="dropdown-menu"aria-labelledby="navbarDropdown">
 				<a class="dropdown-item" href="<?= base_url('');?>desa">Tambah Desa</a>
 				<a class="dropdown-item" href="<?= base_url('');?>dusun">Tambah Dusun</a>
-				<a class="dropdown-item" href="<?= base_url('');?>kepala_keluarga/create">Tambah Kepala Keluarga</a>
+				<a class="dropdown-item" href="<?= base_url('');?>kepala_keluarga/create">Tambah Data Kepala Keluarga</a>
+				<a class="dropdown-item" href="<?= base_url('');?>kepala_keluarga">Tampil Data Kepala Keluarga</a>
 			</div>
 		</li>
 		<li class="nav-item dropdown" style="color: ghostwhite;">
@@ -24,9 +22,7 @@
 				Data Pasien
 			</a>
 			<div class="dropdown-menu"aria-labelledby="navbarDropdown">
-				<a class="dropdown-item" href="<?= base_url('');?>desa">Tambah Desa</a>
-				<a class="dropdown-item" href="<?= base_url('');?>dusun">Tambah Dusun</a>
-				<a class="dropdown-item" href="<?= base_url('');?>kepala_keluarga/create">Tambah Kepala Keluarga</a>
+				<a class="dropdown-item" href="<?= base_url('');?>pasien/create">Tambah Data Pasien</a>
 				<a class="dropdown-item" href="<?= base_url('');?>pasien">Tampil Data Pasien</a>
 			</div>
 		</li>
