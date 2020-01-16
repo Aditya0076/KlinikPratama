@@ -15,14 +15,6 @@ require 'application/views/templete/navbar.php';
 				<table class="text-justify m-auto">
 
 				<tr>
-					<td>Kode Pasien</td>
-					<td>:</td>
-					<td colspan="2">
-						<input type="text" name="kode_pasien" value="<?=$pasien['kode_pasien'];?>">
-					</td>
-				</tr>
-
-				<tr>
 					<td>Nama Kepala Keluarga</td>
 					<td>:</td>
 					<td colspan="2">

@@ -54,7 +54,6 @@ require 'application/views/templete/navbar.php';
 					</tr>
 					<?php
 				endforeach;
-				$id++;
 				?>
 				</tbody>
 			</table>

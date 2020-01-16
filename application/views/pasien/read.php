@@ -54,8 +54,7 @@ require 'application/views/templete/navbar.php';
 							<a type="button" class="btn btn-danger" href="<?= base_url('pasien/delete/' . $pasien['kode_pasien']);?>">Delete</a>	
 						</td>
 					</tr>
-				<?php 
-					$id++;
+				<?php
 					endforeach; 
 				?>
 				</tbody>
