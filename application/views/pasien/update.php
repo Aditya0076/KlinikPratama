@@ -11,7 +11,7 @@ require 'application/views/templete/navbar.php';
 			</div>
 			<div class="jumbotron-fluid">
 			<tr>
-				<form class="form-control-sm form-group" method="post" action="<?=base_url('pasien/insert');?>">
+				<form class="form-control-sm form-group" method="post" action="<?=base_url('pasien/replace');?>">
 				<table class="text-justify m-auto">
 
 				<tr>
