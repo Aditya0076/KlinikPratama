@@ -29,8 +29,11 @@ class PasienModel extends CI_Model
 
 	public function getPasien($kode_pasien)
 	{
-		$query = $this->db->where('kode_pasien',$kode_pasien)
-						  ->get($this::TABLE_NAME)
+		$query = $this->db->select('*')
+						  ->from($this::TABLE_NAME)
+						  ->join('kepala_keluarga','kepala_keluarga.kode_keluarga = data_pasien.kode_keluarga')
+						  ->where('data_pasien.kode_pasien',$kode_pasien)
+						  ->get()
 						  ->row_array();
 		return $query;
 	}
