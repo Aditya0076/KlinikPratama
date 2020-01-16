@@ -26,6 +26,7 @@ require 'application/views/templete/navbar.php';
 		<tr>
 			<table class="container table  table-responsive-lg table-active">
 				<thead>
+				<tr><a type="button" class="btn btn-primary" href="<?= base_url('');?>pasien/create">Tambah Data</a></tr>
 				<tr>
 					<th>No</th>
 					<th>Nama Kepala Keluarga</th>
