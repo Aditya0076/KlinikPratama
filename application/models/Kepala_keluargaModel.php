@@ -48,7 +48,9 @@ class Kepala_keluargaModel extends CI_Model
 
 	public function getDusun()
 	{
-		$query = $this->db->from('dusun')
+		$query = $this->db->select('*')
+						  ->from('dusun')
+						  ->join('desa','desa.kode_desa = dusun.kode_desa')
 						  ->get()
 						  ->result_array();
 		return $query;
