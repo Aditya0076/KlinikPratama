@@ -26,13 +26,7 @@ require 'application/views/templete/navbar.php';
 					<td>Nama Kepala Keluarga</td>
 					<td>:</td>
 					<td>
-						<select class="form-control" name="kode_keluarga">
-							<?php foreach ($kepala_keluarga as $kepala_keluarga) : ?>
-								<option value="<?=$kepala_keluarga['kode_keluarga'];?>">
-									<?=$kepala_keluarga['nama_kepala'];?>
-								</option>
-							<?php endforeach; ?>
-						</select>
+						<input type="text" name="nama_kepala" value="<?=$pasien['nama_kepala'];?>">
 					</td>
 				</tr>
 
