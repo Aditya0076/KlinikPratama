@@ -42,7 +42,7 @@ require 'application/views/templete/navbar.php';
 				foreach ($kepala_keluarga as $kepala_keluarga) :
 					?>
 					<tr>
-						<td><?= $id++;?></td>
+						<td><?=$id++;?></td>
 						<td><?=$kepala_keluarga['nama_kepala'];?></td>
 						<td><?=$kepala_keluarga['dusun'];?></td>
 						<td><?=$kepala_keluarga['desa'];?></td>
