@@ -15,60 +15,35 @@ require 'application/views/templete/navbar.php';
 				<table class="text-justify m-auto">
 
 					<tr>
-						<td>Kode Pasien</td>
-						<td>:</td>
-						<td colspan="2">
-							<input type="text" name="kode_pasien" value="<?=$pasien['kode_pasien'];?>">
-						</td>
-					</tr>
-
-					<tr>
 						<td>Nama Kepala Keluarga</td>
 						<td>:</td>
 						<td colspan="2">
-							<input type="text" name="kode_keluarga" value="<?=$pasien['nama_kepala'];?>" disabled>
-							<input type="text" name="kode_keluarga" value="<?=$pasien['kode_keluarga'];?>" hidden>
+							<input type="text" name="kode_keluarga" value="<?=$kepala_keluarga['nama_kepala'];?>">
 						</td>
 					</tr>
 
 					<tr>
-						<td>Nama Pasien</td>
+						<td>Dusun</td>
 						<td>:</td>
 						<td colspan="2">
-							<input type="text" name="nama_pasien" value="<?=$pasien['nama_pasien'];?>">
+							<input type="text" name="nama_dusun" value="<?=$kepala_keluarga['nama_dusun'];?>">
 						</td>
 					</tr>
 
 					<tr>
-						<td>Umur</td>
+						<td>Desa</td>
 						<td>:</td>
 						<td colspan="2">
-							<input type="text" name="umur" value="<?=$pasien['umur'];?>">
+							<input type="text" name="nama_desa" value="<?=$kepala_keluarga['nama_desa'];?>">
 						</td>
-						<td>Tahun</td>
 					</tr>
 
-					<tr>
-						<td>Jenis Kelamin</td>
-						<td>:</td>
-						<td>
-							<div class="custom-control custom-radio custom-control-inline">
-								<input type="radio" class="custom-control-input" id="customRadio" value="Laki-laki" name="jenis_kelamin" >
-								<label class="custom-control-label" for="customRadio">Laki_laki</label>
-							</div>
-						</td>
-						<td>
-							<div class="custom-control custom-radio custom-control-inline">
-								<input type="radio" class="custom-control-input" id="customRadio2" value="Perempuan" name="jenis_kelamin" >
-								<label class="custom-control-label" for="customRadio2">Perempuan</label>
-							</div>
-						</td>
-					</tr>
+
 					<tr>
 						<td>Alamat</td>
 						<td>:</td>
 						<td colspan="2">
-							<input type="text" name="alamat" value="<?=$pasien['alamat'];?>" disabled>
+							<input type="text" name="alamat" value="<?=$kepala_keluarga['alamat'];?>" >
 						</td>
 					</tr>
 

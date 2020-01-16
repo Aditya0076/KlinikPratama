@@ -44,8 +44,8 @@ require 'application/views/templete/navbar.php';
 					<tr>
 						<td><?=$id++;?></td>
 						<td><?=$kepala_keluarga['nama_kepala'];?></td>
-						<td><?=$kepala_keluarga['dusun'];?></td>
-						<td><?=$kepala_keluarga['desa'];?></td>
+						<td><?=$kepala_keluarga['nama_dusun'];?></td>
+						<td><?=$kepala_keluarga['nama_desa'];?></td>
 						<td><?=$kepala_keluarga['alamat'];?></td>
 						<td>
 							<a type="button" class="btn btn-warning" href="<?= base_url('kepala_keluarga/update/' . $kepala_keluarga['kode_keluarga']);?>">Update</a>
