@@ -2,7 +2,7 @@
 require 'application/views/templete/header.php';
 require 'application/views/templete/navbar.php';
 ?>
-<div class="jumbotron m-lg-auto ">
+<div class="adit jumbotron m-lg-auto ">
 	<div class="jumbotron">
 		<table class="text-justify m-auto">
 			<tr>
@@ -26,13 +26,7 @@ require 'application/views/templete/navbar.php';
 					<td>Nama Kepala Keluarga</td>
 					<td>:</td>
 					<td>
-						<select class="form-control" name="kode_keluarga">
-							<?php foreach ($kepala_keluarga as $kepala_keluarga) : ?>
-								<option value="<?=$kepala_keluarga['kode_keluarga'];?>">
-									<?=$kepala_keluarga['nama_kepala'];?>
-								</option>
-							<?php endforeach; ?>
-						</select>
+						<input type="text" name="nama_kepala" value="<?=$pasien['nama_kepala'];?>">
 					</td>
 				</tr>
 
