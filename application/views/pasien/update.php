@@ -2,9 +2,7 @@
 require 'application/views/templete/header.php';
 require 'application/views/templete/navbar.php';
 ?>
-
-<div class="adit jumbotron m-lg-auto ">
-
+<div class="- jumbotron m-lg-auto ">
 	<div class="jumbotron">
 		<table class="text-justify m-auto">
 			<tr>
