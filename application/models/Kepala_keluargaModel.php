@@ -19,7 +19,12 @@ class Kepala_keluargaModel extends CI_Model
 
 	public function getAll()
 	{
-		$query = $this->db->get($this::TABLE_NAME);
+		$query = $this->db->select('*')
+						  ->from($this::TABLE_NAME)
+						  ->join('dusun','dusun.kode_dusun = kepala_keluarga.kode_dusun')
+						  ->join('desa','desa.kode_desa = dusun.kode_desa')
+						  ->get()
+						  ->result_array();
 		return $query;
 	}
 
