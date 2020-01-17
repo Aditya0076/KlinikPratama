@@ -51,6 +51,8 @@ class Kepala_keluarga extends CI_Controller
 	public function update($kode_keluarga)
 	{
 		$data['kepala_keluarga'] = $this->model->getKepala($kode_keluarga);
+		$data['dusun'] = $this->model->getDusun();
+//		die(var_dump($data['dusun']));
 		$this->load->view('kepala_keluarga/update',$data);
 	}
 

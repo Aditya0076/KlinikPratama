@@ -13,6 +13,11 @@ require 'application/views/templete/navbar.php';
 		<tr>
 			<form class="form-control-sm form-group" method="post" action="<?=base_url('kepala_keluarga/replace');?>">
 				<table class="text-justify m-auto">
+					<tr>
+						<td>Kode Kepala Keluarga</td>
+						<td>:</td>
+						<td><input type="text" name="kode_keluarga" value="<?=$kepala_keluarga['kode_keluarga'];?>"></td>
+					</tr>
 
 					<tr>
 						<td>Nama Kepala Keluarga</td>
@@ -26,7 +31,13 @@ require 'application/views/templete/navbar.php';
 						<td>Dusun</td>
 						<td>:</td>
 						<td colspan="2">
-							<input type="text" name="nama_dusun" value="<?=$kepala_keluarga['nama_dusun'];?>">
+							<select  name="kode_dusun" >
+								<?php foreach ($dusun as $dusun) : ?>
+									<option value="<?=$dusun['kode_dusun'];?>">
+										<?=$dusun['nama_dusun'] . ', ' . $dusun['nama_desa'];?>
+									</option>
+								<?php endforeach; ?>
+							</select>
 						</td>
 					</tr>
 
