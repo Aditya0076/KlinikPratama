@@ -65,7 +65,7 @@ class Pasien extends CI_Controller
 		$jenis_kelamin = $this->input->post('jenis_kelamin');
 		
 		$pasien = array(
-		//	'kode_pasien' => $kode_pasien,
+			'kode_pasien' => $kode_pasien,
 			'kode_keluarga' => $kode_keluarga,
 			'nama_pasien' => $nama_pasien,
 			'umur' => $umur,
