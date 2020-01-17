@@ -58,7 +58,7 @@ class Pasien extends CI_Controller
 	
 	public function replace()
 	{
-		//$kode_pasien = $this->input->post('kode_pasien');
+		$kode_pasien = $this->input->post('kode_pasien');
 		$kode_keluarga = $this->input->post('kode_keluarga');
 		$nama_pasien = $this->input->post('nama_pasien');
 		$umur = $this->input->post('umur');
