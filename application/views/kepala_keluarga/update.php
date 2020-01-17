@@ -31,15 +31,6 @@ require 'application/views/templete/navbar.php';
 					</tr>
 
 					<tr>
-						<td>Desa</td>
-						<td>:</td>
-						<td colspan="2">
-							<input type="text" name="nama_desa" value="<?=$kepala_keluarga['nama_desa'];?>">
-						</td>
-					</tr>
-
-
-					<tr>
 						<td>Alamat</td>
 						<td>:</td>
 						<td colspan="2">
