@@ -14,13 +14,19 @@ require 'application/views/templete/navbar.php';
 	<div class="container">
 		<table class="container">
 			<tr>
-				<td>Nama Pasien :</td>
+				<td>Nama Pasien </td>
+				<td>:</td>
+				<td><?=$pasien['nama_pasien'];?></td>
 			</tr>
 			<tr>
-				<td>Umur :</td>
+				<td>Umur</td>
+				<td>:</td>
+				<td><?=$pasien['umur'];?></td>
 			</tr>
 			<tr>
-				<td>Alamat :</td>
+				<td>Alamat</td>
+				<td>:</td>
+				<td><?=$pasien['alamat'];?></td>
 			</tr>
 		</table>
 	</div>
@@ -29,6 +35,7 @@ require 'application/views/templete/navbar.php';
 			<table class="container table  table-responsive-lg table-active">
 				<thead>
 				<tr>
+					<th>No</th>
 					<th>Tanggal</th>
 					<th>Anamnese Pasien</th>
 					<th>Diagnosa</th>
@@ -43,17 +50,16 @@ require 'application/views/templete/navbar.php';
 					?>
 					<tr>
 						<td><?= $id++;?></td>
-						<td><?=$rekam_medis['tanggal'];?></td>
-						<td><?=$rekam_medis['anamnesa'];?></td>
+						<td><?=$rekam_medis['waktu'];?></td>
+						<td><?=$rekam_medis['anamnese'];?></td>
 						<td><?=$rekam_medis['diagnosa'];?></td>
 						<td><?=$rekam_medis['terapi'];?></td>
 						<td>
-							<a type="button" class="btn btn-warning" href="<?= base_url('rekam_medis/update/' . $pasien['kode_pasien']);?>">Update</a>
-							<a type="button" class="btn btn-danger" href="<?= base_url('rekam_medis/delete/' . $pasien['kode_pasien']);?>">Delete</a>
+							<a type="button" class="btn btn-warning" href="<?= base_url('rekam_medis/update/' . $rekam_medis['kode_rekam']);?>">Update</a>
+							<a type="button" class="btn btn-danger" href="<?= base_url('rekam_medis/delete/' . $rekam_medis['kode_rekam']);?>">Delete</a>
 						</td>
 					</tr>
 					<?php
-					$id++;
 				endforeach;
 				?>
 				</tbody>

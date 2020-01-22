@@ -11,19 +11,19 @@ require 'application/views/templete/navbar.php';
 	</div>
 	<div class="jumbotron-fluid">
 		<tr>
-			<form class="form-control-sm form-group" method="post" action="<?=base_url('kepala_keluarga/replace');?>">
+			<form class="form-control-sm form-group" method="post" action="<?=base_url('kepala_keluarga/replace/'.$kepala_keluarga['kode_keluarga']);?>">
 				<table class="text-justify m-auto">
-					<tr>
-						<td>Kode Kepala Keluarga</td>
-						<td>:</td>
-						<td><input type="text" name="kode_keluarga" value="<?=$kepala_keluarga['kode_keluarga'];?>"></td>
-					</tr>
+<!--					<tr>-->
+<!--						<td>Kode Kepala Keluarga</td>-->
+<!--						<td>:</td>-->
+<!--						<td><input type="text" name="kode_keluarga" value="--><?//=$kepala_keluarga['kode_keluarga'];?><!--"></td>-->
+<!--					</tr>-->
 
 					<tr>
 						<td>Nama Kepala Keluarga</td>
 						<td>:</td>
 						<td colspan="2">
-							<input type="text" name="kode_keluarga" value="<?=$kepala_keluarga['nama_kepala'];?>">
+							<input type="text" name="nama_kepala" value="<?=$kepala_keluarga['nama_kepala'];?>">
 						</td>
 					</tr>
 

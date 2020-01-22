@@ -49,12 +49,11 @@ require 'application/views/templete/navbar.php';
 						<td><?=$pasien['jenis_kelamin'];?></td>
 						<td><?=$pasien['alamat'];?></td>
 						<td>
-							<a type="button" class="btn btn-warning" href="<?= base_url('pasien/update/' . $pasien['kode_pasien']);?>">Tampil</a>
+							<a type="button" class="btn btn-warning" href="<?= base_url('rekam_medis/readRekam/'.$pasien['kode_pasien']);?>">Detail</a>
 							<a type="button" class="btn btn-danger" href="<?= base_url('pasien/delete/' . $pasien['kode_pasien']);?>">Delete</a>
 						</td>
 					</tr>
 					<?php
-					$id++;
 				endforeach;
 				?>
 				</tbody>

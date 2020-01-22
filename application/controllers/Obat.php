@@ -46,9 +46,9 @@ class Obat extends CI_Controller
 		$this->load->view('obat/update',$data);
 	}
 
-	public function replace()
+	public function replace($id_obat_received)
 	{
-		$id_obat = $this->input->post('id_obat');
+		$id_obat = $id_obat_received;
 		$nama_obat = $this->input->post('nama_obat');
 		$jenis_obat = $this->input->post('jenis_obat');
 		$harga_obat = $this->input->post('harga_obat');
@@ -61,6 +61,8 @@ class Obat extends CI_Controller
 			'harga_obat' => $harga_obat,
 			'jumlah_obat' => $jumlah_obat
 		);
+
+//		die(var_dump($obat));
 
 		$this->model->update($obat);
 		redirect('obat');

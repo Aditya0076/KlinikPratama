@@ -11,7 +11,7 @@ require 'application/views/templete/navbar.php';
 	</div>
 	<div class="jumbotron-fluid">
 		<tr>
-			<form class="form-control-sm form-group" method="post" action="<?= base_url('obat/replace');?>">
+			<form class="form-control-sm form-group" method="post" action="<?= base_url('obat/replace/' . $obat['id_obat']);?>">
 				<td></td>
 				<td>
 					<table class="text-justify m-auto">

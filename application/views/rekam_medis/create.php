@@ -20,21 +20,21 @@ require 'application/views/templete/navbar.php';
 								<td>:</td>
 								<td>
 									<input class="form-control" id="datepicker" type="date" name="waktu" placeholder="masukkan tanggal" width="276">
-									<script>
-                                        $('#datepicker').datepicker({
-                                            uiLibrary: 'bootstrap4'
-                                        });
-									</script>
+<!--									<script>-->
+<!--                                        $('#datepicker').datepicker({-->
+<!--                                            uiLibrary: 'bootstrap4'-->
+<!--                                        });-->
+<!--									</script>-->
 								</td>
 							</tr>
 							<tr>
 								<td>Nama Pasien</td>
 								<td>:</td>
 								<td>
-									<select class="form-control" name="nama_pasien" >
+									<select class="form-control" name="kode_pasien" >
 										<?php foreach ($pasien as $pasien) : ?>
 											<option value="<?=$pasien['kode_pasien'];?>">
-												<?=$pasien['nama_pasien'];?>?>
+												<?=$pasien['nama_pasien'];?>
 											</option>
 										<?php endforeach; ?>
 									</select>
@@ -61,7 +61,7 @@ require 'application/views/templete/navbar.php';
 							</tr>
 
 							<tr>
-								<td colspan="3"> <center><input class="btn-success" type="button" value="Tambah"></center></td>
+								<td colspan="3"> <center><input class="btn-success" type="submit" value="Tambah"></center></td>
 							</tr>
 						</table>
 					</td>

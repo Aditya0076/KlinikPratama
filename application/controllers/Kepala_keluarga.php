@@ -56,9 +56,9 @@ class Kepala_keluarga extends CI_Controller
 		$this->load->view('kepala_keluarga/update',$data);
 	}
 
-	public function replace()
+	public function replace($kode_keluarga_received)
 	{
-		$kode_keluarga = $this->input->post('kode_keluarga');
+		$kode_keluarga = $kode_keluarga_received;
 		$kode_dusun = $this->input->post('kode_dusun');
 		$nama_kepala = $this->input->post('nama_kepala');
 		$alamat = $this->input->post('alamat');
