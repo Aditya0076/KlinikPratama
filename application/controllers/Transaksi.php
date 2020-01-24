@@ -14,7 +14,6 @@ class Transaksi extends CI_Controller
 	public function index()
 	{
 		$data['transaksi'] = $this->model->getAll();
-		die(var_dump($data));
 		$this->load->view('transaksi/read',$data);
 	}
 
