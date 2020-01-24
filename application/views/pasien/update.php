@@ -57,24 +57,6 @@ require 'application/views/templete/navbar.php';
 					</td>
 				</tr>
 				<tr>
-					<td>Alamat</td>
-					<td>:</td>
-					<td colspan="2">
-						<input type="text" name="alamat" value="<?=$pasien['alamat'];?>" disabled>
-					</td>
-				</tr>
-
-				</tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				</tr>
-
-				<tr>
-					<td></td>
-				</tr>
-
-				<tr>
 					<td colspan="3"> <center><input class="btn-success" type="submit" value="Tambah"></center></td>
 				</tr>
 				</table>
