@@ -20,7 +20,7 @@ class Kepala_keluarga extends CI_Controller
 	public function search()
 	{
 		$nama_kepala = $this->input->post('nama_kepala');
-		$data['kepala_keluarga'] = $this->model->searchKepala($search);
+		$data['kepala_keluarga'] = $this->model->searchKepala($nama_kepala);
 		$this->load->view('kepala_keluarga/read',$data);
 	}
 
@@ -35,13 +35,13 @@ class Kepala_keluarga extends CI_Controller
 		$kode_keluarga = $this->input->post('kode_keluarga');
 		$kode_dusun = $this->input->post('kode_dusun');
 		$nama_kepala = $this->input->post('nama_kepala');
-		$alamat = $this->input->post('alamat');
+		$rt = $this->input->post('rt');
 
 		$kepala_keluarga = array(
 			'kode_keluarga' => $kode_keluarga,
 			'kode_dusun' => $kode_dusun,
 			'nama_kepala' => $nama_kepala,
-			'alamat' => $alamat
+			'rt' => $rt
 		);
 
 		$this->model->insert($kepala_keluarga);
@@ -61,13 +61,13 @@ class Kepala_keluarga extends CI_Controller
 		$kode_keluarga = $kode_keluarga_received;
 		$kode_dusun = $this->input->post('kode_dusun');
 		$nama_kepala = $this->input->post('nama_kepala');
-		$alamat = $this->input->post('alamat');
+		$rt = $this->input->post('rt');
 
 		$kepala_keluarga = array(
 			'kode_keluarga' => $kode_keluarga,
 			'kode_dusun' => $kode_dusun,
 			'nama_kepala' => $nama_kepala,
-			'alamat' => $alamat
+			'rt' => $rt
 		);
 
 		$this->model->update($kepala_keluarga);

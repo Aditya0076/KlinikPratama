@@ -42,10 +42,10 @@ require 'application/views/templete/navbar.php';
 					</tr>
 
 					<tr>
-						<td>Alamat</td>
+						<td>RT</td>
 						<td>:</td>
 						<td colspan="2">
-							<input type="text" name="alamat" value="<?=$kepala_keluarga['alamat'];?>" >
+							<input type="text" name="rt" value="<?=$kepala_keluarga['rt'];?>" >
 						</td>
 					</tr>
 

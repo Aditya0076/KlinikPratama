@@ -41,9 +41,9 @@
 								<td><input class="form-control" type="text" name="nama_kepala" placeholder="masukkan nama kepala keluarga"></td>
 							</tr>
 							<tr>
-								<td>Alamat</td>
+								<td>RT</td>
 								<td>:</td>
-								<td><input class="form-control" type="text" name="alamat" placeholder="masukkan alamat"></td>
+								<td><input class="form-control" type="text" name="rt" placeholder="masukkan RT"></td>
 							</tr>
 
 							<tr>

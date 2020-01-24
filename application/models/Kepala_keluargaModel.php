@@ -40,6 +40,8 @@ class Kepala_keluargaModel extends CI_Model
 	{
 		$query = $this->db->select('*')
 						  ->from($this::TABLE_NAME)
+						  ->join('dusun', 'dusun.kode_dusun = kepala_keluarga.kode_dusun')
+						  ->join('desa','desa.kode_desa = dusun.kode_desa')
 						  ->like('nama_kepala',$nama_kepala,'first')
 						  ->get()
 						  ->result_array();

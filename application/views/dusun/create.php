@@ -23,11 +23,6 @@ require 'application/views/templete/navbar.php';
 								<td><input class="form-control" type="text" name="nama_dusun" placeholder="masukkan dusun"></td>
 							</tr>
 							<tr>
-								<td>RT</td>
-								<td>:</td>
-								<td><input class="form-control" type="text" name="rt" placeholder="masukkan rt "></td>
-							</tr>
-							</tr>
 							<td>Desa</td>
 							<td>:</td>
 							<td>

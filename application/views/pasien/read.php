@@ -33,7 +33,6 @@ require 'application/views/templete/navbar.php';
 					<th>Nama Pasien</th>
 					<th>Umur</th>
 					<th>Jenis Kelamin</th>
-					<th>Alamat</th>
 					<th>Pilihan</th>
 				</tr>
 				</thead>
@@ -48,7 +47,6 @@ require 'application/views/templete/navbar.php';
 						<td><?=$pasien['nama_pasien'];?></td>
 						<td><?=$pasien['umur'];?></td>
 						<td><?=$pasien['jenis_kelamin'];?></td>
-						<td><?=$pasien['alamat'];?></td>
 						<td>
 							<a type="button" class="btn btn-warning" href="<?= base_url('pasien/update/' . $pasien['kode_pasien']);?>">Update</a>
 							<a type="button" class="btn btn-danger" href="<?= base_url('pasien/delete/' . $pasien['kode_pasien']);?>">Delete</a>	

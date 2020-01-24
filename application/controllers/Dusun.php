@@ -27,12 +27,10 @@ class Dusun extends CI_Controller
 	{
 		$nama_dusun = $this->input->post('nama_dusun');
 		$kode_desa = $this->input->post('kode_desa');
-		$rt = $this->input->post('rt');
 
 		$dusun = array(
 			'nama_dusun' => $nama_dusun,
 			'kode_desa' => $kode_desa,
-			'rt' => $rt
 		);
 
 		$this->model->insert($dusun);
@@ -50,13 +48,11 @@ class Dusun extends CI_Controller
 		$kode_dusun = $this->input->post('kode_dusun');
 		$nama_dusun = $this->input->post('nama_dusun');
 		$kode_desa = $this->input->post('kode_desa');
-		$rt = $this->input->post('rt');
 
 		$dusun = array(
 			'kode_dusun' => $kode_dusun,
 			'nama_dusun' => $nama_dusun,
 			'kode_desa' => $kode_desa,
-			'rt' => $rt
 		);
 
 		$this->model->update($dusun);
