@@ -48,6 +48,7 @@ require 'application/views/templete/navbar.php';
 						<td><?=$pasien['umur'];?></td>
 						<td><?=$pasien['jenis_kelamin'];?></td>
 						<td>
+							<a type="button" class="btn btn-info" href="<?= base_url('rekam_medis/readRekam/'.$pasien['kode_pasien']);?>">Detail</a>
 							<a type="button" class="btn btn-warning" href="<?= base_url('pasien/update/' . $pasien['kode_pasien']);?>">Update</a>
 							<a type="button" class="btn btn-danger" href="<?= base_url('pasien/delete/' . $pasien['kode_pasien']);?>">Delete</a>	
 						</td>

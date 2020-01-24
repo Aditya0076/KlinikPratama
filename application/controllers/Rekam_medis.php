@@ -47,7 +47,7 @@ class Rekam_medis extends CI_Controller
 		);
 
 		$this->model->insert($rekam_medis);
-		redirect('rekam_medis');
+		redirect('rekam_medis/readRekam/' . $kode_pasien);
 	}
 
 	public  function update($kode_rekam){
@@ -77,4 +77,5 @@ class Rekam_medis extends CI_Controller
 		$this->model->update($rekam_medis);
 		redirect('rekam_medis/readRekam/' . $kode_pasien);
 	}
+	
 }

@@ -45,7 +45,6 @@ require 'application/views/templete/navbar.php';
 							</td>
 							</tr>
 
-
 							<tr>
 								<td>Nama Kepala Keluarga</td>
 								<td>:</td>

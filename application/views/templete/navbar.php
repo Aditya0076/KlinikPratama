@@ -19,22 +19,22 @@
 		</li>
 		<li class="nav-item dropdown" style="color: ghostwhite;">
 			<a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Data Pasien
+				Data Medis
 			</a>
 			<div class="dropdown-menu"aria-labelledby="navbarDropdown">
 				<a class="dropdown-item" href="<?= base_url('');?>pasien/create">Tambah Data Pasien</a>
+				<a class="dropdown-item" href="<?= base_url('');?>rekam_medis/create">Tambah Data Rekam</a>
 				<a class="dropdown-item" href="<?= base_url('');?>pasien">Tampil Data Pasien</a>
 			</div>
 		</li>
 		<li class="nav-item dropdown"style="color: ghostwhite;">
 			<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Data Medis
+				Data Obat
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				<a class="dropdown-item" href="<?= base_url('');?>obat/create">Tambah Data Obat</a>
 				<a class="dropdown-item" href="<?= base_url('');?>obat">Tampil Data Obat</a>
-				<a class="dropdown-item" href="<?= base_url('');?>rekam_medis/create">Tambah Data Rekam</a>
-				<a class="dropdown-item" href="<?= base_url('');?>rekam_medis">Tampil Data Rekam</a>
+
 			</div>
 		</li>
 		<li class="nav-item dropdown" style="color: ghostwhite;">

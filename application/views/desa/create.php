@@ -21,7 +21,7 @@ require 'application/views/templete/navbar.php';
 							</tr>
 							<td>Desa</td>
 							<td>:</td>
-							<td>
+							<td colspan="2">
 								<input class="form-control" type="text" name="nama_desa" placeholder="masukkan nama desa">
 							</td>
 							</tr>

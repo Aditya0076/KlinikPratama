@@ -23,7 +23,7 @@ require 'application/views/templete/navbar.php';
 						<td>Nama Kepala Keluarga</td>
 						<td>:</td>
 						<td colspan="2">
-							<input type="text" name="nama_kepala" value="<?=$kepala_keluarga['nama_kepala'];?>">
+							<input class="form-control" type="text" name="nama_kepala" value="<?=$kepala_keluarga['nama_kepala'];?>">
 						</td>
 					</tr>
 
@@ -31,7 +31,7 @@ require 'application/views/templete/navbar.php';
 						<td>Dusun</td>
 						<td>:</td>
 						<td colspan="2">
-							<select  name="kode_dusun" >
+							<select class="form-control" name="kode_dusun" >
 								<?php foreach ($dusun as $dusun) : ?>
 									<option value="<?=$dusun['kode_dusun'];?>">
 										<?=$dusun['nama_dusun'] . ', ' . $dusun['nama_desa'];?>
@@ -45,7 +45,7 @@ require 'application/views/templete/navbar.php';
 						<td>RT</td>
 						<td>:</td>
 						<td colspan="2">
-							<input type="text" name="rt" value="<?=$kepala_keluarga['rt'];?>" >
+							<input class="form-control" type="text" name="rt" value="<?=$kepala_keluarga['rt'];?>" >
 						</td>
 					</tr>
 

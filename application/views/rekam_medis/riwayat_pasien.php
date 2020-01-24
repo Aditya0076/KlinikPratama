@@ -23,13 +23,13 @@ require 'application/views/templete/navbar.php';
 				<td>:</td>
 				<td><?=$pasien['umur'];?></td>
 			</tr>
-			<tr>
-				<td>Alamat</td>
-				<td>:</td>
-				<td><?=$pasien['alamat'];?></td>
-			</tr>
 		</table>
 	</div>
+
+	<div class="container">
+		<table class="container-fluid">
+			<tr><td><a type="button" class="btn btn-primary" href="<?= base_url('');?>rekam_medis/create">Tambah Data</a></td></tr>
+		</table>
 	<div class="jumbotron-fluid">
 		<tr>
 			<table class="container table  table-responsive-lg table-active">
@@ -56,7 +56,7 @@ require 'application/views/templete/navbar.php';
 						<td><?=$rekam_medis['terapi'];?></td>
 						<td>
 							<a type="button" class="btn btn-warning" href="<?= base_url('rekam_medis/update/' . $rekam_medis['kode_rekam']);?>">Update</a>
-							<a type="button" class="btn btn-danger" href="<?= base_url('rekam_medis/delete/' . $rekam_medis['kode_rekam']);?>">Delete</a>
+							<a type="button" class="btn btn-danger" href="<?= base_url('rekam_medis/delete/' . $rekam_medis['kode_rekam'] . '/' . $rekam_medis['kode_pasien']);?>">Delete</a>
 						</td>
 					</tr>
 					<?php
@@ -67,6 +67,7 @@ require 'application/views/templete/navbar.php';
 
 		</tr>
 		</table>
+	</div>
 	</div>
 </div>
 

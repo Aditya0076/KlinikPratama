@@ -18,8 +18,8 @@ require 'application/views/templete/navbar.php';
 					<td>Nama Kepala Keluarga</td>
 					<td>:</td>
 					<td colspan="2">
-						<input type="text" name="kode_keluarga" value="<?=$pasien['nama_kepala'];?>" disabled>
-						<input type="text" name="kode_keluarga" value="<?=$pasien['kode_keluarga'];?>" hidden>
+						<input class="form-control" type="text" name="kode_keluarga" value="<?=$pasien['nama_kepala'];?>" disabled>
+						<input class="form-control" type="text" name="kode_keluarga" value="<?=$pasien['kode_keluarga'];?>" hidden>
 					</td>
 				</tr>
 
@@ -27,7 +27,7 @@ require 'application/views/templete/navbar.php';
 					<td>Nama Pasien</td>
 					<td>:</td>
 					<td colspan="2">
-						<input type="text" name="nama_pasien" value="<?=$pasien['nama_pasien'];?>">
+						<input class="form-control" type="text" name="nama_pasien" value="<?=$pasien['nama_pasien'];?>">
 					</td>
 				</tr>
 
@@ -35,7 +35,7 @@ require 'application/views/templete/navbar.php';
 					<td>Umur</td>
 					<td>:</td>
 					<td colspan="2">
-						<input type="text" name="umur" value="<?=$pasien['umur'];?>">
+						<input class="form-control" type="text" name="umur" value="<?=$pasien['umur'];?>">
 					</td>
 					<td>Tahun</td>
 				</tr>
@@ -56,13 +56,6 @@ require 'application/views/templete/navbar.php';
 						</div>
 					</td>
 				</tr>
-				<tr>
-					<td>Alamat</td>
-					<td>:</td>
-					<td colspan="2">
-						<input type="text" name="alamat" value="<?=$pasien['alamat'];?>" disabled>
-					</td>
-				</tr>
 
 				</tr>
 				<td></td>
@@ -75,7 +68,7 @@ require 'application/views/templete/navbar.php';
 				</tr>
 
 				<tr>
-					<td colspan="3"> <center><input class="btn-success" type="submit" value="Tambah"></center></td>
+					<td colspan="5"> <center><input class="btn-success" type="submit" value="Tambah"></center></td>
 				</tr>
 				</table>
 				</form>
@@ -85,4 +78,5 @@ require 'application/views/templete/navbar.php';
 
 <?php
 require 'application/views/templete/footer.php';
+
 ?>

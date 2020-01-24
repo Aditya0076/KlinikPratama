@@ -20,12 +20,12 @@ require 'application/views/templete/navbar.php';
 							<tr>
 								<td>Dusun</td>
 								<td>:</td>
-								<td><input class="form-control" type="text" name="nama_dusun" placeholder="masukkan dusun"></td>
+								<td colspan="2"><input class="form-control" type="text" name="nama_dusun" placeholder="masukkan dusun"></td>
 							</tr>
 							<tr>
 							<td>Desa</td>
 							<td>:</td>
-							<td>
+							<td colspan="2">
 								<select class="form-control" type="text" name="kode_desa" >
 								<?php foreach ($desa as $desa) : ?>
 									<option value="<?= $desa['kode_desa'];?>">
