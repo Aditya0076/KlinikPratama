@@ -56,7 +56,6 @@ require 'application/views/templete/navbar.php';
 						</div>
 					</td>
 				</tr>
-<<<<<<< HEAD
 
 				</tr>
 				<td></td>
@@ -69,12 +68,10 @@ require 'application/views/templete/navbar.php';
 				</tr>
 
 				<tr>
-					<td colspan="5"> <center><input class="btn-success" type="submit" value="Tambah"></center></td>
-=======
-				<tr>
-					<td colspan="3"> <center><input class="btn-success" type="submit" value="Tambah"></center></td>
->>>>>>> 13823c8e7176f0949966a268d1b1c74cfdd71d22
+					<td colspan="3"> <center><input class="btn btn-success" type="submit" value="Tambah"></center></td>
+					<td colspan="2"> <center> <a type="button" class="btn btn-danger" href="<?= base_url('');?>kepala_keluarga"> Batal </a> </center></td>
 				</tr>
+
 				</table>
 				</form>
 		</table>

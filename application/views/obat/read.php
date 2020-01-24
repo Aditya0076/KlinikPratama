@@ -24,8 +24,8 @@ require 'application/views/templete/navbar.php';
 	</div>
 	<div class="jumbotron-fluid">
 		<tr>
-			<table class="container table  table-responsive-lg table-active">
-				<thead>
+			<table class="container table  table-responsive-lg table-active table-striped">
+				<thead class="table-dark">
 				<tr>
 					<th>No</th>
 					<th>Nama obat</th>

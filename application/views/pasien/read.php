@@ -24,8 +24,8 @@ require 'application/views/templete/navbar.php';
 	</div>
 	<div class="jumbotron-fluid">
 		<tr>
-			<table class="container table  table-responsive-lg table-active">
-				<thead>
+			<table class="container table  table-responsive-lg table-active table-striped">
+				<thead class="table-dark">
 				<tr><a type="button" class="btn btn-primary" href="<?= base_url('');?>pasien/create">Tambah Data</a></tr>
 				<tr>
 					<th>No</th>

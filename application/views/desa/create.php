@@ -31,7 +31,7 @@ require 'application/views/templete/navbar.php';
 							</tr>
 
 							<tr>
-								<td colspan="3"> <center><input class="btn-success" type="submit" value="Tambah"></center></td>
+								<td colspan="3"> <center><input class="btn btn-success " type="submit" value="Tambah"></center></td>
 
 							</tr>
 						</table>

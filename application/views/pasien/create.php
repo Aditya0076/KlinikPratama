@@ -69,7 +69,8 @@ require 'application/views/templete/navbar.php';
 							</tr>
 
 							<tr>
-								<td colspan="4"> <center><input class="btn-success" type="submit" value="Tambah"></center></td>
+								<td colspan="3"> <center><input class="btn btn-success" type="submit" value="Tambah"></center></td>
+								<td colspan="3"><a type="button" class="btn btn-danger" href="<?= base_url('');?>pasien"> Batal </a></td>
 							</tr>
 						</table>
 					</td>

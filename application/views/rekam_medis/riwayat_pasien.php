@@ -12,15 +12,17 @@ require 'application/views/templete/navbar.php';
 			</tr>
 	</div>
 	<div class="container">
-		<table class="container">
+		<table >
 			<tr>
-				<td>Nama Pasien </td>
+				<td class="font-weight-bold">Nama Pasien</td>
 				<td>:</td>
+				<td></td>
 				<td><?=$pasien['nama_pasien'];?></td>
 			</tr>
-			<tr>
-				<td>Umur</td>
+			<tr >
+				<td class="font-weight-bold">Umur</td>
 				<td>:</td>
+				<td></td>
 				<td><?=$pasien['umur'];?></td>
 			</tr>
 		</table>
@@ -32,8 +34,8 @@ require 'application/views/templete/navbar.php';
 		</table>
 	<div class="jumbotron-fluid">
 		<tr>
-			<table class="container table  table-responsive-lg table-active">
-				<thead>
+			<table class="container table  table-responsive-lg table-active table-striped">
+				<thead class="table-dark">
 				<tr>
 					<th>No</th>
 					<th>Tanggal</th>
@@ -43,14 +45,14 @@ require 'application/views/templete/navbar.php';
 					<th>Pilihan</th>
 				</tr>
 				</thead>
-				<tbody class="table-light">
+				<tbody >
 				<?php
 				$id = 1;
 				foreach ($rekam_medis as $rekam_medis) :
 					?>
 					<tr>
 						<td><?= $id++;?></td>
-						<td><?=$rekam_medis['waktu'];?></td>
+						<td><?=$rekam_medis['waktu']; ?></td>
 						<td><?=$rekam_medis['anamnese'];?></td>
 						<td><?=$rekam_medis['diagnosa'];?></td>
 						<td><?=$rekam_medis['terapi'];?></td>
@@ -67,10 +69,11 @@ require 'application/views/templete/navbar.php';
 
 		</tr>
 		</table>
+
+		<div class="jumbotron"></div>
 	</div>
 	</div>
 </div>
-
 
 
 <?php

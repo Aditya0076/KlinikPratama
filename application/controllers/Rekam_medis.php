@@ -77,14 +77,10 @@ class Rekam_medis extends CI_Controller
 		$this->model->update($rekam_medis);
 		redirect('rekam_medis/readRekam/' . $kode_pasien);
 	}
-<<<<<<< HEAD
-	
-=======
 
 	public function delete($kode_rekam, $kode_pasien)
 	{
 		$this->model->delete($kode_rekam);
 		redirect('rekam_medis/readRekam/' . $kode_pasien);
 	}
->>>>>>> 13823c8e7176f0949966a268d1b1c74cfdd71d22
 }
