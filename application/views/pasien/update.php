@@ -18,8 +18,15 @@ require 'application/views/templete/navbar.php';
 					<td>Nama Kepala Keluarga</td>
 					<td>:</td>
 					<td colspan="2">
-						<input class="form-control" type="text" name="kode_keluarga" value="<?=$pasien['nama_kepala'];?>" disabled>
-						<input class="form-control" type="text" name="kode_keluarga" value="<?=$pasien['kode_keluarga'];?>" hidden>
+						<select class="form-control" name="kode_keluarga" >
+							<?php foreach ($kepala as $kepala):
+								if($kepala['kode_keluarga'] == $pasien['kode_keluarga']){
+							?>
+								<option  value="<?=$pasien['kode_keluarga'];?>" selected><?=$pasien['nama_kepala'];?></option>
+							<?php }else{ ?>
+								<option value="<?=$kepala['kode_keluarga'];?>"><?=$kepala['nama_kepala'];?></option>
+							<?php }endforeach;?>
+						</select>
 					</td>
 				</tr>
 
@@ -45,13 +52,13 @@ require 'application/views/templete/navbar.php';
 					<td>:</td>
 					<td>
 						<div class="custom-control custom-radio custom-control-inline">
-							<input type="radio" class="custom-control-input" id="customRadio" value="Laki-laki" name="jenis_kelamin" >
-							<label class="custom-control-label" for="customRadio">Laki_laki</label>
+							<input type="radio" class="custom-control-input" id="customRadio" value="Laki-laki" <?php echo (strcmp($pasien['jenis_kelamin'],'Laki-laki') ? '' : ' checked'); ?> name="jenis_kelamin" >
+							<label class="custom-control-label" for="customRadio">Laki-laki</label>
 						</div>
 					</td>
 					<td>
 						<div class="custom-control custom-radio custom-control-inline">
-							<input type="radio" class="custom-control-input" id="customRadio2" value="Perempuan" name="jenis_kelamin" >
+							<input type="radio" class="custom-control-input" id="customRadio2" value="Perempuan"<?php echo ($pasien['jenis_kelamin'] == 'Perempuan' ? ' checked' : ''); ?> name="jenis_kelamin" >
 							<label class="custom-control-label" for="customRadio2">Perempuan</label>
 						</div>
 					</td>
@@ -69,7 +76,7 @@ require 'application/views/templete/navbar.php';
 
 				<tr>
 					<td colspan="3"> <center><input class="btn btn-success" type="submit" value="Tambah"></center></td>
-					<td colspan="2"> <center> <a type="button" class="btn btn-danger" href="<?= base_url('');?>kepala_keluarga"> Batal </a> </center></td>
+					<td colspan="2"> <center> <a type="button" class="btn btn-danger" href="<?= base_url('');?>pasien"> Batal </a> </center></td>
 				</tr>
 
 				</table>

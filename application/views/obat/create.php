@@ -8,6 +8,7 @@ require 'application/views/templete/navbar.php';
 		<table class="text-justify m-auto">
 			<tr>
 				<td colspan="2"> <center><h3 class="font-weight-bold">Tambah Data Obat</h3></center></td>
+				<td></td>
 			</tr>
 
 			<tr>
@@ -31,10 +32,6 @@ require 'application/views/templete/navbar.php';
 								</td>
 							</tr>
 							</tr>
-							<td>Harga Obat</td>
-							<td>:</td>
-							<td><input class="form-control" type="text" name="harga_obat" placeholder="masukkan harga obat"></td>
-							</tr>
 
 							</tr>
 							<td>Jumlah Obat</td>
@@ -47,7 +44,8 @@ require 'application/views/templete/navbar.php';
 							</tr>
 
 							<tr>
-								<td colspan="3"> <center><input class="btn-success" type="submit" value="Tambah"></center></td>
+								<td colspan="2"> <center><input class="btn btn-success" type="submit" value="Tambah"></center></td>
+								<td colspan="2"> <center> <a type="button" class="btn btn-danger" href="<?= base_url('');?>obat"> Batal </a> </center</td>
 							</tr>
 						</table>
 					</td>

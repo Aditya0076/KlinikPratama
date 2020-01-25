@@ -26,11 +26,11 @@ require 'application/views/templete/navbar.php';
 		<tr>
 			<table class="container table  table-responsive-lg table-active table-striped">
 				<thead class="table-dark">
+				<tr><a type="button" class="btn btn-primary" href="<?= base_url('');?>obat/create">Tambah Data</a></tr>
 				<tr>
 					<th>No</th>
 					<th>Nama obat</th>
 					<th>Jenis Obat</th>
-					<th>Harga</th>
 					<th>Jumlah</th>
 					<th>Pilihan</th>
 				</tr>
@@ -41,7 +41,6 @@ require 'application/views/templete/navbar.php';
 						<td><?=$id++;?></td>
 						<td><?=$obat['nama_obat'];?></td>
 						<td><?=$obat['jenis_obat'];?></td>
-						<td><?=$obat['harga_obat'];?></td>
 						<td><?=$obat['jumlah_obat'];?></td>
 						<td>
 							<a type="button" class="btn btn-warning" href="<?= base_url('obat/update/' . $obat['id_obat']);?>">Update</a>

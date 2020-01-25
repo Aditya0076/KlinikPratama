@@ -42,6 +42,7 @@ require 'application/views/templete/navbar.php';
 					<th>Anamnese Pasien</th>
 					<th>Diagnosa</th>
 					<th>Terapi</th>
+					<th>Biaya</th>
 					<th>Pilihan</th>
 				</tr>
 				</thead>
@@ -56,6 +57,7 @@ require 'application/views/templete/navbar.php';
 						<td><?=$rekam_medis['anamnese'];?></td>
 						<td><?=$rekam_medis['diagnosa'];?></td>
 						<td><?=$rekam_medis['terapi'];?></td>
+						<td>Rp.<?=$rekam_medis['biaya'];?></td>
 						<td>
 							<a type="button" class="btn btn-warning" href="<?= base_url('rekam_medis/update/' . $rekam_medis['kode_rekam']);?>">Update</a>
 							<a type="button" class="btn btn-danger" href="<?= base_url('rekam_medis/delete/' . $rekam_medis['kode_rekam'] . '/' . $rekam_medis['kode_pasien']);?>">Delete</a>
