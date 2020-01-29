@@ -38,7 +38,8 @@ class Transaksi extends CI_Controller
 
 		// die(var_dump($transaksi));
 		$this->model->insert($transaksi);
-		// redirect('transaksi');
+		$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
+		redirect('transaksi');
 	}
 
 	public function getPasienonKeluarga()

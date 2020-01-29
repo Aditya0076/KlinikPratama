@@ -47,6 +47,7 @@ class Pasien extends CI_Controller
 		);
 
 		$this->model->insert($pasien);
+		$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
 		redirect('pasien');
 	}
 
@@ -73,12 +74,14 @@ class Pasien extends CI_Controller
 		);
 
 		$this->model->update($pasien);
+		$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
 		redirect('pasien');
 	}
 
 	public function delete($kode_pasien)
 	{
 		$this->model->delete($kode_pasien);
+		$this->session->set_flashdata('delete','<div stlye="color: blue">Data berhasil dihapus</div>');
 		redirect('pasien');
 	}
 }

@@ -9,3 +9,9 @@ WHERE d.kode_keluarga = "A01"
 
 //how to implementating ajax on codeigniter
 http://mfikri.com/artikel/select-ajax-codeigniter
+
+
+//Exception, how to use try and catch.
+https://www.w3schools.com/php/php_exception.asp
+
+

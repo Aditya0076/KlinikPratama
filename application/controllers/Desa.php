@@ -8,12 +8,6 @@ class Desa extends CI_Controller
 		$this->load->model('DesaModel', 'model');
 	}
 
-	/*public function index()
-	{
-		$data['desa'] = $this->model->getAll();
-		$this->load->view('desa/create',$data);
-	}*/
-
 	public function index()
 	{
 		$this->load->view('desa/create');
@@ -22,11 +16,10 @@ class Desa extends CI_Controller
 	public function insert()
 	{
 		$nama_desa = $this->input->post('nama_desa');
-
 		$desa = array('nama_desa' => $nama_desa);
 
 		$this->model->insert($desa);
-
+		$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
 		redirect('desa');
 	}
 
@@ -47,6 +40,7 @@ class Desa extends CI_Controller
 		);
 
 		$this->model->update($desa);
+		$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
 		redirect('desa');
 	}
 

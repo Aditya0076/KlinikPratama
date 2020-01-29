@@ -34,6 +34,7 @@ class Dusun extends CI_Controller
 		);
 
 		$this->model->insert($dusun);
+		$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
 		redirect('dusun');
 	}
 
@@ -56,12 +57,14 @@ class Dusun extends CI_Controller
 		);
 
 		$this->model->update($dusun);
+		$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
 		redirect('dusun');
 	}
 
 	public function delete($kode_dusun)
 	{
 		$this->model->delete($kode_dusun);
+		$this->session->set_flashdata('delete','<div stlye="color: blue">Data berhasil dihapus</div>');
 		redirect('dusun');
 	}
 }

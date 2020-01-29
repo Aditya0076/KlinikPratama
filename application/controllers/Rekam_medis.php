@@ -47,6 +47,7 @@ class Rekam_medis extends CI_Controller
 		);
 
 		$this->model->insert($rekam_medis);
+		$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
 		redirect('rekam_medis/readRekam/' . $kode_pasien);
 	}
 
@@ -75,12 +76,14 @@ class Rekam_medis extends CI_Controller
 		);
 
 		$this->model->update($rekam_medis);
+		$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
 		redirect('rekam_medis/readRekam/' . $kode_pasien);
 	}
 
 	public function delete($kode_rekam, $kode_pasien)
 	{
 		$this->model->delete($kode_rekam);
+		$this->session->set_flashdata('delete','<div stlye="color: blue">Data berhasil dihapus</div>');
 		redirect('rekam_medis/readRekam/' . $kode_pasien);
 	}
 }

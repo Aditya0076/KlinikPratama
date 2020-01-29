@@ -1,7 +1,4 @@
 <?php 
-/**
- * 
- */
 class Petugas extends CI_Controller
 {
 	

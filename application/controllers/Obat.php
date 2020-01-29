@@ -37,6 +37,7 @@ class Obat extends CI_Controller
 		);
 
 		$this->model->insert($obat);
+		$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
 		redirect('obat');
 	}
 
@@ -65,12 +66,14 @@ class Obat extends CI_Controller
 //		die(var_dump($obat));
 
 		$this->model->update($obat);
+		$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
 		redirect('obat');
 	}
 
 	public function delete($id_obat)
 	{
 		$this->model->delete($id_obat);
+		$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil dihapus</div>');
 		redirect('obat');
 	}
 }
