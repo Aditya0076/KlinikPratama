@@ -32,23 +32,26 @@ class Pasien extends CI_Controller
 
 	public function insert()
 	{
-		//$kode_pasien = $this->input->post('kode_pasien');
 		$kode_keluarga = $this->input->post('kode_keluarga');
 		$nama_pasien = $this->input->post('nama_pasien');
 		$umur = $this->input->post('umur');
 		$jenis_kelamin = $this->input->post('jenis_kelamin');
 
 		$pasien = array(
-		//	'kode_pasien' => $kode_pasien,
 			'kode_keluarga' => $kode_keluarga,
 			'nama_pasien' => $nama_pasien,
 			'umur' => $umur,
 			'jenis_kelamin' => $jenis_kelamin
 		);
 
-		$this->model->insert($pasien);
-		$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
-		redirect('pasien');
+		if($message=$this->validate($pasien)){
+			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+			redirect('pasien/create');
+		}else{
+			$this->model->insert($pasien);
+			$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
+			redirect('pasien');
+		}
 	}
 
 	public function update($kode_pasien)
@@ -60,7 +63,7 @@ class Pasien extends CI_Controller
 	
 	public function replace($kode_pasien_received)
 	{
-		$kode_pasien =$kode_pasien_received;
+		$kode_pasien = $kode_pasien_received;
 		$kode_keluarga = $this->input->post('kode_keluarga');
 		$nama_pasien = $this->input->post('nama_pasien');
 		$umur = $this->input->post('umur');
@@ -74,9 +77,14 @@ class Pasien extends CI_Controller
 			'jenis_kelamin' => $jenis_kelamin
 		);
 
-		$this->model->update($pasien);
-		$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
-		redirect('pasien');
+		if($message=$this->validate($pasien)){
+			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+			redirect('pasien/update' . $kode_pasien);
+		}else{
+			$this->model->update($pasien);
+			$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
+			redirect('pasien');
+		}
 	}
 
 	public function delete($kode_pasien)
@@ -85,4 +93,35 @@ class Pasien extends CI_Controller
 		$this->session->set_flashdata('delete','<div stlye="color: blue">Data berhasil dihapus</div>');
 		redirect('pasien');
 	}
+
+	public function validate($pasien)
+	{
+		$name = array(
+			'kode_pasien' => 'Kode pasien',
+			'kode_keluarga' => 'Kode Keluarga',
+			'nama_pasien' => 'Nama pasien',
+			'umur' => 'Umur',
+			'jenis_kelamin' => 'Jenis Kelamin'
+		);
+
+		$message = "";
+		foreach ($pasien as $key => $value) {
+			if(!$value){
+				if(!$message){
+					foreach ($name as $name => $n_value) {
+						if(!strcmp($key,$name))
+							$message = $n_value;
+					}
+				}
+				else{
+					foreach ($name as $name => $n_value) {
+						if(!strcmp($key,$name))
+							$message = $message . ', ' . $n_value;  
+					}
+				}
+			}
+		}
+		return $message;
+	}
+
 }

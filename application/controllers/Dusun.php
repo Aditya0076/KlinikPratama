@@ -33,9 +33,14 @@ class Dusun extends CI_Controller
 			'kode_desa' => $kode_desa,
 		);
 
-		$this->model->insert($dusun);
-		$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
-		redirect('dusun');
+		if($message=$this->validate($dusun)){
+			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+			redirect('dusun');
+		}else{
+			$this->model->insert($dusun);
+			$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
+			redirect('dusun');
+		}
 	}
 
 	public function update($kode_dusun)
@@ -56,9 +61,14 @@ class Dusun extends CI_Controller
 			'kode_desa' => $kode_desa,
 		);
 
-		$this->model->update($dusun);
-		$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
-		redirect('dusun');
+		if($message=$this->validate($dusun)){
+			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+			redirect('dusun/update/' . $kode_dusun);
+		}else{
+			$this->model->update($dusun);
+			$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
+			redirect('dusun');
+		}
 	}
 
 	public function delete($kode_dusun)
@@ -66,5 +76,34 @@ class Dusun extends CI_Controller
 		$this->model->delete($kode_dusun);
 		$this->session->set_flashdata('delete','<div stlye="color: blue">Data berhasil dihapus</div>');
 		redirect('dusun');
+	}
+
+
+	public function validate($dusun)
+	{
+		$name = array(
+			'kode_dusun' => 'Kode dusun',
+			'nama_dusun' => 'Nama dusun',
+			'kode_desa' => 'Nama desa'
+		);
+
+		$message = "";
+		foreach ($dusun as $key => $value) {
+			if(!$value){
+				if(!$message){
+					foreach ($name as $name => $n_value) {
+						if(!strcmp($key,$name))
+							$message = $n_value;
+					}
+				}
+				else{
+					foreach ($name as $name => $n_value) {
+						if(!strcmp($key,$name))
+							$message = $message . ', ' . $n_value;  
+					}
+				}
+			}
+		}
+		return $message;
 	}
 }

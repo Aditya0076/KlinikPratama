@@ -36,10 +36,14 @@ class Transaksi extends CI_Controller
 			'biaya_administrasi' => $biaya_administrasi
 		);
 
-		// die(var_dump($transaksi));
-		$this->model->insert($transaksi);
-		$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
-		redirect('transaksi');
+		if($message=$this->validate($transaksi)){
+			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+			redirect('transaksi/create');
+		}else{
+			$this->model->insert($transaksi);
+			$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
+			redirect('transaksi');
+		}
 	}
 
 	public function getPasienonKeluarga()

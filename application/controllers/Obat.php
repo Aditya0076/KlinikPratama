@@ -34,9 +34,14 @@ class Obat extends CI_Controller
 			'jumlah_obat' => $jumlah_obat
 		);
 
-		$this->model->insert($obat);
-		$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
-		redirect('obat');
+		if($message=$this->validate($obat)){
+			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+			redirect('obat/create');
+		}else{
+			$this->model->insert($obat);
+			$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
+			redirect('obat');
+		}
 	}
 
 	public function update($id_obat)
@@ -59,11 +64,14 @@ class Obat extends CI_Controller
 			'jumlah_obat' => $jumlah_obat
 		);
 
-//		die(var_dump($obat));
-
-		$this->model->update($obat);
-		$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
-		redirect('obat');
+		if($message=$this->validate($obat)){
+			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+			redirect('obat/update' . $id_obat);
+		}else{
+			$this->model->update($obat);
+			$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
+			redirect('obat');
+		}
 	}
 
 	public function delete($id_obat)
@@ -71,5 +79,34 @@ class Obat extends CI_Controller
 		$this->model->delete($id_obat);
 		$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil dihapus</div>');
 		redirect('obat');
+	}
+
+	public function validate($obat)
+	{
+		$name = array(
+			'id_obat' => 'Kode Obat',
+			'nama_obat' => 'Nama obat',
+			'jenis_obat' => 'Jenis obat',
+			'jumlah_obat' => 'Jumlah obat'
+		);
+
+		$message = "";
+		foreach ($obat as $key => $value) {
+			if(!$value){
+				if(!$message){
+					foreach ($name as $name => $n_value) {
+						if(!strcmp($key,$name))
+							$message = $n_value;
+					}
+				}
+				else{
+					foreach ($name as $name => $n_value) {
+						if(!strcmp($key,$name))
+							$message = $message . ', ' . $n_value;  
+					}
+				}
+			}
+		}
+		return $message;
 	}
 }
