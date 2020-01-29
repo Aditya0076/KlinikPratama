@@ -37,13 +37,15 @@ class Rekam_medis extends CI_Controller
 		$anamnese = $this->input->post('anamnese');
 		$diagnosa = $this->input->post('diagnosa');
 		$terapi = $this->input->post('terapi');
+		$biaya = $this->input->post('biaya');
 
 		$rekam_medis = array(
 			'waktu' => $waktu,
 			'kode_pasien' => $kode_pasien,
 			'anamnese' => $anamnese,
 			'diagnosa' => $diagnosa,
-			'terapi' => $terapi
+			'terapi' => $terapi,
+			'biaya' => $biaya
 		);
 
 		$this->model->insert($rekam_medis);
@@ -65,6 +67,7 @@ class Rekam_medis extends CI_Controller
 		$anamnese = $this->input->post('anamnese');
 		$diagnosa = $this->input->post('diagnosa');
 		$terapi = $this->input->post('terapi');
+		$biaya = $this->input->post('biaya');
 
 		$rekam_medis = array(
 			'kode_rekam' => $kode_rekam,
@@ -72,7 +75,8 @@ class Rekam_medis extends CI_Controller
 			'kode_pasien' => $kode_pasien,
 			'anamnese' => $anamnese,
 			'diagnosa' => $diagnosa,
-			'terapi' => $terapi
+			'terapi' => $terapi,
+			'biaya' => $biaya
 		);
 
 		$this->model->update($rekam_medis);

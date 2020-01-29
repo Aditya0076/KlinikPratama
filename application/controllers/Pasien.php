@@ -54,6 +54,7 @@ class Pasien extends CI_Controller
 	public function update($kode_pasien)
 	{
 		$data['pasien'] = $this->model->getPasien($kode_pasien);
+		$data['kepala'] = $this->model->getKepala_keluarga();
 		$this->load->view('pasien/update',$data);
 	}
 	
