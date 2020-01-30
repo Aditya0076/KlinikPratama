@@ -44,7 +44,7 @@ require 'application/views/templete/navbar.php';
 							<td>Anamnese Pasien</td>
 							<td>:</td>
 							<td>
-								<textarea class="form-control" name="anamnese"></textarea>
+								<textarea class="form-control" name="anamnese" placeholder="masukkan anamnese"></textarea>
 							</td>
 							</tr>
 
@@ -57,7 +57,7 @@ require 'application/views/templete/navbar.php';
 							<tr>
 								<td>Terapi</td>
 								<td>:</td>
-								<td><textarea class="form-control" name="terapi"></textarea></td>
+								<td><textarea class="form-control" name="terapi" placeholder="masukkan terapi"></textarea></td>
 							</tr>
 
 							<tr>

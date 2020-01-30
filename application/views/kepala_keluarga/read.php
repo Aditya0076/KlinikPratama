@@ -50,7 +50,7 @@ require 'application/views/templete/navbar.php';
 						<td><?=$kepala_keluarga['rt'];?></td>
 						<td>
 							<a type="button" class="btn btn-warning" href="<?= base_url('kepala_keluarga/update/' . $kepala_keluarga['kode_keluarga']);?>">Update</a>
-							<a type="button" class="btn btn-danger" href="<?= base_url('kepala_keluarga/delete/' . $kepala_keluarga['kode_keluarga']);?>">Delete</a>
+							<a type="button" class="btn btn-danger tombol-hapus" href="<?= base_url('kepala_keluarga/delete/' . $kepala_keluarga['kode_keluarga']);?>">Delete</a>
 						</td>
 					</tr>
 					<?php
@@ -58,14 +58,13 @@ require 'application/views/templete/navbar.php';
 				?>
 				</tbody>
 			</table>
-
 		</tr>
 		</table>
 	</div>
 	<div class="jumbotron">
-
 	</div>
 </div>
+
 
 
 <?php

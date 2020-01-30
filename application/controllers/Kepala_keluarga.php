@@ -77,6 +77,7 @@ class Kepala_keluarga extends CI_Controller
 	public function delete($kode_keluarga)
 	{
 		$this->model->delete($kode_keluarga);
+		echo "Terhapus.";
 		redirect('kepala_keluarga');
 	}
 }
