@@ -76,7 +76,7 @@ class Kepala_keluarga extends CI_Controller
 			'rt' => $rt
 		);
 
-		$message = $this->validate($kepala_keluarga)
+		$message = $this->validate($kepala_keluarga);
 		if($message){
 			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
 			redirect('kepala_keluarga/update/'.$kode_keluarga);
@@ -90,11 +90,8 @@ class Kepala_keluarga extends CI_Controller
 	public function delete($kode_keluarga)
 	{
 		$this->model->delete($kode_keluarga);
-<<<<<<< HEAD
 		echo "Terhapus.";
-=======
 		$this->session->set_flashdata('delete','<div stlye="color: blue">Data berhasil dihapus</div>');
->>>>>>> 37e609596b8e501e0caa35957a4e36e1774d1c25
 		redirect('kepala_keluarga');
 	}
 	
