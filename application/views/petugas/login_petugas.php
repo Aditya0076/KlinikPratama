@@ -49,25 +49,6 @@
 						<input type="password" class="form-control" id="password" placeholder="masukkan password" name="password">
 					</div>
 				</div>
-				<script type="text/javascript">
-                    $(document).ready(function(){
-                        $('#username').on('submit',function(e) {
-                            $.ajax({
-                                url:'<?= base_url('petugas/authenticate');?>', //nama action script php sobat
-                                data:$(this).serialize(),
-                                type:'POST',
-                                success:function(data){
-                                    console.log(data);
-                                    swal("Success!", "Message sent!", "success");
-                                },
-                                error:function(data){
-                                    swal("Oops...", "Something went wrong :(", "error");
-                                }
-                            });
-                            e.preventDefault();
-                        });
-                    });
-				</script>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="submit" class="btn btn-success">Login</button>

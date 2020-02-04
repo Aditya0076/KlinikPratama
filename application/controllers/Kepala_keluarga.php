@@ -9,6 +9,7 @@ class Kepala_keluarga extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Kepala_keluargaModel', 'model');
+		$this->load->library('form_validation');
 	}
 
 	public function index()
@@ -28,6 +29,7 @@ class Kepala_keluarga extends CI_Controller
 	{
 		$data['dusun'] = $this->model->getDusun();
 		$this->load->view('kepala_keluarga/create',$data);
+
 	}
 
 	public function insert()
@@ -43,15 +45,27 @@ class Kepala_keluarga extends CI_Controller
 			'nama_kepala' => $nama_kepala,
 			'rt' => $rt
 		);
+		$this->form_validation->set_rules('kode_keluarga','Kode keluarga','required');
+		$this->form_validation->set_rules('kode_dusun','Nama Dusun','required');
+		if ($this->form_validation->run()== FALSE){
+			$this->load->view('kepala_keluarga/create',$data);
+//			redirect('kepala_keluarga/create');
 
-		if($message=$this->validate($kepala_keluarga)){
-			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
-			redirect('kepala_keluarga/create');
-		}else{
+		}
+		else{
 			$this->model->insert($kepala_keluarga);
-			$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
 			redirect('kepala_keluarga');
 		}
+
+
+//		if($message=$this->validate($kepala_keluarga)){
+//			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> Kosong, mohon disi terlebih dahulu<div>');
+//			redirect('kepala_keluarga/create');
+//		}else{
+//			$this->model->insert($kepala_keluarga);
+//			$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
+//			redirect('kepala_keluarga');
+//		}
 	}
 
 	public function update($kode_keluarga)

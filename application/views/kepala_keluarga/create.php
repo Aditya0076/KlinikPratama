@@ -14,9 +14,20 @@
 			<tr>
 
 				<form class="form-control-sm form-group" method="post" action="<?=base_url('kepala_keluarga/insert');?>">
-					<td></td>
+					<td>
+
+					</td>
 					<td>
 						<table class="text-justify m-auto">
+							<tr>
+								<td>
+									<?php if( validation_errors() ):?>
+										<div role="alert" class="alert alert-danger ">
+											<p> <?= validation_errors(); ?></p>
+										</div>
+									<?php endif;?>
+								</td>
+							</tr>
 							<tr>
 								<td>Kode Keluarga</td>
 								<td>:</td>

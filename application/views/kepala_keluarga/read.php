@@ -50,7 +50,12 @@ require 'application/views/templete/navbar.php';
 						<td><?=$kepala_keluarga['rt'];?></td>
 						<td>
 							<a type="button" class="btn btn-warning" href="<?= base_url('kepala_keluarga/update/' . $kepala_keluarga['kode_keluarga']);?>">Update</a>
-							<a type="button" class="btn btn-danger tombol-hapus" href="<?= base_url('kepala_keluarga/delete/' . $kepala_keluarga['kode_keluarga']);?>">Delete</a>
+							<a type="button" class="btn btn-danger tombol-hapus flashdata" href="<?= base_url('kepala_keluarga/delete/' . $kepala_keluarga['kode_keluarga']);?>">Delete</a>
+							<?php if ($this->session->set_flashdata('delete')== true) :?>
+							<div role="alert" class="alert alert-success alert-dismissible fade in">
+								<p> <?= $this->session->set_flashdata('delete')?></p>
+							</div>
+							<?php endif; ?>
 						</td>
 					</tr>
 					<?php
