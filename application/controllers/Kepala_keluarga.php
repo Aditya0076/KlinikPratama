@@ -34,6 +34,7 @@ class Kepala_keluarga extends CI_Controller
 
 	public function insert()
 	{
+		$data['dusun'] = $this->model->getDusun();
 		$kode_keluarga = $this->input->post('kode_keluarga');
 		$kode_dusun = $this->input->post('kode_dusun');
 		$nama_kepala = $this->input->post('nama_kepala');
@@ -46,7 +47,7 @@ class Kepala_keluarga extends CI_Controller
 			'rt' => $rt
 		);
 		$this->form_validation->set_rules('kode_keluarga','Kode keluarga','required');
-		$this->form_validation->set_rules('kode_dusun','Nama Dusun','required');
+		$this->form_validation->set_rules('nama_kepala','Nama Kepala Keluarga','required');
 		if ($this->form_validation->run()== FALSE){
 			$this->load->view('kepala_keluarga/create',$data);
 //			redirect('kepala_keluarga/create');
