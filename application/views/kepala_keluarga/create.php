@@ -12,18 +12,17 @@
 			</tr>
 
 			<tr>
-
 				<form class="form-control-sm form-group" method="post" action="<?=base_url('kepala_keluarga/insert');?>">
-					<td>
-
-					</td>
 					<td>
 						<table class="text-justify m-auto">
 							<tr>
 								<td>
-									<?php if( validation_errors() ):?>
-										<div role="alert" class="alert alert-danger ">
+								<?php if( validation_errors() ):?>
+										<div class="alert alert-dark alert-dismissible fade show" role="alert">
 											<p> <?= validation_errors(); ?></p>
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
 										</div>
 									<?php endif;?>
 								</td>

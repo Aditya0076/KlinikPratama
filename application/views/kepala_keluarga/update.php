@@ -14,7 +14,18 @@ require 'application/views/templete/navbar.php';
 			<form class="form-control-sm form-group" method="post" action="<?=base_url('kepala_keluarga/replace/'.$kepala_keluarga['kode_keluarga']);?>">
 				<table class="text-justify m-auto">
 					<tr>
-						<td colspan="3"><?= $this->session->flashdata('gagal');?></td>
+						<td>
+							<?php if( validation_errors() ):?>
+								<div role="alert" class="alert alert-danger ">
+									<p> <?= validation_errors(); ?></p>
+								</div>
+							<?php endif;?>
+						</td>
+					</tr>
+					<tr>
+						<td>Kode Keluarga</td>
+						<td>:</td>
+						<td colspan="3"><input class="form-control" type="text" name="kode_keluarga" value="<?=$kepala_keluarga['kode_keluarga'];?>"></td>
 					</tr>
 					<tr>
 						<td>Nama Kepala Keluarga</td>

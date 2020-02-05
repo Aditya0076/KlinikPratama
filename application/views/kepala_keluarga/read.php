@@ -41,6 +41,13 @@ require 'application/views/templete/navbar.php';
 				$id = 1;
 				foreach ($kepala_keluarga as $kepala_keluarga) :
 					?>
+					<div class="flash-data" data-flashdata="<?=$this->session->set_flashdata('delete');?>"></div>
+							<?php if ($this->session->set_flashdata('delete')== true) :?>
+								<div role="alert" class="alert alert-success ">
+									<p> <?= $this->session->set_flashdata('delete')?></p>
+								</div>
+							<?php endif; ?>
+
 					<tr>
 <!--						<td>--><?//=$id++;?><!--</td>-->
 						<td><?=$kepala_keluarga['kode_keluarga'];?></td>
@@ -51,11 +58,6 @@ require 'application/views/templete/navbar.php';
 						<td>
 							<a type="button" class="btn btn-warning" href="<?= base_url('kepala_keluarga/update/' . $kepala_keluarga['kode_keluarga']);?>">Update</a>
 							<a type="button" class="btn btn-danger tombol-hapus flashdata" href="<?= base_url('kepala_keluarga/delete/' . $kepala_keluarga['kode_keluarga']);?>">Delete</a>
-							<?php if ($this->session->set_flashdata('delete')== true) :?>
-							<div role="alert" class="alert alert-success alert-dismissible fade in">
-								<p> <?= $this->session->set_flashdata('delete')?></p>
-							</div>
-							<?php endif; ?>
 						</td>
 					</tr>
 					<?php

@@ -16,6 +16,18 @@ require 'application/views/templete/navbar.php';
 					<td>
 						<table class="text-justify m-auto">
 							<tr>
+								<td>
+									<?php if( validation_errors() ):?>
+										<div class="alert alert-dark alert-dismissible fade show" role="alert">
+											<p> <?= validation_errors(); ?></p>
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+									<?php endif;?>
+								</td>
+							</tr>
+							<tr>
 								<td>Tanggal</td>
 								<td>:</td>
 								<td>

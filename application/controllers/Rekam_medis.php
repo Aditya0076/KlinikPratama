@@ -9,6 +9,7 @@ class Rekam_medis extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Rekam_medisModel', 'model');
+		$this->load->library('form_validation');
 	}
 
 	public function index()
@@ -32,6 +33,7 @@ class Rekam_medis extends CI_Controller
 
 	public function insert()
 	{
+		$data['pasien'] = $this->model->getPasien();
 		$waktu = $this->input->post('waktu');
 		$kode_pasien = $this->input->post('kode_pasien');
 		$anamnese = $this->input->post('anamnese');
@@ -48,14 +50,28 @@ class Rekam_medis extends CI_Controller
 			'biaya' => $biaya
 		);
 
-		if($message=$this->validate($rekam_medis)){
-			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
-			redirect('rekam_medis/create');
-		}else{
+		$this->form_validation->set_rules('waktu','Tanggal','required');
+		$this->form_validation->set_rules('anamnese','Anamnese pasien','required');
+		$this->form_validation->set_rules('diagnosa','Diagnosa pasien','required');
+		$this->form_validation->set_rules('terapi','Terapi pasien','required');
+		$this->form_validation->set_rules('biaya','Biaya pasien','required|numeric');
+		if ($this->form_validation->run()== FALSE){
+			$this->load->view('rekam_medis/create',$data);
+//			redirect('kepala_keluarga/create');
+
+		}
+		else{
 			$this->model->insert($rekam_medis);
-			$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
 			redirect('rekam_medis/readRekam/' . $kode_pasien);
 		}
+//		if($message=$this->validate($rekam_medis)){
+//			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+//			redirect('rekam_medis/create');
+//		}else{
+//			$this->model->insert($rekam_medis);
+//			$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
+//			redirect('rekam_medis/readRekam/' . $kode_pasien);
+//		}
 	}
 
 	public  function update($kode_rekam){
