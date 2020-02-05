@@ -55,6 +55,7 @@ class Kepala_keluarga extends CI_Controller
 		}
 		else{
 			$this->model->insert($kepala_keluarga);
+			$this->session->set_flashdata('flash','Ditambahkan');
 			redirect('kepala_keluarga');
 		}
 
@@ -118,8 +119,7 @@ class Kepala_keluarga extends CI_Controller
 	public function delete($kode_keluarga)
 	{
 		$this->model->delete($kode_keluarga);
-		echo "Terhapus.";
-		$this->session->set_flashdata('delete','<div stlye="color: blue">Data berhasil dihapus</div>');
+		$this->session->set_flashdata('flash','Dihapus');
 		redirect('kepala_keluarga');
 	}
 	

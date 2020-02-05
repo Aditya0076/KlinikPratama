@@ -10,7 +10,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet"  href="<?php echo base_url('');?>/assets/bootstrap/css/bootstrap.min.css" >
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('');?>/assets/DataTables/datatables.min.css">
-	<link rel="stylesheet" href="<?= base_url('');?>/assets/bootstrap/css/sweetalert.css">
+
 
 	<title>Klinik Pratama Avicena</title>
 </head>
