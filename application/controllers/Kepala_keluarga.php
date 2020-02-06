@@ -34,6 +34,7 @@ class Kepala_keluarga extends CI_Controller
 
 	public function insert()
 	{
+		$data['dusun'] = $this->model->getDusun();
 		$kode_keluarga = $this->input->post('kode_keluarga');
 		$kode_dusun = $this->input->post('kode_dusun');
 		$nama_kepala = $this->input->post('nama_kepala');
@@ -47,14 +48,11 @@ class Kepala_keluarga extends CI_Controller
 		);
 		
 		$this->form_validation->set_rules('kode_keluarga','Kode keluarga','required');
-<<<<<<< HEAD
-		$this->form_validation->set_rules('nama_kepala','Nama Kepala Keluarga','required');
-		
-=======
 		$this->form_validation->set_rules('nama_kepala','Nama kepala keluarga','required');
->>>>>>> 849c3e840538df4c35eb0a929b7848ad081c8c40
+
 		if ($this->form_validation->run()== FALSE){
-			redirect('kepala_keluarga/create');
+			$this->load->view('kepala_keluarga/create',$data);
+		//	redirect('kepala_keluarga/create');
 		}else{
 			$this->model->insert($kepala_keluarga);
 			$this->session->set_flashdata('flash','Ditambahkan');
@@ -85,25 +83,16 @@ class Kepala_keluarga extends CI_Controller
 			'nama_kepala' => $nama_kepala,
 			'rt' => $rt
 		);
-<<<<<<< HEAD
-		
-		$this->form_validation->set_rules('kode_keluarga','Kode keluarga','required');
-		$this->form_validation->set_rules('nama_kepala','Nama Kepala Keluarga','required');
-		
-		if ($this->form_validation->run() == FALSE){
-			redirect('kepala_keluarga/update/'. $kode_keluarga);
-		}else{
-=======
+
 		$this->form_validation->set_rules('kode_keluarga','Kode keluarga','required');
 		$this->form_validation->set_rules('nama_kepala','Nama kepala keluarga','required');
 		if ($this->form_validation->run()== FALSE){
 			$this->load->view('kepala_keluarga/update',$data);
 //			redirect('kepala_keluarga/create');
-
 		}
 		else{
->>>>>>> 849c3e840538df4c35eb0a929b7848ad081c8c40
 			$this->model->update($kepala_keluarga);
+			$this->session->set_flashdata('flash','Di Update');
 			redirect('kepala_keluarga');
 		}
 
