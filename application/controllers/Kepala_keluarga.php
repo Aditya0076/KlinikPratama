@@ -48,14 +48,18 @@ class Kepala_keluarga extends CI_Controller
 		);
 		
 		$this->form_validation->set_rules('kode_keluarga','Kode keluarga','required');
+<<<<<<< HEAD
 		$this->form_validation->set_rules('nama_kepala','Nama kepala keluarga','required');
 
+=======
+		$this->form_validation->set_rules('nama_kepala','Nama Kepala Keluarga','required');
+>>>>>>> 6e56e8815b9713a4d9e2a46133c97a261c378e4d
 		if ($this->form_validation->run()== FALSE){
 			$this->load->view('kepala_keluarga/create',$data);
 		//	redirect('kepala_keluarga/create');
 		}else{
-			$this->model->insert($kepala_keluarga);
 			$this->session->set_flashdata('flash','Ditambahkan');
+			$this->model->insert($kepala_keluarga);
 			redirect('kepala_keluarga');
 		}
 	}
@@ -83,6 +87,7 @@ class Kepala_keluarga extends CI_Controller
 			'nama_kepala' => $nama_kepala,
 			'rt' => $rt
 		);
+<<<<<<< HEAD
 
 		$this->form_validation->set_rules('kode_keluarga','Kode keluarga','required');
 		$this->form_validation->set_rules('nama_kepala','Nama kepala keluarga','required');
@@ -91,26 +96,26 @@ class Kepala_keluarga extends CI_Controller
 //			redirect('kepala_keluarga/create');
 		}
 		else{
+=======
+		
+		$this->form_validation->set_rules('kode_keluarga','Kode keluarga','required');
+		$this->form_validation->set_rules('nama_kepala','Nama Kepala Keluarga','required');
+		
+		if ($this->form_validation->run() == FALSE){
+			redirect('kepala_keluarga/update/'. $kode_keluarga);
+		}else{
+			$this->session->set_flashdata('flash','Diedit');
+>>>>>>> 6e56e8815b9713a4d9e2a46133c97a261c378e4d
 			$this->model->update($kepala_keluarga);
 			$this->session->set_flashdata('flash','Di Update');
 			redirect('kepala_keluarga');
 		}
-
-//		$message = $this->validate($kepala_keluarga);
-//		if($message){
-//			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
-//			redirect('kepala_keluarga/update/'.$kode_keluarga);
-//		}else{
-//			$this->model->update($kepala_keluarga);
-//			$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
-//			redirect('kepala_keluarga');
-//		}
 	}
 
 	public function delete($kode_keluarga)
 	{
-		$this->model->delete($kode_keluarga);
 		$this->session->set_flashdata('flash','Dihapus');
+		$this->model->delete($kode_keluarga);
 		redirect('kepala_keluarga');
 	}
 }
