@@ -23,9 +23,23 @@ require 'application/views/templete/navbar.php';
 			</tr>
 	</div>
 	<div class="jumbotron-fluid">
+
 		<tr>
 			<table class="container table  table-responsive-lg table-active table-striped">
-				<thead class="table-dark">
+				<thead class="table-dark ">
+<!--				<tr>-->
+<!--					<td>-->
+
+						<?php if ($this->session->flashdata('flash')):?>
+<!--							<div class="alert alert-dark alert-dismissible fade show" role="alert">-->
+<!--								<strong>Data Berhasil </strong> -->
+<!--								<button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--									<span aria-hidden="true">&times;</span>--> <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
+<!--								</button>-->
+<!--							</div>-->
+						<?php endif;?>
+<!--					</td>-->
+<!--				</tr>-->
 				<tr><a type="button" class="btn btn-primary" href="<?= base_url('');?>kepala_keluarga/create">Tambah Data</a></tr>
 				<tr>
 					<th>Kode Keluarga</th>
@@ -41,6 +55,7 @@ require 'application/views/templete/navbar.php';
 				$id = 1;
 				foreach ($kepala_keluarga as $kepala_keluarga) :
 					?>
+
 					<tr>
 <!--						<td>--><?//=$id++;?><!--</td>-->
 						<td><?=$kepala_keluarga['kode_keluarga'];?></td>
@@ -51,11 +66,6 @@ require 'application/views/templete/navbar.php';
 						<td>
 							<a type="button" class="btn btn-warning" href="<?= base_url('kepala_keluarga/update/' . $kepala_keluarga['kode_keluarga']);?>">Update</a>
 							<a type="button" class="btn btn-danger tombol-hapus flashdata" href="<?= base_url('kepala_keluarga/delete/' . $kepala_keluarga['kode_keluarga']);?>">Delete</a>
-							<?php if ($this->session->set_flashdata('delete')== true) :?>
-							<div role="alert" class="alert alert-success alert-dismissible fade in">
-								<p> <?= $this->session->set_flashdata('delete')?></p>
-							</div>
-							<?php endif; ?>
 						</td>
 					</tr>
 					<?php

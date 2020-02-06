@@ -9,6 +9,7 @@ class Pasien extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('PasienModel','model');
+		$this->load->library('form_validation');
 	}
 
 	public function index()
@@ -32,6 +33,7 @@ class Pasien extends CI_Controller
 
 	public function insert()
 	{
+		$data['kepala_keluarga'] = $this->model->getKepala_keluarga();
 		$kode_keluarga = $this->input->post('kode_keluarga');
 		$nama_pasien = $this->input->post('nama_pasien');
 		$umur = $this->input->post('umur');
@@ -43,7 +45,13 @@ class Pasien extends CI_Controller
 			'umur' => $umur,
 			'jenis_kelamin' => $jenis_kelamin
 		);
+		$this->form_validation->set_rules('nama_pasien','Nama pasien','required');
+		$this->form_validation->set_rules('umur','Umur','required');
+		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','isset');
+		if ($this->form_validation->run()== FALSE){
+			$this->load->view('pasien/create',$data);
 
+<<<<<<< HEAD
 		$this->form_validation->set_rules('kode_keluarga','Kode Keluarga','required');
 		$this->form_validation->set_rules('nama_pasien','Nama Pasien','required');
 		$this->form_validation->set_rules('umur','Umur','required');
@@ -52,9 +60,21 @@ class Pasien extends CI_Controller
 		if ($this->form_validation->run() == FALSE){
 			redirect('pasien/create');
 		}else{
+=======
+		}
+		else{
+>>>>>>> 849c3e840538df4c35eb0a929b7848ad081c8c40
 			$this->model->insert($pasien);
 			redirect('pasien');
 		}
+//		if($message=$this->validate($pasien)){
+//			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+//			redirect('pasien/create');
+//		}else{
+//			$this->model->insert($pasien);
+//			$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
+//			redirect('pasien');
+//		}
 	}
 
 	public function update($kode_pasien)
@@ -66,6 +86,8 @@ class Pasien extends CI_Controller
 	
 	public function replace($kode_pasien_received)
 	{
+		$data['pasien'] = $this->model->getPasien($kode_pasien);
+		$data['kepala'] = $this->model->getKepala_keluarga();
 		$kode_pasien = $kode_pasien_received;
 		$kode_keluarga = $this->input->post('kode_keluarga');
 		$nama_pasien = $this->input->post('nama_pasien');
@@ -80,6 +102,7 @@ class Pasien extends CI_Controller
 			'jenis_kelamin' => $jenis_kelamin
 		);
 
+<<<<<<< HEAD
 		$this->form_validation->set_rules('kode_pasien','Kode Pasien','required');
 		$this->form_validation->set_rules('kode_keluarga','Kode Keluarga','required');
 		$this->form_validation->set_rules('nama_pasien','Nama Pasien','required');
@@ -90,8 +113,26 @@ class Pasien extends CI_Controller
 			redirect('pasien/update' . $kode_pasien);
 		}else{
 			$this->model->update($pasien);
+=======
+		$this->form_validation->set_rules('nama_pasien','Nama pasien','required');
+		$this->form_validation->set_rules('umur','Umur','required');
+		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','isset');
+		if ($this->form_validation->run()== FALSE){
+			$this->load->view('pasien/update',$data);
+		}
+		else{
+			$this->model->insert($pasien);
+>>>>>>> 849c3e840538df4c35eb0a929b7848ad081c8c40
 			redirect('pasien');
 		}
+//		if($message=$this->validate($pasien)){
+//			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+//			redirect('pasien/update' . $kode_pasien);
+//		}else{
+//			$this->model->update($pasien);
+//			$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
+//			redirect('pasien');
+//		}
 	}
 
 	public function delete($kode_pasien)
