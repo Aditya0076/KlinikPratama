@@ -50,7 +50,6 @@ class Rekam_medis extends CI_Controller
 		);
 
 		$this->form_validation->set_rules('waktu','Tanggal','required');
-<<<<<<< HEAD
 		$this->form_validation->set_rules('kode_pasien','Kode Pasien','required');
 		$this->form_validation->set_rules('anamnese','Anamnese','required');
 		$this->form_validation->set_rules('diagnosa','Diagnosa','required');
@@ -60,18 +59,6 @@ class Rekam_medis extends CI_Controller
 		if ($this->form_validation->run() == FALSE){\
 			redirect('rekam_medis/create');
 		}else{
-=======
-		$this->form_validation->set_rules('anamnese','Anamnese pasien','required');
-		$this->form_validation->set_rules('diagnosa','Diagnosa pasien','required');
-		$this->form_validation->set_rules('terapi','Terapi pasien','required');
-		$this->form_validation->set_rules('biaya','Biaya pasien','required|numeric');
-		if ($this->form_validation->run()== FALSE){
-			$this->load->view('rekam_medis/create',$data);
-//			redirect('kepala_keluarga/create');
-
-		}
-		else{
->>>>>>> 5f1cc507d5cd707fde403176b07d228a598b4d37
 			$this->model->insert($rekam_medis);
 			redirect('rekam_medis/readRekam/' . $kode_pasien);
 		}
