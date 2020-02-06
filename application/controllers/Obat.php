@@ -9,6 +9,7 @@ class Obat extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('ObatModel', 'model');
+		$this->load->library('form_validation');
 	}
 
 	public function index()
@@ -35,10 +36,13 @@ class Obat extends CI_Controller
 		);
 
 		$this->form_validation->set_rules('nama_obat','Nama Obat','required');
+		$this->form_validation->set_rules('jenis_obat','Jenis Obat','required');
 		$this->form_validation->set_rules('jumlah_obat','Jumlah Obat','required');
 		
 		if ($this->form_validation->run() == FALSE){
-			redirect('obat/create');
+			$this->session->set_flashdata('flash','Ditambahkan');
+			$this->load->view('obat/create');
+			//redirect('obat/create');
 		}else{
 			$this->model->insert($obat);
 			redirect('obat');
@@ -54,6 +58,7 @@ class Obat extends CI_Controller
 	public function replace($id_obat_received)
 	{
 		$id_obat = $id_obat_received;
+		$data['obat'] = $this->model->getObat($id_obat);
 		$nama_obat = $this->input->post('nama_obat');
 		$jenis_obat = $this->input->post('jenis_obat');
 		$jumlah_obat = $this->input->post('jumlah_obat');
@@ -70,9 +75,11 @@ class Obat extends CI_Controller
 		$this->form_validation->set_rules('jumlah_obat','Jumlah Obat','required');
 		
 		if ($this->form_validation->run() == FALSE){
-			redirect('obat/update' . $id_obat);
+			$this->load->view('obat/update',$data);
+			//redirect('obat/update' . $id_obat);
 		}else{
 			$this->model->update($obat);
+			$this->session->set_flashdata('flash','Di Update');
 			redirect('obat');
 		}
 	}
@@ -80,7 +87,7 @@ class Obat extends CI_Controller
 	public function delete($id_obat)
 	{
 		$this->model->delete($id_obat);
-		$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil dihapus</div>');
+		$this->session->set_flashdata('flash','Dihapus');
 		redirect('obat');
 	}
 
@@ -93,23 +100,5 @@ class Obat extends CI_Controller
 			'jumlah_obat' => 'Jumlah obat'
 		);
 
-		$message = "";
-		foreach ($obat as $key => $value) {
-			if(!$value){
-				if(!$message){
-					foreach ($name as $name => $n_value) {
-						if(!strcmp($key,$name))
-							$message = $n_value;
-					}
-				}
-				else{
-					foreach ($name as $name => $n_value) {
-						if(!strcmp($key,$name))
-							$message = $message . ', ' . $n_value;  
-					}
-				}
-			}
-		}
-		return $message;
 	}
 }

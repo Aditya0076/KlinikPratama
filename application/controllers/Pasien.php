@@ -45,6 +45,7 @@ class Pasien extends CI_Controller
 			'umur' => $umur,
 			'jenis_kelamin' => $jenis_kelamin
 		);
+<<<<<<< HEAD
 
 		$this->form_validation->set_rules('kode_keluarga','Kode Keluarga','required');
 		$this->form_validation->set_rules('nama_pasien','Nama Pasien','required');
@@ -54,6 +55,15 @@ class Pasien extends CI_Controller
 		if ($this->form_validation->run() == FALSE){
 			redirect('pasien/create');
 		}else{
+=======
+		$this->form_validation->set_rules('nama_pasien','Nama pasien','required');
+		$this->form_validation->set_rules('umur','Umur','required');
+		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','required');
+		if ($this->form_validation->run()== FALSE){
+			$this->load->view('pasien/create',$data);
+		}
+		else{
+>>>>>>> 5f1cc507d5cd707fde403176b07d228a598b4d37
 			$this->model->insert($pasien);
 			redirect('pasien');
 		}
@@ -92,6 +102,7 @@ class Pasien extends CI_Controller
 			'jenis_kelamin' => $jenis_kelamin
 		);
 
+<<<<<<< HEAD
 		$this->form_validation->set_rules('kode_pasien','Kode Pasien','required');
 		$this->form_validation->set_rules('kode_keluarga','Kode Keluarga','required');
 		$this->form_validation->set_rules('nama_pasien','Nama Pasien','required');
@@ -102,6 +113,16 @@ class Pasien extends CI_Controller
 			redirect('pasien/update' . $kode_pasien);
 		}else{
 			$this->model->update($pasien);
+=======
+		$this->form_validation->set_rules('nama_pasien','Nama pasien','required');
+		$this->form_validation->set_rules('umur','Umur','required');
+		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','isset');
+		if ($this->form_validation->run()== FALSE){
+			$this->load->view('pasien/update',$data);
+		}
+		else{
+			$this->model->insert($pasien);
+>>>>>>> 5f1cc507d5cd707fde403176b07d228a598b4d37
 			redirect('pasien');
 		}
 //		if($message=$this->validate($pasien)){

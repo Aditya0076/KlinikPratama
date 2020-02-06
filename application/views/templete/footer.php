@@ -11,6 +11,7 @@
 
 </div>
 <script src="<?php echo base_url('');?>/assets/bootstrap/js/jquery.min.js" ></script>
+<script src="<?php echo base_url('');?>/assets/sweetalert/jquery-3.4.1.slim.min.js" ></script>
 <script src="<?php echo base_url('');?>/assets/bootstrap/js/popper.min.js" ></script>
 <script src="<?php echo base_url('');?>/assets/bootstrap/js/bootstrap.js" ></script>
 <script type="text/javascript" src="<?php echo base_url('');?>/assets/DataTables/datatables.min.js"></script>
