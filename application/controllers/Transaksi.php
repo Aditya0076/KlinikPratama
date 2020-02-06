@@ -36,12 +36,15 @@ class Transaksi extends CI_Controller
 			'biaya_administrasi' => $biaya_administrasi
 		);
 
-		if($message=$this->validate($transaksi)){
-			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+		$this->form_validation->set_rules('waktu','Waktu','required');
+		$this->form_validation->set_rules('kode_keluarga','Kode Keluarga','required');
+		$this->form_validation->set_rules('kode_pasien','Kode Pasien','required');
+		$this->form_validation->set_rules('biaya_administrasi','Biaya Administrasi','required');
+
+		if ($this->form_validation->run() == FALSE){\
 			redirect('transaksi/create');
 		}else{
 			$this->model->insert($transaksi);
-			$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
 			redirect('transaksi');
 		}
 	}

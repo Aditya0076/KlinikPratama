@@ -18,12 +18,12 @@ class Desa extends CI_Controller
 		$nama_desa = $this->input->post('nama_desa');
 		$desa = array('nama_desa' => $nama_desa);
 
-		if($message=$this->validate($desa)){
-			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
-			redirect('desa');
+		$this->form_validation->set_rules('nama_desa','Nama Desa','required');
+		
+		if ($this->form_validation->run() == FALSE){
+			$this->load->view('desa');
 		}else{
 			$this->model->insert($desa);
-			$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
 			redirect('desa');
 		}
 	}
@@ -44,12 +44,13 @@ class Desa extends CI_Controller
 			'nama_desa' => $nama_desa
 		);
 
-		if($message=$this->validate($desa)){
-			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+		$this->form_validation->set_rules('kode_desa','Kode Desa','required');
+		$this->form_validation->set_rules('nama_desa','Nama Desa','required');
+		
+		if ($this->form_validation->run() == FALSE){
 			redirect('desa/update' . $kode_desa);
 		}else{
 			$this->model->update($desa);
-			$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
 			redirect('desa');
 		}
 	}

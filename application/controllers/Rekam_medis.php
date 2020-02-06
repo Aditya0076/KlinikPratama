@@ -48,12 +48,17 @@ class Rekam_medis extends CI_Controller
 			'biaya' => $biaya
 		);
 
-		if($message=$this->validate($rekam_medis)){
-			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+		$this->form_validation->set_rules('waktu','Waktu','required');
+		$this->form_validation->set_rules('kode_pasien','Kode Pasien','required');
+		$this->form_validation->set_rules('anamnese','Anamnese','required');
+		$this->form_validation->set_rules('diagnosa','Diagnosa','required');
+		$this->form_validation->set_rules('terapi','Terapi','required');
+		$this->form_validation->set_rules('biaya','Biaya','required');
+		
+		if ($this->form_validation->run() == FALSE){\
 			redirect('rekam_medis/create');
 		}else{
 			$this->model->insert($rekam_medis);
-			$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
 			redirect('rekam_medis/readRekam/' . $kode_pasien);
 		}
 	}
@@ -84,12 +89,18 @@ class Rekam_medis extends CI_Controller
 			'biaya' => $biaya
 		);
 
-		if($message=$this->validate($rekam_medis)){
-			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+		$this->form_validation->set_rules('kode_rekam','Kode Rekam','required');
+		$this->form_validation->set_rules('waktu','Waktu','required');
+		$this->form_validation->set_rules('kode_pasien','Kode Pasien','required');
+		$this->form_validation->set_rules('anamnese','Anamnese','required');
+		$this->form_validation->set_rules('diagnosa','Diagnosa','required');
+		$this->form_validation->set_rules('terapi','Terapi','required');
+		$this->form_validation->set_rules('biaya','Biaya','required');
+		
+		if ($this->form_validation->run() == FALSE){
 			redirect('rekam_medis/update' . $kode_rekam);
 		}else{
 			$this->model->update($rekam_medis);
-			$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
 			redirect('rekam_medis/readRekam/' . $kode_pasien);
 		}
 	}

@@ -44,12 +44,15 @@ class Pasien extends CI_Controller
 			'jenis_kelamin' => $jenis_kelamin
 		);
 
-		if($message=$this->validate($pasien)){
-			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+		$this->form_validation->set_rules('kode_keluarga','Kode Keluarga','required');
+		$this->form_validation->set_rules('nama_pasien','Nama Pasien','required');
+		$this->form_validation->set_rules('umur','Umur','required');
+		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','required');
+		
+		if ($this->form_validation->run() == FALSE){
 			redirect('pasien/create');
 		}else{
 			$this->model->insert($pasien);
-			$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
 			redirect('pasien');
 		}
 	}
@@ -77,12 +80,16 @@ class Pasien extends CI_Controller
 			'jenis_kelamin' => $jenis_kelamin
 		);
 
-		if($message=$this->validate($pasien)){
-			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+		$this->form_validation->set_rules('kode_pasien','Kode Pasien','required');
+		$this->form_validation->set_rules('kode_keluarga','Kode Keluarga','required');
+		$this->form_validation->set_rules('nama_pasien','Nama Pasien','required');
+		$this->form_validation->set_rules('umur','Umur','required');
+		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','required');
+		
+		if ($this->form_validation->run() == FALSE){
 			redirect('pasien/update' . $kode_pasien);
 		}else{
 			$this->model->update($pasien);
-			$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
 			redirect('pasien');
 		}
 	}

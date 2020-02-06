@@ -34,12 +34,13 @@ class Obat extends CI_Controller
 			'jumlah_obat' => $jumlah_obat
 		);
 
-		if($message=$this->validate($obat)){
-			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+		$this->form_validation->set_rules('nama_obat','Nama Obat','required');
+		$this->form_validation->set_rules('jumlah_obat','Jumlah Obat','required');
+		
+		if ($this->form_validation->run() == FALSE){
 			redirect('obat/create');
 		}else{
 			$this->model->insert($obat);
-			$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
 			redirect('obat');
 		}
 	}
@@ -64,12 +65,14 @@ class Obat extends CI_Controller
 			'jumlah_obat' => $jumlah_obat
 		);
 
-		if($message=$this->validate($obat)){
-			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+		$this->form_validation->set_rules('id_obat','Id Obat','required');
+		$this->form_validation->set_rules('nama_obat','Nama Obat','required');
+		$this->form_validation->set_rules('jumlah_obat','Jumlah Obat','required');
+		
+		if ($this->form_validation->run() == FALSE){
 			redirect('obat/update' . $id_obat);
 		}else{
 			$this->model->update($obat);
-			$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
 			redirect('obat');
 		}
 	}

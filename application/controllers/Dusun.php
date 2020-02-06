@@ -33,12 +33,13 @@ class Dusun extends CI_Controller
 			'kode_desa' => $kode_desa,
 		);
 
-		if($message=$this->validate($dusun)){
-			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+		$this->form_validation->set_rules('nama_dusun','Nama Dusun','required');
+		$this->form_validation->set_rules('kode_desa','Kode Desa','required');
+		
+		if ($this->form_validation->run()== FALSE){
 			redirect('dusun');
 		}else{
 			$this->model->insert($dusun);
-			$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
 			redirect('dusun');
 		}
 	}
@@ -61,15 +62,17 @@ class Dusun extends CI_Controller
 			'kode_desa' => $kode_desa,
 		);
 
-		if($message=$this->validate($dusun)){
-			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
+		$this->form_validation->set_rules('nama_dusun','Nama Dusun','required');
+		$this->form_validation->set_rules('kode_desa','Kode Desa','required');
+		$this->form_validation->set_rules('kode_desa','Nama Desa','required');
+		
+		if ($this->form_validation->run() == FALSE){
 			redirect('dusun/update/' . $kode_dusun);
 		}else{
 			$this->model->update($dusun);
-			$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
 			redirect('dusun');
 		}
-	}
+}
 
 	public function delete($kode_dusun)
 	{
