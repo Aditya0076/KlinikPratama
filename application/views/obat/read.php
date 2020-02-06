@@ -28,6 +28,16 @@ require 'application/views/templete/navbar.php';
 				<thead class="table-dark">
 				<tr><a type="button" class="btn btn-primary" href="<?= base_url('');?>obat/create">Tambah Data</a></tr>
 				<tr>
+					<?php if ($this->session->flashdata('flash')):?>
+						<!--							<div class="alert alert-dark alert-dismissible fade show" role="alert">-->
+						<!--								<strong>Data Berhasil </strong> -->
+						<!--								<button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+						<!--									<span aria-hidden="true">&times;</span>--> <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
+						<!--								</button>-->
+						<!--							</div>-->
+					<?php endif;?>
+				</tr>
+				<tr>
 					<th>No</th>
 					<th>Nama obat</th>
 					<th>Jenis Obat</th>
@@ -44,7 +54,7 @@ require 'application/views/templete/navbar.php';
 						<td><?=$obat['jumlah_obat'];?></td>
 						<td>
 							<a type="button" class="btn btn-warning" href="<?= base_url('obat/update/' . $obat['id_obat']);?>">Update</a>
-							<a type="button" class="btn btn-danger" href="<?= base_url('obat/delete/' . $obat['id_obat']);?>">Delete</a>
+							<a type="button" href="<?= base_url('obat/delete/' . $obat['id_obat']);?>"  class="btn btn-danger tombol-hapus">Delete</a>
 						</td>
 					</tr>
 				<?php endforeach; ?>

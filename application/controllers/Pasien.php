@@ -47,23 +47,11 @@ class Pasien extends CI_Controller
 		);
 		$this->form_validation->set_rules('nama_pasien','Nama pasien','required');
 		$this->form_validation->set_rules('umur','Umur','required');
-		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','isset');
+		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','required');
 		if ($this->form_validation->run()== FALSE){
 			$this->load->view('pasien/create',$data);
-
-<<<<<<< HEAD
-		$this->form_validation->set_rules('kode_keluarga','Kode Keluarga','required');
-		$this->form_validation->set_rules('nama_pasien','Nama Pasien','required');
-		$this->form_validation->set_rules('umur','Umur','required');
-		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','required');
-		
-		if ($this->form_validation->run() == FALSE){
-			redirect('pasien/create');
-		}else{
-=======
 		}
 		else{
->>>>>>> 849c3e840538df4c35eb0a929b7848ad081c8c40
 			$this->model->insert($pasien);
 			redirect('pasien');
 		}
@@ -102,18 +90,6 @@ class Pasien extends CI_Controller
 			'jenis_kelamin' => $jenis_kelamin
 		);
 
-<<<<<<< HEAD
-		$this->form_validation->set_rules('kode_pasien','Kode Pasien','required');
-		$this->form_validation->set_rules('kode_keluarga','Kode Keluarga','required');
-		$this->form_validation->set_rules('nama_pasien','Nama Pasien','required');
-		$this->form_validation->set_rules('umur','Umur','required');
-		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','required');
-		
-		if ($this->form_validation->run() == FALSE){
-			redirect('pasien/update' . $kode_pasien);
-		}else{
-			$this->model->update($pasien);
-=======
 		$this->form_validation->set_rules('nama_pasien','Nama pasien','required');
 		$this->form_validation->set_rules('umur','Umur','required');
 		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','isset');
@@ -122,7 +98,6 @@ class Pasien extends CI_Controller
 		}
 		else{
 			$this->model->insert($pasien);
->>>>>>> 849c3e840538df4c35eb0a929b7848ad081c8c40
 			redirect('pasien');
 		}
 //		if($message=$this->validate($pasien)){
