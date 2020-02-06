@@ -4,15 +4,17 @@
  */
 class BelanjaModel extends CI_Model
 {
-	
-	public function insert()
+	private const TABLE_NAME = "belanja";
+
+	public function insert($belanja)
 	{
-		$this->db->insert();
+		$this->db->insert($this::TABLE_NAME, $belanja);
 	}
 
-	public function delete()
+	public function delete($kode_belanja)
 	{
-
+		$this->db->where('kode_belanja',$kode_belanja)
+				 ->delete($this::TABLE_NAME);
 	}
 
 	public function getAll()
@@ -20,13 +22,16 @@ class BelanjaModel extends CI_Model
 
 	}
 
-	public function getByKode()
+	public function getByKode($kode_belanja)
 	{
-
+		$query = $this->db->where('kode_belanja',$kode_belanja)
+						  ->get($this::TABLE_NAME)
+						  ->row_array();
+		return $query;
 	}
 
-	public function update()
+	public function update($belanja)
 	{
-
+		$this->db->replace($this::TABLE_NAME,$belanja);
 	}
 }

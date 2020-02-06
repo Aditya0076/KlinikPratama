@@ -13,7 +13,8 @@ class ObatModel extends CI_Model
 
 	public function delete($id_obat)
 	{
-		$this->db->where('id_obat',$id_obat)->delete($this::TABLE_NAME);
+		$this->db->where('id_obat',$id_obat)
+				 ->delete($this::TABLE_NAME);
 	}
 
 	public function getAll()
