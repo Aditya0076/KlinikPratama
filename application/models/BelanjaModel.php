@@ -19,7 +19,14 @@ class BelanjaModel extends CI_Model
 
 	public function getAll()
 	{
-
+		$query = $this->db->select('*')
+						  ->from($this::TABLE_NAME)
+						  ->join('rekam_medis','rekam_medis.waktu = belanja.waktu')
+						  ->get()
+						  ->result_array();
+						  // $query = $this->db->get($this::TABLE_NAME)->result_array();
+						  die(var_dump($query));
+		return $query;
 	}
 
 	public function getByKode($kode_belanja)
