@@ -1,7 +1,4 @@
 <?php 
-/**
- * 
- */
 class Kepala_keluarga extends CI_Controller
 {
 	
@@ -9,7 +6,6 @@ class Kepala_keluarga extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Kepala_keluargaModel', 'model');
-		$this->load->library('form_validation');
 	}
 
 	public function index()
@@ -34,7 +30,6 @@ class Kepala_keluarga extends CI_Controller
 
 	public function insert()
 	{
-		$data['dusun'] = $this->model->getDusun();
 		$kode_keluarga = $this->input->post('kode_keluarga');
 		$kode_dusun = $this->input->post('kode_dusun');
 		$nama_kepala = $this->input->post('nama_kepala');
@@ -50,8 +45,7 @@ class Kepala_keluarga extends CI_Controller
 		$this->form_validation->set_rules('kode_keluarga','Kode keluarga','required');
 		$this->form_validation->set_rules('nama_kepala','Nama Kepala Keluarga','required');
 		if ($this->form_validation->run()== FALSE){
-			$this->load->view('kepala_keluarga/create',$data);
-		//	redirect('kepala_keluarga/create');
+			redirect('kepala_keluarga/create');
 		}else{
 			$this->session->set_flashdata('flash','Ditambahkan');
 			$this->model->insert($kepala_keluarga);
@@ -82,14 +76,14 @@ class Kepala_keluarga extends CI_Controller
 			'nama_kepala' => $nama_kepala,
 			'rt' => $rt
 		);
-
+		
 		$this->form_validation->set_rules('kode_keluarga','Kode keluarga','required');
 		$this->form_validation->set_rules('nama_kepala','Nama Kepala Keluarga','required');
 		
 		if ($this->form_validation->run() == FALSE){
 			redirect('kepala_keluarga/update/'. $kode_keluarga);
 		}else{
-			$this->session->set_flashdata('flash','Di Update');
+			$this->session->set_flashdata('flash','Diedit');
 			$this->model->update($kepala_keluarga);
 			redirect('kepala_keluarga');
 		}

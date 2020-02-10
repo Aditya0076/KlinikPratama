@@ -10,7 +10,7 @@ class Belanja extends CI_Controller
 
 	public function index()
 	{
-		$data['rekapitulasi'] = $this->model->getAll();
+		$data = $this->model->getAll();
 		$this->load->view('belanja/read');
 	}
 

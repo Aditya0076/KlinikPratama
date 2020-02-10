@@ -9,7 +9,6 @@ class Pasien extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('PasienModel','model');
-		$this->load->library('form_validation');
 	}
 
 	public function index()
@@ -55,6 +54,7 @@ class Pasien extends CI_Controller
 			redirect('pasien/create');
 		}else{
 			$this->model->insert($pasien);
+			$this->session->set_flashdata('flash','Di Tambahkan');
 			redirect('pasien');
 		}
 //		if($message=$this->validate($pasien)){
@@ -76,8 +76,8 @@ class Pasien extends CI_Controller
 	
 	public function replace($kode_pasien_received)
 	{
-		$data['pasien'] = $this->model->getPasien($kode_pasien);
-		$data['kepala'] = $this->model->getKepala_keluarga();
+		// $data['pasien'] = $this->model->getPasien($kode_pasien_received);
+		// $data['kepala'] = $this->model->getKepala_keluarga();
 		$kode_pasien = $kode_pasien_received;
 		$kode_keluarga = $this->input->post('kode_keluarga');
 		$nama_pasien = $this->input->post('nama_pasien');
@@ -92,16 +92,18 @@ class Pasien extends CI_Controller
 			'jenis_kelamin' => $jenis_kelamin
 		);
 
+
 		$this->form_validation->set_rules('kode_pasien','Kode Pasien','required');
 		$this->form_validation->set_rules('kode_keluarga','Kode Keluarga','required');
 		$this->form_validation->set_rules('nama_pasien','Nama Pasien','required');
 		$this->form_validation->set_rules('umur','Umur','required');
 		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','required');
-		
-		if ($this->form_validation->run() == FALSE){
-			redirect('pasien/update' . $kode_pasien);
+		// 
+		if($this->form_validation->run() == FALSE){
+			redirect('pasien/update/' . $kode_pasien);
 		}else{
 			$this->model->update($pasien);
+			$this->session->set_flashdata('flash','Di Update');
 			redirect('pasien');
 		}
 //		if($message=$this->validate($pasien)){
@@ -117,7 +119,7 @@ class Pasien extends CI_Controller
 	public function delete($kode_pasien)
 	{
 		$this->model->delete($kode_pasien);
-		$this->session->set_flashdata('delete','<div stlye="color: blue">Data berhasil dihapus</div>');
+		$this->session->set_flashdata('flash','Di Hapus');
 		redirect('pasien');
 	}
 

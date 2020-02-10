@@ -33,6 +33,8 @@ class Dusun extends CI_Controller
 			'kode_desa' => $kode_desa,
 		);
 
+		// die(var_dump($dusun));
+	 // $this->form_validation->set_rules('kode_keluarga','Kode keluarga','required');
 		$this->form_validation->set_rules('nama_dusun','Nama Dusun','required');
 		$this->form_validation->set_rules('kode_desa','Kode Desa','required');
 		
