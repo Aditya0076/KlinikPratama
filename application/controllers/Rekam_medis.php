@@ -81,7 +81,7 @@ class Rekam_medis extends CI_Controller
 
 	public  function replace($kode_rekam_received){
 		$kode_rekam = $kode_rekam_received;
-		$data['rekam_medis'] = $this->model->getRekam($kode_rekam);
+
 		$waktu = $this->input->post('waktu');
 		$kode_pasien = $this->input->post('kode_pasien');
 		$anamnese = $this->input->post('anamnese');
@@ -98,22 +98,23 @@ class Rekam_medis extends CI_Controller
 			'terapi' => $terapi,
 			'biaya' => $biaya
 		);
-
-		$this->form_validation->set_rules('kode_rekam','Kode Rekam','required');
-		$this->form_validation->set_rules('waktu','Waktu','required');
-		$this->form_validation->set_rules('kode_pasien','Kode Pasien','required');
-		$this->form_validation->set_rules('anamnese','Anamnese','required');
-		$this->form_validation->set_rules('diagnosa','Diagnosa','required');
-		$this->form_validation->set_rules('terapi','Terapi','required');
-		$this->form_validation->set_rules('biaya','Biaya','required');
-
-		if ($this->form_validation->run() == FALSE){
-			$this->load->view('rekam_medis/update',$data);
-			//redirect('rekam_medis/update' . $kode_rekam);
-		}else{
-			$this->model->update($rekam_medis);
-			$this->load->view('rekam_medis/readRekam/'.$kode_pasien);
-		}
+		redirect('rekam_medis/readRekam/' . $kode_pasien);
+//		$this->form_validation->set_rules('kode_rekam','Kode Rekam','required');
+//		$this->form_validation->set_rules('waktu','Waktu','required');
+//		$this->form_validation->set_rules('kode_pasien','Kode Pasien','required');
+//		$this->form_validation->set_rules('anamnese','Anamnese','required');
+//		$this->form_validation->set_rules('diagnosa','Diagnosa','required');
+//		$this->form_validation->set_rules('terapi','Terapi','required');
+//		$this->form_validation->set_rules('biaya','Biaya','required');
+//
+//		if ($this->form_validation->run() == FALSE){
+//			//$this->load->view('rekam_medis/update',$data);
+//			redirect('rekam_medis/readRekam/' . $kode_pasien);
+//		}else{
+//			$data['rekam_medis'] = $this->model->getRekam($kode_rekam);
+//			redirect('rekam_medis/readRekam/' . $kode_pasien);
+//			//$this->load->view('rekam_medis/readRekam/'.$kode_pasien);
+//		}
 	}
 
 	public function delete($kode_rekam, $kode_pasien)
