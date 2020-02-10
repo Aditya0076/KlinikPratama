@@ -23,23 +23,12 @@ require 'application/views/templete/navbar.php';
 			</tr>
 	</div>
 	<div class="jumbotron-fluid">
-
 		<tr>
 			<table class="container table  table-responsive-lg table-active table-striped">
 				<thead class="table-dark ">
-<!--				<tr>-->
-<!--					<td>-->
-
 						<?php if ($this->session->flashdata('flash')):?>
-<!--							<div class="alert alert-dark alert-dismissible fade show" role="alert">-->
-<!--								<strong>Data Berhasil </strong> -->
-<!--								<button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
-<!--									<span aria-hidden="true">&times;</span>--> <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
-<!--								</button>-->
-<!--							</div>-->
+							<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
 						<?php endif;?>
-<!--					</td>-->
-<!--				</tr>-->
 				<tr><a type="button" class="btn btn-primary" href="<?= base_url('');?>kepala_keluarga/create">Tambah Data</a></tr>
 				<tr>
 					<th>Kode Keluarga</th>
@@ -64,8 +53,8 @@ require 'application/views/templete/navbar.php';
 						<td><?=$kepala_keluarga['nama_desa'];?></td>
 						<td><?=$kepala_keluarga['rt'];?></td>
 						<td>
-							<a type="button" class="btn btn-warning" href="<?= base_url('kepala_keluarga/update/' . $kepala_keluarga['kode_keluarga']);?>">Update</a>
-							<a type="button" href="<?= base_url('kepala_keluarga/delete/' . $kepala_keluarga['kode_keluarga']);?>" class="btn btn-danger tombol-hapus" >Delete</a>
+							<a type="button" class="btn btn-warning" href="<?= base_url('kepala_keluarga/update/' . $kepala_keluarga['kode_keluarga']);?>">Edit</a>
+							<a type="button" href="<?= base_url('kepala_keluarga/delete/' . $kepala_keluarga['kode_keluarga']);?>" class="btn btn-danger tombol-hapus" >Hapus</a>
 						</td>
 					</tr>
 					<?php

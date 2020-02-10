@@ -36,6 +36,9 @@ require 'application/views/templete/navbar.php';
 		<tr>
 			<table class="container table  table-responsive-lg table-active table-striped">
 				<thead class="table-dark">
+				<?php if ($this->session->flashdata('flash')):?>
+					<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
+				<?php endif;?>
 				<tr>
 					<th>No</th>
 					<th>Tanggal</th>
@@ -59,8 +62,8 @@ require 'application/views/templete/navbar.php';
 						<td><?=$rekam_medis['terapi'];?></td>
 						<td>Rp.<?=$rekam_medis['biaya'];?></td>
 						<td>
-							<a type="button" class="btn btn-warning" href="<?= base_url('rekam_medis/update/' . $rekam_medis['kode_rekam']);?>">Update</a>
-							<a type="button" class="btn btn-danger" href="<?= base_url('rekam_medis/delete/' . $rekam_medis['kode_rekam'] . '/' . $rekam_medis['kode_pasien']);?>">Delete</a>
+							<a type="button" class="btn btn-warning" href="<?= base_url('rekam_medis/update/' . $rekam_medis['kode_rekam']);?>">Edit</a>
+							<a type="button" href="<?= base_url('rekam_medis/delete/' . $rekam_medis['kode_rekam'] . '/' . $rekam_medis['kode_pasien']);?>"class="btn btn-danger tombol-hapus">Hapus</a>
 						</td>
 					</tr>
 					<?php

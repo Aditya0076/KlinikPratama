@@ -12,7 +12,7 @@ require 'application/views/templete/navbar.php';
 			</tr>
 
 			<tr>
-				<?= $this->session->flashdata('messenger'); ?>
+
 				<form class="form-control-sm form-group" method="post" action="<?=base_url('desa/insert');?>">
 					<td></td>
 					<td>
@@ -32,8 +32,10 @@ require 'application/views/templete/navbar.php';
 
 							<tr>
 								<td colspan="3"> <center><input class="btn btn-success " type="submit" value="Tambah"></center></td>
-
 							</tr>
+							<?php if ($this->session->flashdata('flash')):?>
+								<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
+							<?php endif;?>
 						</table>
 					</td>
 				</form>

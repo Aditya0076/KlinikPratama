@@ -29,12 +29,7 @@ require 'application/views/templete/navbar.php';
 				<tr><a type="button" class="btn btn-primary" href="<?= base_url('');?>obat/create">Tambah Data</a></tr>
 				<tr>
 					<?php if ($this->session->flashdata('flash')):?>
-						<!--							<div class="alert alert-dark alert-dismissible fade show" role="alert">-->
-						<!--								<strong>Data Berhasil </strong> -->
-						<!--								<button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
-						<!--									<span aria-hidden="true">&times;</span>--> <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
-						<!--								</button>-->
-						<!--							</div>-->
+						<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
 					<?php endif;?>
 				</tr>
 				<tr>

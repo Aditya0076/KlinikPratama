@@ -12,7 +12,9 @@ require 'application/views/templete/navbar.php';
 			</tr>
 
 			<tr>
-				<?= $this->session->flashdata('flash'); ?>
+				<?php if ($this->session->flashdata('flash')):?>
+					<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
+				<?php endif;?>
 				<form class="form-control-sm form-group" method="post" action="<?=base_url('dusun/insert');?>">
 					<td></td>
 					<td>

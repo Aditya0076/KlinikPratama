@@ -27,6 +27,9 @@ require 'application/views/templete/navbar.php';
 			<table class="container table  table-responsive-lg table-active table-striped">
 				<thead class="table-dark">
 				<tr><a type="button" class="btn btn-primary" href="<?= base_url('');?>pasien/create">Tambah Data</a></tr>
+				<?php if ($this->session->flashdata('flash')):?>
+					<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
+				<?php endif;?>
 				<tr>
 					<th>No</th>
 					<th>Nama Kepala Keluarga</th>
@@ -49,8 +52,8 @@ require 'application/views/templete/navbar.php';
 						<td><?=$pasien['jenis_kelamin'];?></td>
 						<td>
 							<a type="button" class="btn btn-info" href="<?= base_url('rekam_medis/readRekam/'.$pasien['kode_pasien']);?>">Detail</a>
-							<a type="button" class="btn btn-warning" href="<?= base_url('pasien/update/' . $pasien['kode_pasien']);?>">Update</a>
-							<a type="button" class="btn btn-danger" href="<?= base_url('pasien/delete/' . $pasien['kode_pasien']);?>">Delete</a>	
+							<a type="button" class="btn btn-warning" href="<?= base_url('pasien/update/' . $pasien['kode_pasien']);?>">Edit</a>
+							<a type="button" href="<?= base_url('pasien/delete/' . $pasien['kode_pasien']);?>"class="btn btn-danger tombol-hapus">Hapus</a>
 						</td>
 					</tr>
 				<?php

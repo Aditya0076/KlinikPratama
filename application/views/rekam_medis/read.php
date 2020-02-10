@@ -26,6 +26,9 @@ require 'application/views/templete/navbar.php';
 		<tr>
 			<table class="container table  table-responsive-lg table-active">
 				<thead>
+				<?php if ($this->session->flashdata('flash')):?>
+					<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
+				<?php endif;?>
 				<tr>
 					<th>No</th>
 					<th>Nama Kepala Keluarga</th>
@@ -48,7 +51,7 @@ require 'application/views/templete/navbar.php';
 						<td><?=$pasien['jenis_kelamin'];?></td>
 						<td>
 							<a type="button" class="btn btn-warning" href="<?= base_url('rekam_medis/readRekam/'.$pasien['kode_pasien']);?>">Detail</a>
-							<a type="button" class="btn btn-danger" href="<?= base_url('pasien/delete/' . $pasien['kode_pasien']);?>">Delete</a>
+							<a type="button"  href="<?= base_url('pasien/delete/' . $pasien['kode_pasien']);?>" class="btn btn-danger tombol-hapus">Hapus</a>
 						</td>
 					</tr>
 					<?php

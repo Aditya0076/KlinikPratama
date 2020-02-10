@@ -8,7 +8,6 @@
 			<h5 class="my-auto" style="color: ghostwhite">Copyright © 2019 KP </h5>
 		</div>
 	</div>
-
 </div>
 <script src="<?php echo base_url('');?>/assets/bootstrap/js/jquery.min.js" ></script>
 <script src="<?php echo base_url('');?>/assets/sweetalert/jquery-3.4.1.slim.min.js" ></script>
