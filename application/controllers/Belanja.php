@@ -40,6 +40,7 @@ class Belanja extends CI_Controller
 			redirect('belanja/create');
 		else{
 			$this->model->insert($belanja);
+			$this->session->set_flashdata('flash','Ditambahkan');
 			redirect('belanja');
 		}
 	}
@@ -64,7 +65,6 @@ class Belanja extends CI_Controller
 			'biaya' => $biaya
 		);
 
-		$this->form_validation->set_rules('kode_belanja','Kode Belanja','required');
 		$this->form_validation->set_rules('waktu','Waktu','required');
 		$this->form_validation->set_rules('keterangan','Keterangan','required');
 		$this->form_validation->set_rules('biaya','Biaya','required');
@@ -73,6 +73,7 @@ class Belanja extends CI_Controller
 			redirect('belanja/update' . $kode_belanja);
 		else{
 			$this->model->update($belanja);
+			$this->session->set_flashdata('flash','Diedit');
 			redirect('belanja');
 		}
 	}
@@ -80,5 +81,7 @@ class Belanja extends CI_Controller
 	public function delete($kode_belanja)
 	{
 		$this->model->delete($kode_belanja);
+		$this->session->set_flashdata('flash','Dihapus');
+		redirect('belanja');
 	}
 }

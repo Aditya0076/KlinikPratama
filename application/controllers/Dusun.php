@@ -11,12 +11,6 @@ class Dusun extends CI_Controller
 		$this->load->model('DusunModel', 'model');
 	}
 
-	/*public function index()
-	{
-		// $data['dusun'] = $this->model->getAll();
-		$this->load->view('dusun/create',$data);
-	}*/
-
 	public function index()
 	{
 		$data['desa'] = $this->model->getDesa();
@@ -33,8 +27,6 @@ class Dusun extends CI_Controller
 			'kode_desa' => $kode_desa,
 		);
 
-		// die(var_dump($dusun));
-	 // $this->form_validation->set_rules('kode_keluarga','Kode keluarga','required');
 		$this->form_validation->set_rules('nama_dusun','Nama Dusun','required');
 		$this->form_validation->set_rules('kode_desa','Kode Desa','required');
 		
@@ -42,6 +34,7 @@ class Dusun extends CI_Controller
 			redirect('dusun');
 		}else{
 			$this->model->insert($dusun);
+			$this->session->set_flashdata('flash','Ditambahkan');
 			redirect('dusun');
 		}
 	}
@@ -72,6 +65,7 @@ class Dusun extends CI_Controller
 			redirect('dusun/update/' . $kode_dusun);
 		}else{
 			$this->model->update($dusun);
+			$this->session->set_flashdata('flash','Diedit');
 			redirect('dusun');
 		}
 }
@@ -79,36 +73,7 @@ class Dusun extends CI_Controller
 	public function delete($kode_dusun)
 	{
 		$this->model->delete($kode_dusun);
-		$this->session->set_flashdata('delete','<div stlye="color: blue">Data berhasil dihapus</div>');
+		$this->session->set_flashdata('flash','Dihapus');
 		redirect('dusun');
-	}
-
-
-	public function validate($dusun)
-	{
-		$name = array(
-			'kode_dusun' => 'Kode dusun',
-			'nama_dusun' => 'Nama dusun',
-			'kode_desa' => 'Nama desa'
-		);
-
-		$message = "";
-		foreach ($dusun as $key => $value) {
-			if(!$value){
-				if(!$message){
-					foreach ($name as $name => $n_value) {
-						if(!strcmp($key,$name))
-							$message = $n_value;
-					}
-				}
-				else{
-					foreach ($name as $name => $n_value) {
-						if(!strcmp($key,$name))
-							$message = $message . ', ' . $n_value;  
-					}
-				}
-			}
-		}
-		return $message;
 	}
 }

@@ -54,17 +54,9 @@ class Pasien extends CI_Controller
 			redirect('pasien/create');
 		}else{
 			$this->model->insert($pasien);
-			$this->session->set_flashdata('flash','Di Tambahkan');
+			$this->session->set_flashdata('flash','Ditambahkan');
 			redirect('pasien');
 		}
-//		if($message=$this->validate($pasien)){
-//			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
-//			redirect('pasien/create');
-//		}else{
-//			$this->model->insert($pasien);
-//			$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
-//			redirect('pasien');
-//		}
 	}
 
 	public function update($kode_pasien)
@@ -76,8 +68,6 @@ class Pasien extends CI_Controller
 	
 	public function replace($kode_pasien_received)
 	{
-		// $data['pasien'] = $this->model->getPasien($kode_pasien_received);
-		// $data['kepala'] = $this->model->getKepala_keluarga();
 		$kode_pasien = $kode_pasien_received;
 		$kode_keluarga = $this->input->post('kode_keluarga');
 		$nama_pasien = $this->input->post('nama_pasien');
@@ -92,65 +82,24 @@ class Pasien extends CI_Controller
 			'jenis_kelamin' => $jenis_kelamin
 		);
 
-
-		$this->form_validation->set_rules('kode_pasien','Kode Pasien','required');
 		$this->form_validation->set_rules('kode_keluarga','Kode Keluarga','required');
 		$this->form_validation->set_rules('nama_pasien','Nama Pasien','required');
 		$this->form_validation->set_rules('umur','Umur','required');
 		$this->form_validation->set_rules('jenis_kelamin','Jenis Kelamin','required');
-		// 
+		
 		if($this->form_validation->run() == FALSE){
 			redirect('pasien/update/' . $kode_pasien);
 		}else{
 			$this->model->update($pasien);
-			$this->session->set_flashdata('flash','Di Update');
+			$this->session->set_flashdata('flash','Diedit');
 			redirect('pasien');
 		}
-//		if($message=$this->validate($pasien)){
-//			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
-//			redirect('pasien/update' . $kode_pasien);
-//		}else{
-//			$this->model->update($pasien);
-//			$this->session->set_flashdata('update','<div stlye="color: blue">Data berhasil diedit</div>');
-//			redirect('pasien');
-//		}
 	}
 
 	public function delete($kode_pasien)
 	{
 		$this->model->delete($kode_pasien);
-		$this->session->set_flashdata('flash','Di Hapus');
+		$this->session->set_flashdata('flash','Dihapus');
 		redirect('pasien');
 	}
-
-	public function validate($pasien)
-	{
-		$name = array(
-			'kode_pasien' => 'Kode pasien',
-			'kode_keluarga' => 'Kode Keluarga',
-			'nama_pasien' => 'Nama pasien',
-			'umur' => 'Umur',
-			'jenis_kelamin' => 'Jenis Kelamin'
-		);
-
-		$message = "";
-		foreach ($pasien as $key => $value) {
-			if(!$value){
-				if(!$message){
-					foreach ($name as $name => $n_value) {
-						if(!strcmp($key,$name))
-							$message = $n_value;
-					}
-				}
-				else{
-					foreach ($name as $name => $n_value) {
-						if(!strcmp($key,$name))
-							$message = $message . ', ' . $n_value;  
-					}
-				}
-			}
-		}
-		return $message;
-	}
-
 }

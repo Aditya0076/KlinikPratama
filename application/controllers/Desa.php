@@ -24,6 +24,7 @@ class Desa extends CI_Controller
 			$this->load->view('desa');
 		}else{
 			$this->model->insert($desa);
+			$this->session->set_flashdata('flash','Ditambahkan');
 			redirect('desa');
 		}
 	}
@@ -51,6 +52,7 @@ class Desa extends CI_Controller
 			redirect('desa/update' . $kode_desa);
 		}else{
 			$this->model->update($desa);
+			$this->session->set_flashdata('flash','Diedit');
 			redirect('desa');
 		}
 	}
@@ -58,33 +60,7 @@ class Desa extends CI_Controller
 	public function delete($kode_desa)
 	{
 		$this->model->delete($kode_desa);
+		$this->session->set_flashdata('flash','Dihapus');
 		redirect('desa');
-	}
-
-	public function validate($desa)
-	{
-		$name = array(
-			'kode_desa' => 'Kode desa',
-			'nama_desa' => 'Nama desa'
-		);
-
-		$message = "";
-		foreach ($desa as $key => $value) {
-			if(!$value){
-				if(!$message){
-					foreach ($name as $name => $n_value) {
-						if(!strcmp($key,$name))
-							$message = $n_value;
-					}
-				}
-				else{
-					foreach ($name as $name => $n_value) {
-						if(!strcmp($key,$name))
-							$message = $message . ', ' . $n_value;  
-					}
-				}
-			}
-		}
-		return $message;
 	}
 }

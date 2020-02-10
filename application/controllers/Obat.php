@@ -40,8 +40,7 @@ class Obat extends CI_Controller
 		
 		if ($this->form_validation->run() == FALSE){
 			$this->session->set_flashdata('flash','Ditambahkan');
-			$this->load->view('obat/create');
-			//redirect('obat/create');
+			redirect('obat/create');
 		}else{
 			$this->model->insert($obat);
 			redirect('obat');
@@ -69,16 +68,15 @@ class Obat extends CI_Controller
 			'jumlah_obat' => $jumlah_obat
 		);
 
-		$this->form_validation->set_rules('id_obat','Id Obat','required');
 		$this->form_validation->set_rules('nama_obat','Nama Obat','required');
+		$this->form_validation->set_rules('jenis_obat','Jenis Obat','required');
 		$this->form_validation->set_rules('jumlah_obat','Jumlah Obat','required');
 		
 		if ($this->form_validation->run() == FALSE){
-			$this->load->view('obat/update',$data);
-			//redirect('obat/update' . $id_obat);
+			redirect('obat/update' . $id_obat);
 		}else{
 			$this->model->update($obat);
-			$this->session->set_flashdata('flash','Di Update');
+			$this->session->set_flashdata('flash','Diedit');
 			redirect('obat');
 		}
 	}
@@ -88,16 +86,5 @@ class Obat extends CI_Controller
 		$this->model->delete($id_obat);
 		$this->session->set_flashdata('flash','Dihapus');
 		redirect('obat');
-	}
-
-	public function validate($obat)
-	{
-		$name = array(
-			'id_obat' => 'Kode Obat',
-			'nama_obat' => 'Nama obat',
-			'jenis_obat' => 'Jenis obat',
-			'jumlah_obat' => 'Jumlah obat'
-		);
-
 	}
 }

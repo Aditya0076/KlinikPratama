@@ -26,7 +26,6 @@ class Rekam_medis extends CI_Controller
 	public function create()
 	{
 		$data['pasien'] = $this->model->getPasien();
-//		die(var_dump($data));
 		$this->load->view('rekam_medis/create',$data);
 	}
 
@@ -59,21 +58,13 @@ class Rekam_medis extends CI_Controller
 			redirect('rekam_medis/create');
 		}else{
 			$this->model->insert($rekam_medis);
+			$this->session->set_flashdata('flash','Ditambahkan');
 			redirect('rekam_medis/readRekam/' . $kode_pasien);
 		}
-//		if($message=$this->validate($rekam_medis)){
-//			$this->session->set_flashdata('gagal','<div>Data <span style="color:red"> ' . $message . '</span> kosong, mohon disi terlebih dahulu<div>');
-//			redirect('rekam_medis/create');
-//		}else{
-//			$this->model->insert($rekam_medis);
-//			$this->session->set_flashdata('create','<div stlye="color: blue">Data berhasil ditambahkan</div>');
-//			redirect('rekam_medis/readRekam/' . $kode_pasien);
-//		}
 	}
 
 	public  function update($kode_rekam){
 		$data['rekam_medis'] = $this->model->getRekam($kode_rekam);
-//		die(var_dump($data));
 		$this->load->view('rekam_medis/update',$data);
 
 	}
@@ -97,8 +88,7 @@ class Rekam_medis extends CI_Controller
 			'terapi' => $terapi,
 			'biaya' => $biaya
 		);
-		// die(var_dump($rekam_medis));
-		$this->form_validation->set_rules('kode_rekam','Kode Rekam','required');
+
 		$this->form_validation->set_rules('waktu','Waktu','required');
 		$this->form_validation->set_rules('kode_pasien','Kode Pasien','required');
 		$this->form_validation->set_rules('anamnese','Anamnese','required');
@@ -107,9 +97,10 @@ class Rekam_medis extends CI_Controller
 		$this->form_validation->set_rules('biaya','Biaya','required');
 
 		if ($this->form_validation->run() == FALSE){
-			redirect('rekam_medis/update' . $kode_rekam);
+			redirect('rekam_medis/update/' . $kode_rekam);
 		}else{
 			$this->model->update($rekam_medis);
+			$this->session->set_flashdata('flash','Diedit');
 			redirect('rekam_medis/readRekam/' . $kode_pasien);
 		}
 	}
@@ -117,39 +108,7 @@ class Rekam_medis extends CI_Controller
 	public function delete($kode_rekam, $kode_pasien)
 	{
 		$this->model->delete($kode_rekam);
-		$this->session->set_flashdata('delete','<div stlye="color: blue">Data berhasil dihapus</div>');
+		$this->session->set_flashdata('flash','Dihapus');
 		redirect('rekam_medis/readRekam/' . $kode_pasien);
-	}
-
-	public function validate($rekam_medis)
-	{
-		$name = array(
-			'kode_rekam' => 'Kode Rekam',
-			'waktu' => 'Waktu',
-			'kode_pasien' => 'Kode pasien',
-			'anamnese' => 'Anamnese',
-			'diagnosa' => 'Diagnosa',
-			'terapi' => 'Terapi',
-			'biaya' => 'Biaya'
-		);
-
-		$message = "";
-		foreach ($rekam_medis as $key => $value) {
-			if(!$value){
-				if(!$message){
-					foreach ($name as $name => $n_value) {
-						if(!strcmp($key,$name))
-							$message = $n_value;
-					}
-				}
-				else{
-					foreach ($name as $name => $n_value) {
-						if(!strcmp($key,$name))
-							$message = $message . ', ' . $n_value;  
-					}
-				}
-			}
-		}
-		return $message;
 	}
 }
