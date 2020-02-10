@@ -56,7 +56,7 @@ class Rekam_medis extends CI_Controller
 		$this->form_validation->set_rules('terapi','Terapi','required');
 		$this->form_validation->set_rules('biaya','Biaya','required');
 		
-		if ($this->form_validation->run() == FALSE){\
+		if ($this->form_validation->run() == FALSE){
 			redirect('rekam_medis/create');
 		}else{
 			$this->model->insert($rekam_medis);
@@ -98,7 +98,7 @@ class Rekam_medis extends CI_Controller
 			'terapi' => $terapi,
 			'biaya' => $biaya
 		);
-
+		// die(var_dump($rekam_medis));
 		$this->form_validation->set_rules('kode_rekam','Kode Rekam','required');
 		$this->form_validation->set_rules('waktu','Waktu','required');
 		$this->form_validation->set_rules('kode_pasien','Kode Pasien','required');
@@ -107,12 +107,15 @@ class Rekam_medis extends CI_Controller
 		$this->form_validation->set_rules('terapi','Terapi','required');
 		$this->form_validation->set_rules('biaya','Biaya','required');
 
+		$result = $this->form_validation->run();
+		die(var_dump($result));
+
 		if ($this->form_validation->run() == FALSE){
-			$this->load->view('rekam_medis/update',$data);
-			//redirect('rekam_medis/update' . $kode_rekam);
+			die(var_dump($rekam_medis));
+			redirect('rekam_medis/update' . $kode_rekam);
 		}else{
 			$this->model->update($rekam_medis);
-			$this->load->view('rekam_medis/readRekam/'.$kode_pasien);
+			redirect('rekam_medis/readRekam/' . $kode_pasien);
 		}
 	}
 
