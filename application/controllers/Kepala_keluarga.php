@@ -5,8 +5,7 @@ class Kepala_keluarga extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Kepala_keluargaModel', 'model');
-		$this->load->library('form_validation');
+		$this->load->model('Kepala_keluargaModel', 'model')
 	}
 
 	public function index()
