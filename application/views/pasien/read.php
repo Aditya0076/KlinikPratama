@@ -41,11 +41,10 @@ require 'application/views/templete/navbar.php';
 				</thead>
 				<tbody class="table-light">
 				<?php 
-					$id = 1;
 					foreach ($pasien as $pasien) : 
 				?>
 					<tr>
-						<td><?= $id++;?></td>
+						<td><?= ++$start;?></td>
 						<td><?=$pasien['nama_kepala'];?></td>
 						<td><?=$pasien['nama_pasien'];?></td>
 						<td><?=$pasien['umur'];?></td>
@@ -61,7 +60,7 @@ require 'application/views/templete/navbar.php';
 				?>
 				</tbody>
 			</table>
-
+			<?= $this->pagination->create_links(); ?>
 		</tr>
 		</table>
 	</div>

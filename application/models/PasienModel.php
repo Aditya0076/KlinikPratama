@@ -20,9 +20,17 @@ class PasienModel extends CI_Model
 	public function getAll()
 	{
 		$query = $this->db->select('*')
-						  ->from($this::TABLE_NAME)
 						  ->join('kepala_keluarga', 'kepala_keluarga.kode_keluarga =  data_pasien.kode_keluarga')
-						  ->get()
+						  ->get($this::TABLE_NAME)
+						  ->result_array();
+		return $query;
+	}
+
+	public function getPasiens($limit, $start)
+	{
+		$query = $this->db->select('*')
+						  ->join('kepala_keluarga','kepala_keluarga.kode_keluarga = data_pasien.kode_keluarga')
+						  ->get($this::TABLE_NAME,$limit,$start)
 						  ->result_array();
 		return $query;
 	}
@@ -30,21 +38,26 @@ class PasienModel extends CI_Model
 	public function getPasien($kode_pasien)
 	{
 		$query = $this->db->select('*')
-						  ->from($this::TABLE_NAME)
 						  ->join('kepala_keluarga','kepala_keluarga.kode_keluarga = data_pasien.kode_keluarga')
 						  ->where('data_pasien.kode_pasien',$kode_pasien)
-						  ->get()
+						  ->get($this::TABLE_NAME)
 						  ->row_array();
+		return $query;
+	}
+
+	public function countAllPasien()
+	{
+		$query = $this->db->get($this::TABLE_NAME)
+						  ->num_rows();
 		return $query;
 	}
 
 	public function searchPasien($nama_pasien)
 	{
 		$query = $this->db->select('*')
-						  ->from($this::TABLE_NAME)
 						  ->join('kepala_keluarga','kepala_keluarga.kode_keluarga = data_pasien.kode_keluarga')
 						  ->like('nama_pasien',$nama_pasien,'after')
-						  ->get()
+						  ->get($this::TABLE_NAME)
 						  ->result_array();
 		return $query;
 	}
