@@ -13,15 +13,24 @@ class Pasien extends CI_Controller
 
 	public function index()
 	{
-		// $data['pasien'] = $this->model->getAll();	
+		// $data['pasien'] = $this->model->getAll();
+		//ambil data searching
+		if($this->input->post('submit')){
+			$data['keyword'] = $this->input->post('keyword');
+		}else{
+			$data['keyword'] = null;	
+		}
+
 		//config pagination
-		$config['total_rows'] = $this->model->countAllPasien();
+		$this->db->like('nama_pasien',$data['keyword']);
+		$this->db->from('data_pasien')
+		$config['total_rows'] = $this->db->count_all_results(); //$this->model->countAllPasien();
 		$config['per_page'] = 3;
 		//initialize
 		$this->pagination->initialize($config);
 
 		$data['start'] = $this->uri->segment(3);
-		$data['pasien'] = $this->model->getPasiens($config['per_page'],$data['start']);
+		$data['pasien'] = $this->model->getPasiens($config['per_page'],$data['start'],$data['keyword']);
 		// var_dump($data); die();
 		$this->load->view('pasien/read',$data);
 	}

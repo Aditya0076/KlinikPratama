@@ -26,8 +26,12 @@ class PasienModel extends CI_Model
 		return $query;
 	}
 
-	public function getPasiens($limit, $start)
+	public function getPasiens($limit, $start, $keyword = null)
 	{
+
+		if($keyword){
+			$this->db->like('nama_pasien',$keyword);
+		}
 		$query = $this->db->select('*')
 						  ->join('kepala_keluarga','kepala_keluarga.kode_keluarga = data_pasien.kode_keluarga')
 						  ->get($this::TABLE_NAME,$limit,$start)
