@@ -4,29 +4,35 @@ require 'application/views/templete/navbar.php';
 ?>
 
 <div class="jumbotron m-lg-auto ">
-	<table class="container text-justify m-auto ">
-		<tr>
-			<td>Nama Pasien</td>
-			<td>:</td>
-			<td>
-				<form class="form-inline" method="post" action="<?= base_url('pasien/search');?>">
-					<input class="form-control mr-sm-2" type="text" placeholder="masukkan nama pasien" name="nama_pasien" >
-					<button class="btn btn-success" type="submit">Cari</button>
-				</form>
-			</td>
-		</tr>
-	</table>
 	<div class="container">
 		<table class="text-justify m-auto">
 			<tr>
 				<td colspan="2"> <center><h3 class="font-weight-bold">Data Pasien</h3></center></td>
 			</tr>
 	</div>
+
+
 	<div class="jumbotron-fluid">
 		<tr>
 			<table class="container table  table-responsive-lg table-active table-striped">
 				<thead class="table-dark">
-				<tr><a type="button" class="btn btn-primary" href="<?= base_url('');?>pasien/create">Tambah Data</a></tr>
+				<tr>
+					<div class="row">
+					  <div class="col-12 col-md-8">
+					  	<a type="button" class="btn btn-primary" href="<?= base_url('');?>pasien/create">Tambah Data</a>				  	
+					  </div>
+					  <div  class=" col-6 col-md-4">
+						<form  action="" method="post">
+						  <div class="input-group mb-3">
+							<input type="text" class="form-control" placeholder="Search">
+							<div class="input-group-append">
+							  <input type="submit" class="btn btn-primary" name="submit">
+						  	</div>
+						  </div>
+						</form>
+					  </div>
+					</div>
+				  </tr>
 				<?php if ($this->session->flashdata('flash')):?>
 					<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
 				<?php endif;?>
