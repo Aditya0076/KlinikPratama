@@ -13,13 +13,13 @@ class Transaksi extends CI_Controller
 
 	public function index()
 	{
-		$data['transaksi'] = $this->model->getAll();
-		$this->load->view('transaksi/read',$data);
+		$data['belanja'] = $this->model->getAll();
+		$this->load->view('belanja/read',$data);
 	}
 
 	public function create()
 	{
-		$this->load->view('transaksi/create');
+		$this->load->view('belanja/create');
 	}
 
 	public function insert()
@@ -42,10 +42,10 @@ class Transaksi extends CI_Controller
 		$this->form_validation->set_rules('biaya_administrasi','Biaya Administrasi','required');
 
 		if ($this->form_validation->run() == FALSE){\
-			redirect('transaksi/create');
+			redirect('belanja/create');
 		}else{
 			$this->model->insert($transaksi);
-			redirect('transaksi');
+			redirect('belanja');
 		}
 	}
 

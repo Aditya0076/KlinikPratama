@@ -42,8 +42,8 @@
 				Laporan
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				<a class="dropdown-item" href="<?= base_url('');?>transaksi/create">Tambah Data Pengeluaran</a>
-				<a class="dropdown-item" href="<?= base_url('');?>transaksi">Tampil Data Laporan</a>
+				<a class="dropdown-item" href="<?= base_url('');?>belanja/create">Tambah Data Pengeluaran</a>
+				<a class="dropdown-item" href="<?= base_url('');?>belanja">Tampil Data Laporan</a>
 			</div>
 		</li>
 		<li class="nav-item" style="color: ghostwhite;">

@@ -11,7 +11,7 @@ require 'application/views/templete/navbar.php';
 			<td>
 				<form class="form-inline" method="post" action="<?= base_url('pasien/search');?>">
 					<input class="form-control mr-sm-2" type="text" placeholder="masukkan nama pasien" name="nama_pasien" >
-					<button class="btn btn-success" type="submit">Cari</button>
+					<button class="btn btn-success" type="submit" name="cari">Cari</button>
 				</form>
 			</td>
 		</tr>
@@ -60,7 +60,7 @@ require 'application/views/templete/navbar.php';
 				?>
 				</tbody>
 			</table>
-			<?= $this->pagination->create_links(); ?>
+			<center><?= $this->pagination->create_links(); ?></center>
 		</tr>
 		</table>
 	</div>

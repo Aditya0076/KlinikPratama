@@ -195,7 +195,7 @@ CREATE TABLE `rekam_medis` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaksi`
+-- Struktur dari tabel `belanja`
 --
 
 CREATE TABLE `transaksi` (
@@ -269,7 +269,7 @@ ALTER TABLE `rekam_medis`
   ADD KEY `fk_kode_pasien` (`kode_pasien`);
 
 --
--- Indeks untuk tabel `transaksi`
+-- Indeks untuk tabel `belanja`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`id_transaksi`);
@@ -321,7 +321,7 @@ ALTER TABLE `rekam_medis`
   MODIFY `kode_rekam` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `transaksi`
+-- AUTO_INCREMENT untuk tabel `belanja`
 --
 ALTER TABLE `transaksi`
   MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT;
