@@ -13,12 +13,19 @@ class Pasien extends CI_Controller
 
 	public function index()
 	{
+<<<<<<< HEAD
 		$data['pasien'] = $this->model->getAll();
 
 		//config pagination
 		$config['total_rows'] = $this->model->countAllPasien();
 		$config['per_page'] = 8;
 
+=======
+		// $data['pasien'] = $this->model->getAll();	
+		//config pagination
+		$config['total_rows'] = $this->model->countAllPasien();
+		$config['per_page'] = 3;
+>>>>>>> c1db9b428125d53706d63f9b6fcc5a4598ad1516
 		//initialize
 		$this->pagination->initialize($config);
 

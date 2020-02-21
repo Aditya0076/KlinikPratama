@@ -4,6 +4,7 @@ require 'application/views/templete/navbar.php';
 ?>
 
 <div class="jumbotron m-lg-auto ">
+<<<<<<< HEAD
 	<table class="container text-justify m-auto ">
 		<tr>
 			<td>Nama Pasien</td>
@@ -16,17 +17,37 @@ require 'application/views/templete/navbar.php';
 			</td>
 		</tr>
 	</table>
+=======
+>>>>>>> c1db9b428125d53706d63f9b6fcc5a4598ad1516
 	<div class="container">
 		<table class="text-justify m-auto">
 			<tr>
 				<td colspan="2"> <center><h3 class="font-weight-bold">Data Pasien</h3></center></td>
 			</tr>
 	</div>
+
+
 	<div class="jumbotron-fluid">
 		<tr>
 			<table class="container table  table-responsive-lg table-active table-striped">
 				<thead class="table-dark">
-				<tr><a type="button" class="btn btn-primary" href="<?= base_url('');?>pasien/create">Tambah Data</a></tr>
+				<tr>
+					<div class="row">
+					  <div class="col-12 col-md-8">
+					  	<a type="button" class="btn btn-primary" href="<?= base_url('');?>pasien/create">Tambah Data</a>				  	
+					  </div>
+					  <div  class=" col-6 col-md-4">
+						<form  action="" method="post">
+						  <div class="input-group mb-3">
+							<input type="text" class="form-control" placeholder="Search">
+							<div class="input-group-append">
+							  <input type="submit" class="btn btn-primary" name="submit">
+						  	</div>
+						  </div>
+						</form>
+					  </div>
+					</div>
+				  </tr>
 				<?php if ($this->session->flashdata('flash')):?>
 					<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
 				<?php endif;?>
