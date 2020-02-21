@@ -66,7 +66,7 @@ require 'application/views/templete/navbar.php';
 				?>
 				</tbody>
 			</table>
-			<?= $this->pagination->create_links(); ?>
+			<center><?= $this->pagination->create_links(); ?></center>
 		</tr>
 		</table>
 	</div>

@@ -21,11 +21,14 @@ class Pasien extends CI_Controller
 			$data['keyword'] = null;	
 		}
 
+		$data['pasien'] = $this->model->getAll();
+
 		//config pagination
 		$this->db->like('nama_pasien',$data['keyword']);
 		$this->db->from('data_pasien')
 		$config['total_rows'] = $this->db->count_all_results(); //$this->model->countAllPasien();
 		$config['per_page'] = 3;
+
 		//initialize
 		$this->pagination->initialize($config);
 

@@ -5,7 +5,7 @@
 class TransaksiModel extends CI_Model
 {
 	
-	private const TABLE_NAME = "transaksi";
+	private const TABLE_NAME = "belanja";
 
 	public function insert($transaksi)
 	{
@@ -29,8 +29,8 @@ class TransaksiModel extends CI_Model
 	{
 		$query = $this->db->select('*')
 						  ->from($this::TABLE_NAME)
-						  ->join('data_pasien','data_pasien.kode_keluarga = transaksi.kode_keluarga','right')
-						  ->where('transaksi.kode_keluarga',$kode_keluarga)
+						  ->join('data_pasien','data_pasien.kode_keluarga = belanja.kode_keluarga','right')
+						  ->where('belanja.kode_keluarga',$kode_keluarga)
 						  ->get()
 						  ->result_array();
 		return $query;

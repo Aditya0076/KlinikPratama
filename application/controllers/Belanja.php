@@ -10,8 +10,9 @@ class Belanja extends CI_Controller
 
 	public function index()
 	{
-		$data = $this->model->getAll();
-		$this->load->view('belanja/read');
+		$data['full'] = $this->model->getAll();
+
+		$this->load->view('belanja/read',$data);
 	}
 
 	public function create()
@@ -22,18 +23,18 @@ class Belanja extends CI_Controller
 	public function insert()
 	{
 		$waktu = $this->input->post('waktu');
-		$keterangan = $this->input->post('keterangan');
+		$nama_barang = $this->input->post('nama_barang');
 		$biaya = $this->input->post('biaya');
 
 
 		$belanja = array(
 			'waktu' => $waktu,
-			'keterangan' => $keterangan,
+			'nama_barang' => $nama_barang,
 			'biaya' => $biaya
 		);
 
 		$this->form_validation->set_rules('waktu','Waktu','required');
-		$this->form_validation->set_rules('keterangan','Keterangan','required');
+		$this->form_validation->set_rules('nama_barang','Nama Barang','required');
 		$this->form_validation->set_rules('biaya','Biaya','required');
 
 		if($this->form_validation->run() == FALSE)
@@ -51,22 +52,23 @@ class Belanja extends CI_Controller
 		$this->load->view('belanja/update',$data);
 	}
 
-	public function replace()
+	public function replace($kode_belanja_received)
 	{
+		$kode_belanja_received=$kode_belanja;
 		$kode_belanja = $this->input->post('kode_belanja');
 		$waktu = $this->input->post('waktu');
-		$keterangan = $this->input->post('keterangan');
+		$nama_barang = $this->input->post('nama_barang');
 		$biaya = $this->input->post('biaya');
 
 		$belanja = array(
 			'kode_belanja' => $kode_belanja,
 			'waktu' => $waktu,
-			'keterangan' => $keterangan,
+			'nama_barang' => $nama_barang,
 			'biaya' => $biaya
 		);
 
 		$this->form_validation->set_rules('waktu','Waktu','required');
-		$this->form_validation->set_rules('keterangan','Keterangan','required');
+		$this->form_validation->set_rules('nama_barang','Nama Barang','required');
 		$this->form_validation->set_rules('biaya','Biaya','required');
 
 		if($this->form_validation->run() == FALSE)
