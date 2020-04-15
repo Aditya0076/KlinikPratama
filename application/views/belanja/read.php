@@ -19,7 +19,7 @@ require 'application/views/templete/navbar.php';
 	<div class="container">
 		<table class="text-justify m-auto">
 			<tr>
-				<td colspan="2"> <center><h3 class="font-weight-bold">Data Kepala Keluarga</h3></center></td>
+				<td colspan="2"> <center><h3 class="font-weight-bold">Laporan Harian</h3></center></td>
 			</tr>
 	</div>
 	<div class="jumbotron-fluid">

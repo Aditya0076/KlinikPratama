@@ -22,12 +22,12 @@ require 'application/views/templete/navbar.php';
 							<tr>
 								<td>Nama Barang</td>
 								<td>:</td>
-								<td colspan="3"><input class="form-control" type="text" name="nama_barang" placeholder="masukkan nama barang"></td>
+								<td colspan="3"><input class="form-control" type="text" name="keterangan" placeholder="masukkan nama barang"></td>
 							</tr>
 							<tr>
 								<td>Biaya Pengeluaran</td>
 								<td>:</td>
-								<td colspan="3"><input class="form-control" type="text" name="biaya" placeholder="masukkan biaya pengeluaran"></td>
+								<td colspan="3"><input class="form-control" type="text" name="keluar" placeholder="masukkan biaya pengeluaran"></td>
 							</tr>
 
 							<tr>

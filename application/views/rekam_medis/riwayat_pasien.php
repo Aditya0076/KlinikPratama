@@ -56,7 +56,7 @@ require 'application/views/templete/navbar.php';
 					foreach ($rekam_medis as $rekam_medis) :
 				?>
 					<tr>
-						<td><?= $id++;?></td>
+						<td><?= ++$start;?></td>
 						<td><?=$rekam_medis['waktu']; ?></td>
 						<td><?=$rekam_medis['anamnese'];?></td>
 						<td><?=$rekam_medis['diagnosa'];?></td>
@@ -72,8 +72,10 @@ require 'application/views/templete/navbar.php';
 				?>
 				</tr>
 				</tbody>
-				<center><?= $this->pagination->create_links(); ?></center>
 			</table>
+				<tr>
+					<center><?= $this->pagination->create_links(); ?></center>
+				</tr>
 				<tr>
 				  <a class="btn btn-primary" href="<?= base_url('pasien');?>">Kembali</a>
 				</tr>

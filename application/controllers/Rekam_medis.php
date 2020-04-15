@@ -17,15 +17,20 @@ class Rekam_medis extends CI_Controller
 		$this->load->view('rekam_medis/read',$data);
 	}
 
-	public function riwayat($kode_pasien){
+	public function riwayat($kode_pasien = null){
+		/*if($kode_pasien != null)
+			$this->session->set_userdata(array('kode_pasien' => $kode_pasien));
+		else
+			$kode_pasien = $this->session->userdata['kode_pasien'];
+		*/
 		$data['pasien'] = $this->model->getPasienByKode($kode_pasien);
-
+		// die(var_dump($data['pasien']));
 		//config pagination
 		$this->db->from('rekam_medis');
+		$this->db->where('kode_pasien',$kode_pasien);
     	$config['base_url'] = 'http://localhost/KlinikPratama/rekam_medis/riwayat/' . $kode_pasien . '/';
 		$config['total_rows'] = $this->db->count_all_results();
 		$config['per_page'] = 2;
-		// die(var_dump($config['total_rows']));
 
 		//initialize
 		$this->pagination->initialize($config);

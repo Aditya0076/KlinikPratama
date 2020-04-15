@@ -30,12 +30,12 @@ require 'application/views/templete/navbar.php';
 					<tr>
 						<td>Nama Barang</td>
 						<td>:</td>
-						<td colspan="3"><input class="form-control" type="text" name="nama_barang" value="<?=$belanja['nama_barang'];?>"></td>
+						<td colspan="3"><input class="form-control" type="text" name="keterangan" value="<?=$belanja['nama_barang'];?>"></td>
 					</tr>
 					<tr>
 						<td>Biaya Pengeluaran</td>
 						<td>:</td>
-						<td colspan="3"><input class="form-control" type="text" name="biaya" value="<?=$belanja['biaya'];?>"></td>
+						<td colspan="3"><input class="form-control" type="text" name="keluar" value="<?=$belanja['biaya'];?>"></td>
 					</tr>
 
 					</tr>
