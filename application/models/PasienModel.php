@@ -28,7 +28,6 @@ class PasienModel extends CI_Model
 
 	public function getPasiens($limit, $start, $keyword = null)
 	{
-
 		if($keyword){
 			$this->db->like('nama_pasien',$keyword);
 		}

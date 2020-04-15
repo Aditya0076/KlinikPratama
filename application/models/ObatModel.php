@@ -24,6 +24,15 @@ class ObatModel extends CI_Model
 		return $query;
 	}
 
+	public function getObats($limit, $start, $keyword = null){
+		if($keyword)
+			$this->db->like('nama_obat',$keyword);
+		$query = $this->db->get($this::TABLE_NAME, $limit, $start)
+						  ->result_array();
+		return $query;
+
+	}
+
 	public function getObat($id_obat)
 	{
 		$query = $this->db->where('id_obat',$id_obat)

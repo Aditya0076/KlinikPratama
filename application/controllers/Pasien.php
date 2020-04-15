@@ -13,20 +13,23 @@ class Pasien extends CI_Controller
 
 	public function index()
 	{
-		// $data['pasien'] = $this->model->getAll();
 		//ambil data searching
 		if($this->input->post('submit')){
 			$data['keyword'] = $this->input->post('keyword');
+			if(!strcmp($data['keyword'],'semua')){
+				$this->session->unset_userdata('keyword');
+				$data['keyword'] = null; 
+			}else
+				$this->session->set_userdata('keyword',$data['keyword']);
 		}else{
-			$data['keyword'] = null;	
+			$data['keyword'] = $this->session->userdata('keyword');	
 		}
-
-		$data['pasien'] = $this->model->getAll();
 
 		//config pagination
 		$this->db->like('nama_pasien',$data['keyword']);
-		$this->db->from('data_pasien')
-		$config['total_rows'] = $this->db->count_all_results(); //$this->model->countAllPasien();
+		$this->db->from('data_pasien');
+    	$config['base_url'] = 'http://localhost/KlinikPratama/pasien/index/';
+		$config['total_rows'] = $this->db->count_all_results();
 		$config['per_page'] = 3;
 
 		//initialize
@@ -34,7 +37,6 @@ class Pasien extends CI_Controller
 
 		$data['start'] = $this->uri->segment(3);
 		$data['pasien'] = $this->model->getPasiens($config['per_page'],$data['start'],$data['keyword']);
-		// var_dump($data); die();
 		$this->load->view('pasien/read',$data);
 	}
 

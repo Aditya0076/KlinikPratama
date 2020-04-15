@@ -17,22 +17,22 @@ require 'application/views/templete/navbar.php';
 			<table class="container table  table-responsive-lg table-active table-striped">
 				<thead class="table-dark">
 				<tr>
-					<div class="row">
-					  <div class="col-12 col-md-8">
-					  	<a type="button" class="btn btn-primary" href="<?= base_url('');?>pasien/create">Tambah Data</a>				  	
-					  </div>
-					  <div  class=" col-6 col-md-4">
-						<form  action="" method="post">
-						  <div class="input-group mb-3">
-							<input name="keyword" type="text" class="form-control" placeholder="Search" autofocus>
-							<div class="input-group-append">
-							  <input type="submit" class="btn btn-primary" name="submit">
-						  	</div>
-						  </div>
-						</form>
-					  </div>
+				  <div class="row">
+					<div class="col-12 col-md-8">
+					  	<a type="button" class="btn btn-primary" href="<?= base_url('');?>pasien/create">Tambah Data</a>  	
 					</div>
-				  </tr>
+					<div  class=" col-6 col-md-4">
+					  <form  action="" method="post">
+					    <div class="input-group mb-3">
+						  <input name="keyword" type="text" class="form-control" placeholder="Search" autofocus>
+						  <div class="input-group-append">
+							<input type="submit" class="btn btn-primary" name="submit">
+						  </div>
+						</div>
+					  </form>
+					</div>
+				  </div>
+				</tr>
 				<?php if ($this->session->flashdata('flash')):?>
 					<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
 				<?php endif;?>
@@ -46,7 +46,18 @@ require 'application/views/templete/navbar.php';
 				</tr>
 				</thead>
 				<tbody class="table-light">
+				<?php
+					if(empty($pasien)) :
+				 ?>
+				  <tr>
+				 	<td colspan="6">
+				 	  <div class="alert alert-danger" role="alert">
+					  	Data tidak ditemukan !
+					  </div>
+				 	</td>		
+				  </tr>
 				<?php 
+					endif;
 					foreach ($pasien as $pasien) : 
 				?>
 					<tr>
@@ -56,7 +67,7 @@ require 'application/views/templete/navbar.php';
 						<td><?=$pasien['umur'];?></td>
 						<td><?=$pasien['jenis_kelamin'];?></td>
 						<td>
-							<a type="button" class="btn btn-info" href="<?= base_url('rekam_medis/readRekam/'.$pasien['kode_pasien']);?>">Detail</a>
+							<a type="button" class="btn btn-info" href="<?= base_url('rekam_medis/riwayat/'.$pasien['kode_pasien']);?>">Detail</a>
 							<a type="button" class="btn btn-warning" href="<?= base_url('pasien/update/' . $pasien['kode_pasien']);?>">Edit</a>
 							<a type="button" href="<?= base_url('pasien/delete/' . $pasien['kode_pasien']);?>"class="btn btn-danger tombol-hapus">Hapus</a>
 						</td>
@@ -65,8 +76,8 @@ require 'application/views/templete/navbar.php';
 					endforeach; 
 				?>
 				</tbody>
-			</table>
 			<center><?= $this->pagination->create_links(); ?></center>
+			</table>
 		</tr>
 		</table>
 	</div>

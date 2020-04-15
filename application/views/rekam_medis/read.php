@@ -58,6 +58,7 @@ require 'application/views/templete/navbar.php';
 				endforeach;
 				?>
 				</tbody>
+				<center><?= $this->pagination->create_links(); ?></center>
 			</table>
 
 		</tr>

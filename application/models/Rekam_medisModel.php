@@ -33,12 +33,20 @@ class Rekam_medisModel extends CI_Model
 	}
 
 	public  function  getPasienByKode($kode_pasien){
-		$query = $this->db->select ('*') -> from ('data_pasien') -> join('kepala_keluarga','kepala_keluarga.kode_keluarga = data_pasien.kode_keluarga')
+		$query = $this->db->select ('*') 
+						  -> from ('data_pasien') 
+						  ->join('kepala_keluarga','kepala_keluarga.kode_keluarga = data_pasien.kode_keluarga')
 						  ->where('kode_pasien',$kode_pasien)
 						  ->get()
 			              ->row_array();
 		return $query;
 	}
+
+	// public function getRekams($limit, $start, $keyword = null){
+	// 	if($keyword){
+	// 		$this->db->like
+	// 	}
+	// }
 
 	public  function  getRekam($kode_rekam){
 		$query = $this->db->select('*')->from($this::TABLE_NAME)
@@ -50,9 +58,9 @@ class Rekam_medisModel extends CI_Model
 
 	}
 
-	public function getRekamByKode($kode_pasien){
+	public function getRekamByKode($limit, $start, $kode_pasien){
 		$query = $this->db->where('kode_pasien',$kode_pasien)
-						  ->get($this::TABLE_NAME)
+						  ->get($this::TABLE_NAME,$limit,$start)
 						  ->result_array();
 		return $query;
 	}

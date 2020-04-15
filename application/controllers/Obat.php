@@ -13,8 +13,33 @@ class Obat extends CI_Controller
 
 	public function index()
 	{
-		$data['obat'] = $this->model->getAll();
-		$this->load->view('obat/read',$data);
+		if($this->input->post('submit')){
+			$data['keyword'] = $this->input->post('keyword');
+			if(!strcmp($data['keyword'],'semua')){
+				$this->session->unset_userdata('keyword');
+				$data['keyword'] = null;
+			}else{
+				$this->session->set_userdata('keyword', $data['keyword']);
+			}
+ 		}else{
+ 			$data['keyword'] = $this->session->userdata('keyword');
+ 		}
+		// $data['obat'] = $this->model->getAll();
+		// $this->load->view('obat/read',$data);
+
+ 		//config pagination
+ 		$this->db->like('nama_obat', $data['keyword']);
+ 		$this->db->from('obat');
+    	$config['base_url'] = 'http://localhost/KlinikPratama/obat/index/';
+ 		$config['total_rows'] = $this->db->count_all_results();
+ 		$config['per_page'] = 3;
+
+ 		//initialize
+ 		$this->pagination->initialize($config);
+
+ 		$data['start'] = $this->uri->segment(3);
+ 		$data['obat'] = $this->model->getObats($config['per_page'], $data['start'], $data['keyword']);
+ 		$this->load->view('obat/read',$data);
 	}
 
 	public function create()

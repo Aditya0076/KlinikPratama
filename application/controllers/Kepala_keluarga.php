@@ -10,7 +10,33 @@ class Kepala_keluarga extends CI_Controller
 
 	public function index()
 	{
-		$data['kepala_keluarga'] = $this->model->getAll();
+		// $data['kepala_keluarga'] = $this->model->getAll();
+		// $this->load->view('kepala_keluarga/read',$data);
+
+		//ambil data searching
+		if($this->input->post('submit')){
+			$data['keyword'] = $this->input->post('keyword');
+			if(!strcmp($data['keyword'],'semua')){
+				$this->session->unset_userdata('keyword');
+				$data['keyword'] = null; 
+			}else
+				$this->session->set_userdata('keyword',$data['keyword']);
+		}else{
+			$data['keyword'] = $this->session->userdata('keyword');	
+		}
+
+		//config pagination
+		$this->db->like('kode_keluarga',$data['keyword']);
+		$this->db->from('kepala_keluarga');
+    	$config['base_url'] = 'http://localhost/KlinikPratama/kepala_keluarga/index/';
+		$config['total_rows'] = $this->db->count_all_results();
+		$config['per_page'] = 3;
+
+		//initialize
+		$this->pagination->initialize($config);
+
+		$data['start'] = $this->uri->segment(3);
+		$data['kepala_keluarga'] = $this->model->getKepalas($config['per_page'],$data['start'],$data['keyword']);
 		$this->load->view('kepala_keluarga/read',$data);
 	}
 

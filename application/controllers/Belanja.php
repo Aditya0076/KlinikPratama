@@ -10,9 +10,63 @@ class Belanja extends CI_Controller
 
 	public function index()
 	{
-		$data['full'] = $this->model->getAll();
+		// $data['full'] = $this->model->getAll();
+		// $this->load->view('belanja/read',$data);
+		if($this->input->post('submit')){
+			$data['keyword'] = $this->input->post('keyword');
+			if(!strcmp($data['keyword'],'semua')){
+				$this->session->unset_userdata('keyword');
+				$data['keyword'] = null;
+			}else{
+				$this->session->set_userdata('keyword',$data['keyword']);
+			}
+		}else{
+			$data['keyword'] = $this->session->userdata('keyword');
+		}
 
+		//config pagination
+		$this->db->like('waktu',$data['keyword']);
+		$this->db->from('belanja');
+    	$config['base_url'] = 'http://localhost/KlinikPratama/belanja/index/';
+		$config['total_rows'] = $this->db->count_all_results();
+		$config['per_page'] = 3;
+
+		//initialize
+		$this->pagination->initialize($config);
+
+		$data['start'] = $this->uri->segment(3);
+		$data['belanja'] = $this->model->getBelanjas($config['per_page'],$data['start'],$data['keyword']);
 		$this->load->view('belanja/read',$data);
+	}
+
+	public function read(){
+		$laporan = array('kode','waktu','keterangan','masuk','keluar','total');
+		// $belanja = $this->model->getBelanja();
+		// foreach ($belanja as $belanja) {
+		// 	$laporan = array(
+		// 		'kode' => $belanja['kode_belanja'],
+		// 		'waktu' => $belanja['waktu'],
+		// 		'keterangan' => $belanja['nama_barang'],
+		// 		'masuk' => '',
+		// 		'keluar' => $belanja['biaya'],
+		// 		'total' => '' 
+		// 	);
+		// }
+		$riwayat = $this->model->getRiwayat();
+		die(var_dump($riwayat));
+		foreach ($riwayat as $riwayat) {
+			$laporan = array(
+				'kode' => '',
+				'waktu' => $riwayat['waktu'],
+				'keterangan' => 'masuk',
+				'masuk' => '',
+				'keluar' => $riwayat['biaya'],
+				'total' => ''
+			);
+		}
+
+		$this->model->update($riwayat);
+		echo "sukses";
 	}
 
 	public function create()
@@ -54,8 +108,7 @@ class Belanja extends CI_Controller
 
 	public function replace($kode_belanja_received)
 	{
-		$kode_belanja_received=$kode_belanja;
-		$kode_belanja = $this->input->post('kode_belanja');
+		$kode_belanja = $kode_belanja_received;
 		$waktu = $this->input->post('waktu');
 		$nama_barang = $this->input->post('nama_barang');
 		$biaya = $this->input->post('biaya');

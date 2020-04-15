@@ -50,10 +50,11 @@ require 'application/views/templete/navbar.php';
 				</tr>
 				</thead>
 				<tbody >
+				<tr>
 				<?php
-				$id = 1;
-				foreach ($rekam_medis as $rekam_medis) :
-					?>
+					$id = 1;
+					foreach ($rekam_medis as $rekam_medis) :
+				?>
 					<tr>
 						<td><?= $id++;?></td>
 						<td><?=$rekam_medis['waktu']; ?></td>
@@ -66,15 +67,18 @@ require 'application/views/templete/navbar.php';
 							<a type="button" href="<?= base_url('rekam_medis/delete/' . $rekam_medis['kode_rekam'] . '/' . $rekam_medis['kode_pasien']);?>"class="btn btn-danger tombol-hapus">Hapus</a>
 						</td>
 					</tr>
-					<?php
-				endforeach;
+				<?php
+					endforeach;
 				?>
+				</tr>
 				</tbody>
+				<center><?= $this->pagination->create_links(); ?></center>
 			</table>
-
+				<tr>
+				  <a class="btn btn-primary" href="<?= base_url('pasien');?>">Kembali</a>
+				</tr>
 		</tr>
 		</table>
-
 		<div class="jumbotron"></div>
 	</div>
 	</div>

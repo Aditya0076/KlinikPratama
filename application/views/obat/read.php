@@ -4,7 +4,7 @@ require 'application/views/templete/navbar.php';
 ?>
 
 <div class="jumbotron m-lg-auto ">
-	<table class="container text-justify m-auto ">
+	<!-- <table class="container text-justify m-auto ">
 		<tr>
 			<td>Nama Obat</td>
 			<td>:</td>
@@ -15,7 +15,7 @@ require 'application/views/templete/navbar.php';
 				</form>
 			</td>
 		</tr>
-	</table>
+	</table> -->
 	<div class="container">
 		<table class="text-justify m-auto">
 			<tr>
@@ -26,7 +26,23 @@ require 'application/views/templete/navbar.php';
 		<tr>
 			<table class="container table  table-responsive-lg table-active table-striped">
 				<thead class="table-dark">
-				<tr><a type="button" class="btn btn-primary" href="<?= base_url('');?>obat/create">Tambah Data</a></tr>
+				<tr>
+				  <div class="row">
+					<div class="col-12 col-md-8">
+					  	<a type="button" class="btn btn-primary" href="<?= base_url('');?>obat/create">Tambah Data</a>  	
+					</div>
+					<div  class=" col-6 col-md-4">
+					  <form  action="" method="post">
+					    <div class="input-group mb-3">
+						  <input name="keyword" type="text" class="form-control" placeholder="Search" autofocus>
+						  <div class="input-group-append">
+							<input type="submit" class="btn btn-primary" name="submit">
+						  </div>
+						</div>
+					  </form>
+					</div>
+				  </div>
+				</tr>
 				<tr>
 					<?php if ($this->session->flashdata('flash')):?>
 						<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
@@ -54,6 +70,7 @@ require 'application/views/templete/navbar.php';
 					</tr>
 				<?php endforeach; ?>
 				</tbody>
+				<center><?= $this->pagination->create_links(); ?></center>
 			</table>
 
 		</tr>
