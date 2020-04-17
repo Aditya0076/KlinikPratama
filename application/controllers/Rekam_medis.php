@@ -17,32 +17,40 @@ class Rekam_medis extends CI_Controller
 		$this->load->view('rekam_medis/read',$data);
 	}
 
-	public function riwayat($kode_pasien = null){
-		/*if($kode_pasien != null)
-			$this->session->set_userdata(array('kode_pasien' => $kode_pasien));
-		else
+	public function riwayat(){
+		//cek input dari view pasien/read
+		if($this->input->post('kode_pasien') != null){
+			$kode_pasien = $this->input->post('kode_pasien');
+			$data = array('kode_pasien' => $kode_pasien);
+			$this->session->set_userdata($data);
+		}else{
 			$kode_pasien = $this->session->userdata['kode_pasien'];
-		*/
+		}
+		
+		// die(var_dump($this->session->userdata['kode_pasien']));
 		$data['pasien'] = $this->model->getPasienByKode($kode_pasien);
-		// die(var_dump($data['pasien']));
 		//config pagination
 		$this->db->from('rekam_medis');
 		$this->db->where('kode_pasien',$kode_pasien);
-    	$config['base_url'] = 'http://localhost/KlinikPratama/rekam_medis/riwayat/' . $kode_pasien . '/';
+    	$config['base_url'] = 'http://localhost/KlinikPratama/rekam_medis/riwayat/'; // . $kode_pasien . '/';
 		$config['total_rows'] = $this->db->count_all_results();
 		$config['per_page'] = 2;
 
 		//initialize
 		$this->pagination->initialize($config);
 
-		$data['start'] = $this->uri->segment(4);
+		$data['start'] = $this->uri->segment(3);
 		$data['rekam_medis'] = $this->model->getRekamByKode($config['per_page'],$data['start'],$kode_pasien);
 		$this->load->view('rekam_medis/riwayat_pasien',$data);
 	}
 
 	public function create()
 	{
-		$data['pasien'] = $this->model->getPasien();
+		if($this->input->post('kode_pasien') != null){
+			$kode_pasien = $this->input->post('kode_pasien');
+			$data['pas'] = $this->model->getPasienByKode($kode_pasien);
+		}else
+			$data['pasien'] = $this->model->getPasien();
 		$this->load->view('rekam_medis/create',$data);
 	}
 
@@ -64,6 +72,7 @@ class Rekam_medis extends CI_Controller
 			'biaya' => $biaya
 		);
 
+		//validasi isi
 		$this->form_validation->set_rules('waktu','Tanggal','required');
 		$this->form_validation->set_rules('kode_pasien','Kode Pasien','required');
 		$this->form_validation->set_rules('anamnese','Anamnese','required');
@@ -76,7 +85,10 @@ class Rekam_medis extends CI_Controller
 		}else{
 			$this->model->insert($rekam_medis);
 			$this->session->set_flashdata('flash','Ditambahkan');
-			redirect('rekam_medis/riwayat/' . $kode_pasien);
+			//set userdata berdasarkan kode pasien
+			$data = array('kode_pasien' => $kode_pasien);
+			$this->session->set_userdata($data);
+			redirect('rekam_medis/riwayat/'); // . $kode_pasien);
 		}
 	}
 

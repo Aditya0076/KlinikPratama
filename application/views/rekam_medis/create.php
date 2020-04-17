@@ -43,6 +43,10 @@ require 'application/views/templete/navbar.php';
 								<td>Nama Pasien</td>
 								<td>:</td>
 								<td>
+									<?php if($pas != null) { ?>
+										<input type="text" class="form-control" value="<?=$pas['nama_pasien'];?>" disabled>
+										<input type="text" name="kode_pasien" value="<?=$pas['kode_pasien'];?>" hidden>
+									<?php }else{ ?>
 									<select class="form-control" name="kode_pasien" >
 										<?php foreach ($pasien as $pasien) : ?>
 											<option value="<?=$pasien['kode_pasien'];?>">
@@ -50,6 +54,7 @@ require 'application/views/templete/navbar.php';
 											</option>
 										<?php endforeach; ?>
 									</select>
+									<?php } ?>
 								</td>
 							</tr>
 							</tr>

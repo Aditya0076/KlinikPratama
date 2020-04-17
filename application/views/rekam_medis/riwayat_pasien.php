@@ -30,7 +30,13 @@ require 'application/views/templete/navbar.php';
 
 	<div class="container">
 		<table class="container-fluid">
-			<tr><td><a type="button" class="btn btn-primary" href="<?= base_url('');?>rekam_medis/create">Tambah Data</a></td></tr>
+			<tr><td>
+				<form method="post" action="<?= base_url('');?>rekam_medis/create" >
+					<input type="text" name="kode_pasien" value="<?= $pasien['kode_pasien'];?>" hidden >
+					<input type="submit" class="btn btn-primary" value="Tambah Data" >
+				</form>
+				<!-- <a type="button" class="btn btn-primary" href="<= base_url('');?>rekam_medis/create">Tambah Data</a> -->
+			</td></tr>
 		</table>
 	<div class="jumbotron-fluid">
 		<tr>
@@ -74,10 +80,10 @@ require 'application/views/templete/navbar.php';
 				</tbody>
 			</table>
 				<tr>
-					<center><?= $this->pagination->create_links(); ?></center>
+				  <a class="btn btn-primary" href="<?= base_url('pasien');?>">Kembali</a>
 				</tr>
 				<tr>
-				  <a class="btn btn-primary" href="<?= base_url('pasien');?>">Kembali</a>
+					<center><?= $this->pagination->create_links(); ?></center>
 				</tr>
 		</tr>
 		</table>
