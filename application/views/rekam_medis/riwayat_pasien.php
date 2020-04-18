@@ -57,6 +57,7 @@ require 'application/views/templete/navbar.php';
 				</thead>
 				<tbody >
 				<tr>
+
 				<?php
 					$id = 1;
 					foreach ($rekam_medis as $rekam_medis) :
