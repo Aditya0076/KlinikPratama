@@ -65,9 +65,12 @@ class PasienModel extends CI_Model
 		return $query;
 	}
 
-	public function update($pasien)
+	public function update($pasien,$kode_pasien)
 	{
-		$this->db->replace($this::TABLE_NAME,$pasien);
+		$this->db->from('data_pasien')
+				 ->where('kode_pasien',$kode_pasien)
+				 ->set($pasien)
+				 ->update();
 	}
 
 	public function getKepala_keluarga()

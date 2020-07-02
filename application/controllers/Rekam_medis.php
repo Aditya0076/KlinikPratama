@@ -109,7 +109,7 @@ class Rekam_medis extends CI_Controller
 		$biaya = $this->input->post('biaya');
 
 		$rekam_medis = array(
-			'kode_rekam' => $kode_rekam,
+			// 'kode_rekam' => $kode_rekam,
 			'waktu' => $waktu,
 			'kode_pasien' => $kode_pasien,
 			'anamnese' => $anamnese,
@@ -128,7 +128,7 @@ class Rekam_medis extends CI_Controller
 		if ($this->form_validation->run() == FALSE){
 			redirect('rekam_medis/update/' . $kode_rekam);
 		}else{
-			$this->model->update($rekam_medis);
+			$this->model->update($rekam_medis,$kode_rekam);
 			$this->session->set_flashdata('flash','Diedit');
 			redirect('rekam_medis/riwayat/' . $kode_pasien);
 		}

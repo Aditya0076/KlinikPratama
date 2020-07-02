@@ -65,8 +65,11 @@ class Rekam_medisModel extends CI_Model
 		return $query;
 	}
 
-	public function update($rekam_medis)
+	public function update($rekam_medis,$kode_rekam)
 	{
-		$this->db->replace($this::TABLE_NAME, $rekam_medis);
+		$this->db->from('rekam_medis')
+				 ->where('kode_rekam',$kode_rekam)
+				 ->set($rekam_medis)
+				 ->update();
 	}
 }

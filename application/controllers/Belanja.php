@@ -114,7 +114,7 @@ class Belanja extends CI_Controller
 		$keluar = $this->input->post('keluar');
 
 		$belanja = array(
-			'kode_belanja' => $kode_belanja,
+			//'kode_belanja' => $kode_belanja,
 			'waktu' => $waktu,
 			'keterangan' => $keterangan,
 			'keluar' => $keluar
@@ -127,7 +127,7 @@ class Belanja extends CI_Controller
 		if($this->form_validation->run() == FALSE)
 			redirect('belanja/update' . $kode_belanja);
 		else{
-			$this->model->update($belanja);
+			$this->model->update($belanja,$kode_belanja);
 			$this->session->set_flashdata('flash','Diedit');
 			redirect('belanja');
 		}

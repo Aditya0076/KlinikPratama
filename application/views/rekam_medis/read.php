@@ -39,6 +39,15 @@ require 'application/views/templete/navbar.php';
 				</tr>
 				</thead>
 				<tbody class="table-light">
+				<?php if(empty($pasien)) : ?>
+				<tr>
+					<td colspan="7" >
+						<div class="alert alert-danger" role='alert' >
+							Data tidak ditemukan
+						</div>
+					</td>
+				</tr>
+				<?php endif; ?>
 				<?php
 				$id = 1;
 				foreach ($pasien as $pasien) :

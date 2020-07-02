@@ -16,13 +16,20 @@ class Obat extends CI_Controller
 		if($this->input->post('submit')){
 			$data['keyword'] = $this->input->post('keyword');
 			if(!strcmp($data['keyword'],'semua')){
-				$this->session->unset_userdata('keyword');
+				$this->session->unset_userdata('keyword','kelas');
 				$data['keyword'] = null;
 			}else{
-				$this->session->set_userdata('keyword', $data['keyword']);
+				$keyword = [
+					'kelas' => 'obat',
+					'keyword' => $data['keyword']
+				];
+				$this->session->set_userdata($keyword);
 			}
  		}else{
- 			$data['keyword'] = $this->session->userdata('keyword');
+ 			if(!strcmp($this->session->userdata('kelas'),'obat'))
+				$data['keyword'] = $this->session->userdata('keyword');	
+			else
+				$data['keyword'] = null;
  		}
 		// $data['obat'] = $this->model->getAll();
 		// $this->load->view('obat/read',$data);
@@ -87,7 +94,7 @@ class Obat extends CI_Controller
 		$jumlah_obat = $this->input->post('jumlah_obat');
 
 		$obat = array(
-			'id_obat' => $id_obat,
+			// 'id_obat' => $id_obat,
 			'nama_obat' => $nama_obat,
 			'jenis_obat' => $jenis_obat,
 			'jumlah_obat' => $jumlah_obat
@@ -100,7 +107,7 @@ class Obat extends CI_Controller
 		if ($this->form_validation->run() == FALSE){
 			redirect('obat/update' . $id_obat);
 		}else{
-			$this->model->update($obat);
+			$this->model->update($obat,$id_obat);
 			$this->session->set_flashdata('flash','Diedit');
 			redirect('obat');
 		}

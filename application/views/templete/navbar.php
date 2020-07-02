@@ -43,7 +43,8 @@
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				<a class="dropdown-item" href="<?= base_url('');?>belanja/create">Tambah Data Pengeluaran</a>
-				<a class="dropdown-item" href="<?= base_url('');?>belanja">Tampil Data Laporan</a>
+				<a class="dropdown-item" href="<?= base_url('');?>belanja">Laporan Keuangan</a>
+				<a class="dropdown-item" href="<?= base_url('');?>belanja">Laporan Rekam Medis</a>
 			</div>
 		</li>
 		<li class="nav-item" style="color: ghostwhite;">

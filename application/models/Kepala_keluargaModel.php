@@ -1,7 +1,5 @@
-<?php 
-/**
- * 
- */
+<?php
+ 
 class Kepala_keluargaModel extends CI_Model
 {
 	private const TABLE_NAME = "kepala_keluarga";
@@ -31,7 +29,7 @@ class Kepala_keluargaModel extends CI_Model
 	public function getKepalas($limit, $start, $keyword)
 	{
 		if($keyword){
-			$this->db->like('nama_kepala',$keyword,'first');
+			$this->db->like('nama_kepala',$keyword);
 		}
 
 		$query = $this->db->join('dusun','dusun.kode_dusun = kepala_keluarga.kode_dusun')
@@ -61,9 +59,13 @@ class Kepala_keluargaModel extends CI_Model
 		return $query;
 	}
 
-	public function update($kepala_keluarga)
+	public function update($kepala_keluarga,$kode_keluarga)
 	{
-		$this->db->replace($this::TABLE_NAME, $kepala_keluarga);
+		//$this->db->replace($this::TABLE_NAME, $kepala_keluarga);
+		$this->db->from('kepala_keluarga')
+				 ->where('kode_keluarga',$kode_keluarga)
+				 ->set($kepala_keluarga)
+				 ->update();
 	}
 
 	public function getDusun()

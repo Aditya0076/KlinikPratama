@@ -17,12 +17,20 @@ class Pasien extends CI_Controller
 		if($this->input->post('submit')){
 			$data['keyword'] = $this->input->post('keyword');
 			if(!strcmp($data['keyword'],'semua')){
-				$this->session->unset_userdata('keyword');
+				$this->session->unset_userdata('keyword','kelas');
 				$data['keyword'] = null; 
-			}else
-				$this->session->set_userdata('keyword',$data['keyword']);
+			}else{
+				$keyword = [
+					'kelas' => 'pasien',
+					'keyword' => $data['keyword']
+				];
+				$this->session->set_userdata($keyword);
+			}
 		}else{
-			$data['keyword'] = $this->session->userdata('keyword');	
+			if(!strcmp($this->session->userdata('kelas'),'pasien'))
+				$data['keyword'] = $this->session->userdata('keyword');	
+			else
+				$data['keyword'] = null;
 		}
 
 		//config pagination
@@ -98,7 +106,7 @@ class Pasien extends CI_Controller
 		$jenis_kelamin = $this->input->post('jenis_kelamin');
 		
 		$pasien = array(
-			'kode_pasien' => $kode_pasien,
+			// 'kode_pasien' => $kode_pasien,
 			'kode_keluarga' => $kode_keluarga,
 			'nama_pasien' => $nama_pasien,
 			'umur' => $umur,
@@ -113,7 +121,7 @@ class Pasien extends CI_Controller
 		if($this->form_validation->run() == FALSE){
 			redirect('pasien/update/' . $kode_pasien);
 		}else{
-			$this->model->update($pasien);
+			$this->model->update($pasien,$kode_pasien);
 			$this->session->set_flashdata('flash','Diedit');
 			redirect('pasien');
 		}

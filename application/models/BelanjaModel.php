@@ -49,8 +49,12 @@ class BelanjaModel extends CI_Model
 		return $query;
 	}
 
-	public function update($belanja)
+	public function update($belanja,$kode_belanja)
 	{
 		$this->db->replace($this::TABLE_NAME,$belanja);
+		$this->db->from('belanja')
+				 ->where('kode_belanja',$kode_belanja)
+				 ->set($belanja)
+				 ->update();
 	}
 }

@@ -43,6 +43,9 @@ class ObatModel extends CI_Model
 
 	public function update($obat)
 	{
-		$this->db->replace($this::TABLE_NAME,$obat);
+		$this->db->from('obat')
+				 ->where('id_obat',$id_obat)
+				 ->set($obat)
+				 ->update();
 	}
 }
