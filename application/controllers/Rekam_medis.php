@@ -49,8 +49,10 @@ class Rekam_medis extends CI_Controller
 		if($this->input->post('kode_pasien') != null){
 			$kode_pasien = $this->input->post('kode_pasien');
 			$data['pas'] = $this->model->getPasienByKode($kode_pasien);
-		}else
+		}else{
 			$data['pasien'] = $this->model->getPasien();
+			$data['pas'] = null;
+		}
 		$this->load->view('rekam_medis/create',$data);
 	}
 

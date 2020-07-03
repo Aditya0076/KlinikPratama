@@ -42,11 +42,12 @@ class Rekam_medisModel extends CI_Model
 		return $query;
 	}
 
-	// public function getRekams($limit, $start, $keyword = null){
-	// 	if($keyword){
-	// 		$this->db->like
-	// 	}
-	// }
+	public function getTotalPemasukan($date){
+		// die(var_dump($date));
+		$query = $this->db->select('(select sum(rekam_medis.biaya) from rekam_medis where waktu = "' . $date . '") as biaya',FALSE)->get()->row_array();
+		
+		return $query['biaya'];
+	}
 
 	public  function  getRekam($kode_rekam){
 		$query = $this->db->select('*')->from($this::TABLE_NAME)

@@ -1,1 +1,4 @@
 auto increment perlu di perbaiki, soalnya int memiliki batas. referensi https://www.petanikode.com/php-generator-id/
+
+untuk mendapatkan waktu saat ini dan besok.
+referensi https://jagowebdev.com/fungsi-time-strtotime-mktime-pada-php/

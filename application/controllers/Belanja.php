@@ -15,13 +15,20 @@ class Belanja extends CI_Controller
 		if($this->input->post('submit')){
 			$data['keyword'] = $this->input->post('keyword');
 			if(!strcmp($data['keyword'],'semua')){
-				$this->session->unset_userdata('keyword');
+				$this->session->unset_userdata('keyword','kelas');
 				$data['keyword'] = null;
 			}else{
-				$this->session->set_userdata('keyword',$data['keyword']);
+				$keyword = [
+					'kelas' => 'belanja',
+					'keyword' => $data['keyword']
+				];
+				$this->session->set_userdata($keyword);
 			}
 		}else{
-			$data['keyword'] = $this->session->userdata('keyword');
+			if(!strcmp($this->session->userdata('kelas'),'belanja'))
+				$data['keyword'] = $this->session->userdata('keyword');
+			else
+				$data['keyword'] = null;
 		}
 
 		//config pagination
@@ -137,6 +144,52 @@ class Belanja extends CI_Controller
 	{
 		$this->model->delete($kode_belanja);
 		$this->session->set_flashdata('flash','Dihapus');
+		redirect('belanja');
+	}
+
+	public function hitungTotal()
+	{
+
+		//today
+		$date = date('Y-m-d');
+		//yesterday
+		$prev_date = date('Y-m-d',time() - (60*60*24));
+
+		//calculate the total of payment today
+		$this->load->model('Rekam_medisModel','rekam');
+		$totalPemasukan = $this->rekam->getTotalPemasukan($date);
+
+		if($this->model->getTotal($date)){
+			$laporan = $this->model->getTotal($date);
+			if(($totalPemasukan - $laporan['masuk']) > 0){
+				$this->model->delete($laporan['kode_belanja']);
+			}else{
+				redirect('belanja');
+			}
+		}
+
+		//get total of yesterday
+		$prev_total = $this->model->getTotal($prev_date); 
+		//calculate total of money
+		$total = $totalPemasukan + $prev_total['total'];
+
+		// die(var_dump($total));
+		$uangMasuk = [
+			'waktu' => $date,
+			'keterangan' => 'masuk',
+			'masuk' => $totalPemasukan,
+			'total' => $total
+		];
+
+		$this->model->insert($uangMasuk);
+
+		//tomorrow
+		$tomorrow = [
+			'waktu' => date('Y-m-d', time() + (60*60*24)),//date('l', time() + (60*60*24)),
+			'keterangan' => date('l', time() + (60*60*24))
+		];
+		$this->model->insert($tomorrow);
+		// die(var_dump($tomorrow));
 		redirect('belanja');
 	}
 }

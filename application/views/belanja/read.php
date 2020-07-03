@@ -28,8 +28,11 @@ require 'application/views/templete/navbar.php';
 				<thead class="table-dark ">
 				<tr>
 				  <div class="row">
-					<div class="col-12 col-md-8">
+					<div class="col-12 col-md-2">
 					  	<a type="button" class="btn btn-primary" href="<?= base_url('');?>belanja/create">Tambah Data</a>  	
+					</div>
+					<div class="col-12 col-md-6">
+					  	<a type="button" class="btn btn-primary" href="<?= base_url('');?>belanja/hitungTotal">Total</a>  	
 					</div>
 					<div  class=" col-6 col-md-4">
 					  <form  action="" method="post">

@@ -32,7 +32,7 @@ require 'application/views/templete/navbar.php';
 
 							<tr>
 								<td colspan="2"> <center><input class="btn btn-success" type="submit" value="Tambah"></center></td>
-								<td colspan="2"> <center> <a type="button" class="btn btn-danger" href="<?= base_url('belanja/read');?>kepala_keluarga"> Batal </a> </center></td>
+								<td colspan="2"> <center> <a type="button" class="btn btn-danger" href="<?= base_url('belanja/');?>"> Batal </a> </center></td>
 							</tr>
 						</table>
 					</td>

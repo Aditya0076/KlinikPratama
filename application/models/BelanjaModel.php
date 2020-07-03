@@ -36,7 +36,8 @@ class BelanjaModel extends CI_Model
 	public function getBelanjas($limit, $start, $keyword = null){
 		if($keyword)
 			$this->db->like('waktu', $keyword);
-		$query = $this->db->get($this::TABLE_NAME, $limit, $start)
+		$query = $this->db->order_by('waktu','DESC')
+						  ->get($this::TABLE_NAME, $limit, $start)
 						  ->result_array();
 		return $query;
 	}
@@ -44,6 +45,14 @@ class BelanjaModel extends CI_Model
 	public function getByKode($kode_belanja)
 	{
 		$query = $this->db->where('kode_belanja',$kode_belanja)
+						  ->get($this::TABLE_NAME)
+						  ->row_array();
+		return $query;
+	}
+
+	public function getTotal($date)
+	{
+		$query = $this->db->where('waktu',$date)
 						  ->get($this::TABLE_NAME)
 						  ->row_array();
 		return $query;
