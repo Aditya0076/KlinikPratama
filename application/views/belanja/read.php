@@ -73,15 +73,24 @@ require 'application/views/templete/navbar.php';
 				<?php $id = 1; foreach($belanja as $belanja) :?>
 
 					<tr>
-						<td><?=$id++;?></td>
+						<td>
+							<?echo $id++;?>
+						</td>
 						<td><?=$belanja['waktu'];?></td>
 						<td><?=$belanja['keterangan'];?></td>
-						<td><?=$belanja['masuk'];?></td>
-						<td><?=$belanja['keluar'];?></td>
-						<td><?=$belanja['total'];?></td>
 						<td>
+							<? if($belanja['masuk'] != 0) echo $belanja['masuk']; ?>
+						</td>
+						<td>
+							<? if($belanja['keluar'] != 0) echo $belanja['keluar']; ?>
+						<td>
+							<? if($belanja['total'] != 0) echo $belanja['total']; ?>
+						</td>
+						<td>
+						<?php if($belanja['masuk'] && $belanja['keluar'] !=  null) : ?>
 							<a type="button" class="btn btn-warning" href="<?= base_url('belanja/update/' . $belanja['kode_belanja']);?>">Edit</a>
 							<a type="button" href="<?= base_url('belanja/delete/' . $belanja['kode_belanja']);?>" class="btn btn-danger tombol-hapus" >Hapus</a>
+						<?php endif; ?>
 						</td>
 					</tr>
 				<?php
