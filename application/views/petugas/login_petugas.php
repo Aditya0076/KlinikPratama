@@ -40,7 +40,7 @@
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="username">Username</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control"  placeholder="masukkan username" name="username">
+						<input type="text" class="form-control"  placeholder="masukkan username" name="username" autofocus >
 					</div>
 				</div>
 				<div class="form-group">
