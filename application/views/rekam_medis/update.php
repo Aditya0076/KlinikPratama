@@ -58,7 +58,7 @@ require 'application/views/templete/navbar.php';
 							<tr>
 								<center>
 									<td colspan="2"> <center><input class="btn btn-success" type="submit" value="Tambah"></center></td>
-									<td colspan="2"> <center> <a type="button" class="btn btn-danger" href="<?= base_url('rekam_medis/readRekam/'.$rekam_medis['kode_pasien']);?>"> Batal </a> </center></td>
+									<td colspan="2"> <center> <a type="button" class="btn btn-danger" href="<?= base_url('rekam_medis/riwayat');?>"> Batal </a> </center></td>
 								</center>
 							</tr>
 						</table>
