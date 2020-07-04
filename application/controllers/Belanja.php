@@ -192,4 +192,29 @@ class Belanja extends CI_Controller
 		// die(var_dump($tomorrow));
 		redirect('belanja');
 	}
+
+	public function laporanMedis()
+	{
+		//load model rekam medis
+		$this->load->model('Rekam_medisModel','rekam');
+
+		//keyword
+		$data['keyword'] = null;
+
+
+		//config pagination
+		$this->db->order_by('waktu');//like('waktu',$data['keyword']);
+		$this->db->from('rekam_medis','DESC');
+    	$config['base_url'] = 'http://localhost/KlinikPratama/belanja/laporanMedis/';
+		$config['total_rows'] = $this->db->count_all_results();
+		$config['per_page'] = 3;
+		// die(var_dump($config['total_rows']));
+		//initialize
+		$this->pagination->initialize($config);
+
+		$data['start'] = $this->uri->segment(3);
+		$data['medis'] = $this->rekam->getSortedRekam($config['per_page'],$data['start'],$data['keyword']);
+		//load view
+		$this->load->view('belanja/laporanMedis',$data);
+	}
 }

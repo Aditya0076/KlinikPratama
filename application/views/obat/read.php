@@ -66,9 +66,9 @@ require 'application/views/templete/navbar.php';
 					</td>
 				</tr>
 				<?php endif; ?>
-				<?php $id = 1; foreach ($obat as $obat) : ?>
+				<?php foreach ($obat as $obat) : ?>
 					<tr>
-						<td><?=$id++;?></td>
+						<td><?= ++$start;?></td>
 						<td><?=$obat['nama_obat'];?></td>
 						<td><?=$obat['jenis_obat'];?></td>
 						<td><?=$obat['jumlah_obat'];?></td>
@@ -79,8 +79,8 @@ require 'application/views/templete/navbar.php';
 					</tr>
 				<?php endforeach; ?>
 				</tbody>
-				<center><?= $this->pagination->create_links(); ?></center>
 			</table>
+				<center><?= $this->pagination->create_links(); ?></center>
 
 		</tr>
 		</table>

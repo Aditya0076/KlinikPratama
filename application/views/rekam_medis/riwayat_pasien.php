@@ -58,10 +58,7 @@ require 'application/views/templete/navbar.php';
 				<tbody >
 				<tr>
 
-				<?php
-					$id = 1;
-					foreach ($rekam_medis as $rekam_medis) :
-				?>
+				<?php foreach ($rekam_medis as $rekam_medis) : ?>
 					<tr>
 						<td><?= ++$start;?></td>
 						<td><?=$rekam_medis['waktu']; ?></td>

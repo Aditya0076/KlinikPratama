@@ -66,6 +66,16 @@ class Rekam_medisModel extends CI_Model
 		return $query;
 	}
 
+	public function getSortedRekam($limit,$start,$date){
+		$query = $this->db//->from($this::TABLE_NAME)
+						  ->join('data_pasien','data_pasien.kode_pasien = rekam_medis.kode_pasien')
+						  ->join('kepala_keluarga','kepala_keluarga.kode_keluarga = data_pasien.kode_keluarga')
+						  ->join('dusun','dusun.kode_dusun = kepala_keluarga.kode_dusun')
+						  ->order_by('waktu','DESC')
+						  ->get($this::TABLE_NAME,$limit,$start)
+						  ->result_array();
+		return $query;
+	}
 	public function update($rekam_medis,$kode_rekam)
 	{
 		$this->db->from('rekam_medis')

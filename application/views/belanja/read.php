@@ -70,12 +70,10 @@ require 'application/views/templete/navbar.php';
 					</td>
 				</tr>
 				<?php endif; ?>
-				<?php $id = 1; foreach($belanja as $belanja) :?>
+				<?php foreach($belanja as $belanja) :?>
 
 					<tr>
-						<td>
-							<?echo $id++;?>
-						</td>
+						<td> <?echo ++$start;?> </td>
 						<td><?=$belanja['waktu'];?></td>
 						<td><?=$belanja['keterangan'];?></td>
 						<td>
