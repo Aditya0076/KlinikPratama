@@ -38,7 +38,7 @@ class Kepala_keluarga extends CI_Controller
 		$this->db->from('kepala_keluarga');
     	$config['base_url'] = 'http://localhost/KlinikPratama/kepala_keluarga/index/';
 		$config['total_rows'] = $this->db->count_all_results();
-		$config['per_page'] = 3;
+		$config['per_page'] = 10;
 
 		//initialize
 		$this->pagination->initialize($config);

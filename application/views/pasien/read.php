@@ -67,12 +67,23 @@ require 'application/views/templete/navbar.php';
 						<td><?=$pasien['umur'];?></td>
 						<td><?=$pasien['jenis_kelamin'];?></td>
 						<td>
-							<form method="post" action="<?= base_url('rekam_medis/riwayat/')?>" >
-								<input type="text" name="kode_pasien" value="<?=$pasien['kode_pasien']?>" hidden>
-								<input type="submit" class="btn btn-info" value="Detail" >
-							</form>
-								<a type="button" class="btn btn-warning" href="<?= base_url('pasien/update/' . $pasien['kode_pasien']);?>">Edit</a>
-								<a type="button" href="<?= base_url('pasien/delete/' . $pasien['kode_pasien']);?>"class="btn btn-danger tombol-hapus">Hapus</a>
+						<table class=" table-sm">
+							<tr>
+								<td>
+									<form method="post" action="<?= base_url('rekam_medis/riwayat/')?>" >
+										<input type="text" name="kode_pasien" value="<?=$pasien['kode_pasien']?>" hidden>
+										<input type="submit" class="btn btn-info" value="Detail" >
+									</form>
+								</td>
+								<td>
+									<a type="button" class="btn btn-warning" href="<?= base_url('pasien/update/' . $pasien['kode_pasien']);?>">Edit</a>
+								</td>
+								<td>
+									<a type="button" href="<?= base_url('pasien/delete/' . $pasien['kode_pasien']);?>"class="btn btn-danger tombol-hapus">Hapus</a>
+								</td>
+							</tr>
+						</table>
+
 							<!-- <a type="button" class="btn btn-info" href="<= base_url('rekam_medis/riwayat/'.$pasien['kode_pasien']);?>">Detail</a> -->
 
 						</td>
