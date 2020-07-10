@@ -58,6 +58,13 @@ class BelanjaModel extends CI_Model
 		return $query;
 	}
 
+	public function getBelanjaByDate(){
+		$quey = $this->db->where('waktu',$date)
+						 ->get($this::TABLE_NAME)
+						 ->result_array();
+		return $query;
+	}
+
 	public function update($belanja,$kode_belanja)
 	{
 		$this->db->replace($this::TABLE_NAME,$belanja);

@@ -76,6 +76,14 @@ class Rekam_medisModel extends CI_Model
 						  ->result_array();
 		return $query;
 	}
+
+	public function getRekamByDate($date){
+		$query = $this->db->where('waktu',$date)
+						  ->get($this::TABLE_NAME)
+						  ->result_array();
+		return $query;
+	}
+
 	public function update($rekam_medis,$kode_rekam)
 	{
 		$this->db->from('rekam_medis')
