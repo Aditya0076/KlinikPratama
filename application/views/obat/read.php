@@ -34,9 +34,9 @@ require 'application/views/templete/navbar.php';
 					<div  class=" col-6 col-md-4">
 					  <form  action="" method="post">
 					    <div class="input-group mb-3">
-						  <input name="keyword" type="text" class="form-control" placeholder="Search" autofocus>
+						  <input name="keyword" type="text" class="form-control" placeholder="masukkan nama obat" autofocus>
 						  <div class="input-group-append">
-							<input type="submit" class="btn btn-primary" name="submit">
+							<input type="submit" class="btn btn-primary" name="submit" value="Cari">
 						  </div>
 						</div>
 					  </form>
