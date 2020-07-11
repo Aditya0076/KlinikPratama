@@ -72,7 +72,7 @@ require 'application/views/templete/navbar.php';
 						<td><?=$laporan['jenis_laporan'];?></td>
 						<td><?=$laporan['sub_total'];?></td>
 						<td>
-							<a type="button" class="btn btn-warning" href="<?= base_url('laporan/detail/' . $laporan['jenis_laporan']);?>">Detail</a>
+							<a type="button" class="btn btn-warning" href="<?= base_url('laporan/detail/' . $laporan['waktu'] . '/' . $laporan['jenis_laporan']);?>">Detail</a>
 						</td>
 					</tr>
 				<?php
