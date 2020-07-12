@@ -15,6 +15,7 @@
 				<a class="dropdown-item" href="<?= base_url('');?>dusun">Tambah Dusun</a>
 				<a class="dropdown-item" href="<?= base_url('');?>kepala_keluarga/create">Tambah Data Kepala Keluarga</a>
 				<a class="dropdown-item" href="<?= base_url('');?>kepala_keluarga">Tampil Data Kepala Keluarga</a>
+				<a class="dropdown-item" href="<?= base_url('');?>kepala_keluarga">Tampil Kode Terakhir Kepala Keluarga</a>
 			</div>
 		</li>
 		<li class="nav-item dropdown" style="color: ghostwhite;">
@@ -37,15 +38,15 @@
 
 			</div>
 		</li>
-		<li class="nav-item dropdown" style="color: ghostwhite;">
-			<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Laporan
-			</a>
-			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				<a class="dropdown-item" href="<?= base_url('');?>belanja/create">Tambah Data Pengeluaran</a>
-				<a class="dropdown-item" href="<?= base_url('');?>laporan">Laporan Keuangan</a>
-			</div>
-		</li>
+<!--		<li class="nav-item dropdown" style="color: ghostwhite;">-->
+<!--			<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--				Laporan-->
+<!--			</a>-->
+<!--			<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--				<a class="dropdown-item" href="--><?//= base_url('');?><!--belanja/create">Tambah Data Pengeluaran</a>-->
+<!--				<a class="dropdown-item" href="--><?//= base_url('');?><!--laporan">Laporan Keuangan</a>-->
+<!--			</div>-->
+<!--		</li>-->
 		<li class="nav-item" style="color: ghostwhite;">
 			<a class="nav-link" href="<?= base_url('petugas/logout');?>">Logout</a>
 		</li>
