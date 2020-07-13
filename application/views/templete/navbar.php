@@ -15,7 +15,7 @@
 				<a class="dropdown-item" href="<?= base_url('');?>dusun">Tambah Dusun</a>
 				<a class="dropdown-item" href="<?= base_url('');?>kepala_keluarga/create">Tambah Data Kepala Keluarga</a>
 				<a class="dropdown-item" href="<?= base_url('');?>kepala_keluarga">Tampil Data Kepala Keluarga</a>
-				<a class="dropdown-item" href="<?= base_url('');?>kepala_keluarga">Tampil Kode Terakhir Kepala Keluarga</a>
+				<a class="dropdown-item" href="<?= base_url('');?>kode">Tampil Kode Terakhir Kepala Keluarga</a>
 			</div>
 		</li>
 		<li class="nav-item dropdown" style="color: ghostwhite;">

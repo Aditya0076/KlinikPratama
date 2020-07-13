@@ -44,13 +44,13 @@ require 'application/views/templete/navbar.php';
 					<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
 				<?php endif;?>
 				<th>No</th>
-				<th>Dusun</th>
 				<th>Desa</th>
+				<th>Dusun</th>
 				<th>Kode Terakhir Kepala Keluarga</th>
 				</tr>
 				</thead>
 				<tbody class="table-light">
-				<?php if(empty($kepala_keluarga)) : ?>
+				<?php if(empty($kode)) : ?>
 					<tr>
 						<td colspan="7" >
 							<div class="alert alert-danger" role='alert' >
@@ -65,9 +65,9 @@ require 'application/views/templete/navbar.php';
 					?>
 
 					<tr>
-						<td><?=$start++;?></td>
-						<td><?=$kode['nama_dusun'];?></td>
+						<td><?=++$start;?></td>
 						<td><?=$kode['nama_desa'];?></td>
+						<td><?=$kode['nama_dusun'];?></td>
 						<td><?=$kode['kode_terakhir'];?></td>
 					</tr>
 				<?php

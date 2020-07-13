@@ -78,6 +78,23 @@ class Kepala_keluarga extends CI_Controller
 		
 		$this->form_validation->set_rules('kode_keluarga','Kode keluarga','required');
 		$this->form_validation->set_rules('nama_kepala','Nama Kepala Keluarga','required');
+
+		//update kode_terakhir_kepala_keluarga data 
+		$this->load->model('KodeModel','kode');
+		if($this->kode->getByDusun($kode_dusun)){
+			$kode = array(
+				'kode_terakhir' => $kode_keluarga
+			);
+			$this->kode->update($kode,$kode_dusun);
+		}else{
+			$kode = array(
+				'kode_dusun' => $kode_dusun,
+				'kode_terakhir' => $kode_keluarga
+			);
+			$this->kode->insert($kode);
+		}
+
+		//insert data to kepala_keluarga
 		if ($this->form_validation->run()== FALSE){
 			redirect('kepala_keluarga/create');
 		}else{
