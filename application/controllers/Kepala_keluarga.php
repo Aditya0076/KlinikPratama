@@ -18,7 +18,7 @@ class Kepala_keluarga extends CI_Controller
 			$data['keyword'] = $this->input->post('keyword');
 			if(!strcmp($data['keyword'],'semua')){
 				$this->session->unset_userdata('keyword','kelas');
-				$data['keyword'] = null; 
+				$data['keyword'] = null;
 			}else{
 				$keyword = [
 					'kelas' => 'kepala_keluarga',
@@ -43,7 +43,10 @@ class Kepala_keluarga extends CI_Controller
 		//initialize
 		$this->pagination->initialize($config);
 
-		$data['start'] = $this->uri->segment(3);
+		if(!strcmp($data['keyword'],'semua'))
+			$data['start'] = 1;
+		else
+			$data['start'] = $this->uri->segment(3);
 		$data['kepala_keluarga'] = $this->model->getKepalas($config['per_page'],$data['start'],$data['keyword']);
 		$this->load->view('kepala_keluarga/read',$data);
 	}
@@ -69,6 +72,12 @@ class Kepala_keluarga extends CI_Controller
 		$nama_kepala = $this->input->post('nama_kepala');
 		$rt = $this->input->post('rt');
 
+		//get simbol (eg: A,B,C...etc) from dusun
+		$this->load->model('dusunModel','dusun');
+		$simbol = $this->dusun->getSimbolByKode($kode_dusun);
+		$kode_keluarga = $simbol . $kode_keluarga;
+
+		//make an associative array
 		$kepala_keluarga = array(
 			'kode_keluarga' => $kode_keluarga,
 			'kode_dusun' => $kode_dusun,
