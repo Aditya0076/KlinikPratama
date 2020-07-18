@@ -4,18 +4,6 @@ require 'application/views/templete/navbar.php';
 ?>
 
 <div class="jumbotron m-lg-auto ">
-	<!-- <table class="container text-justify m-auto ">
-		<tr>
-			<td>Nama Kepala Keluarga</td>
-			<td>:</td>
-			<td>
-				<form class="form-inline" method="post" action="< base_url('kepala_keluarga/search');?>">
-					<input class="form-control mr-sm-2" type="text" placeholder="masukkan nama kepala keluarga" name="nama_kepala" >
-					<button class="btn btn-success" type="submit">Cari</button>
-				</form>
-			</td>
-		</tr>
-	</table> -->
 	<div class="container">
 		<table class="text-justify m-auto">
 			<tr>
@@ -28,7 +16,9 @@ require 'application/views/templete/navbar.php';
 				<thead class="table-dark ">
 				<tr>
 					<div class="row">
-						<div  class=" col-6 col-md-4">
+						<div class="col-12 col-md-8"></div>
+					<div class="row">
+						<div  class=" col-6 col-md-12">
 							<form  action="" method="post">
 								<div class="input-group mb-3">
 									<input name="keyword" type="text" class="form-control" placeholder="masukkan nama dusun" autofocus>

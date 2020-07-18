@@ -10,9 +10,6 @@ class Kepala_keluarga extends CI_Controller
 
 	public function index()
 	{
-		// $data['kepala_keluarga'] = $this->model->getAll();
-		// $this->load->view('kepala_keluarga/read',$data);
-
 		//ambil data searching
 		if($this->input->post('submit')){
 			$data['keyword'] = $this->input->post('keyword');
@@ -38,7 +35,7 @@ class Kepala_keluarga extends CI_Controller
 		$this->db->from('kepala_keluarga');
     	$config['base_url'] = 'http://localhost/KlinikPratama/kepala_keluarga/index/';
 		$config['total_rows'] = $this->db->count_all_results();
-		$config['per_page'] = 10;
+		$config['per_page'] = 15;
 
 		//initialize
 		$this->pagination->initialize($config);

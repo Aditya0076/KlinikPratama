@@ -37,9 +37,10 @@ require 'application/views/templete/navbar.php';
 								</select>
 							</td>
 							</tr>
-
 							<tr>
-								<td></td>
+								<td>Kode Dusun</td>
+								<td>:</td>
+								<td colspan="2"><input type="text" class="form-control" name="simbol" placeholder="masukkan kode dusun" ></td>
 							</tr>
 
 							<tr>
