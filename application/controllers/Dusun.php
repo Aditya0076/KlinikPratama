@@ -21,15 +21,18 @@ class Dusun extends CI_Controller
 	{
 		$nama_dusun = $this->input->post('nama_dusun');
 		$kode_desa = $this->input->post('kode_desa');
+		$simbol= $this->input->post('simbol');
 
 		$dusun = array(
 			'nama_dusun' => $nama_dusun,
 			'kode_desa' => $kode_desa,
+			'simbol' => $simbol
 		);
 
 		$this->form_validation->set_rules('nama_dusun','Nama Dusun','required');
 		$this->form_validation->set_rules('kode_desa','Kode Desa','required');
-		
+		$this->form_validation->set_rules('simbol','Kode Dusun','required');
+
 		if ($this->form_validation->run()== FALSE){
 			redirect('dusun');
 		}else{

@@ -41,7 +41,7 @@ class kode extends CI_Controller
 		$this->db->from('kode');
 		$config['base_url'] = 'http://localhost/KlinikPratama/kode/index/';
 		$config['total_rows'] = $this->db->count_all_results();
-		$config['per_page'] = 10;
+		$config['per_page'] = 15;
 
 		//initialize
 		$this->pagination->initialize($config);

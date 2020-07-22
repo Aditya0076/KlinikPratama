@@ -25,10 +25,9 @@ class kodeModel extends CI_Model
 						  //->from($this::TABLE_NAME)
 						  ->join('dusun','dusun.kode_dusun = kode.kode_dusun')
 						  ->join('desa','desa.kode_desa = dusun.kode_desa')
+						  ->order_by('kode_terakhir')
 						  ->get($this::TABLE_NAME,$limit,$start)
 						  ->result_array();
-
-		// die(var_dump($query));
 		return $query;
 	}
 
