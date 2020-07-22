@@ -60,9 +60,16 @@ class Kepala_keluarga extends CI_Controller
 
 	public function create()
 	{
-		$data['dusun'] = $this->model->getDusun();
-		$this->load->view('kepala_keluarga/create',$data);
+		//$data['dusun'] = $this->model->getDusun();
+		$this->load->view('kepala_keluarga/create');//,$data);
 
+	}
+
+	public function getDusun(){
+		$this->load->model('dusunModel','dusun');
+		$dusun = $this->input->get('dusun');
+		$query = $this->dusun->getDusunByName($dusun, 'nama_dusun');
+		echo json_encode($query);
 	}
 
 	public function insert()

@@ -48,6 +48,14 @@ class PasienModel extends CI_Model
 		return $query;
 	}
 
+	public function getKepalaByName($nama_kepala, $column)
+	{
+		$query = $this->db->like($column, $nama_kepala)
+						  ->get('kepala_keluarga',10)
+						  ->result_array();
+		return $query;
+	}
+
 	public function countAllPasien()
 	{
 		$query = $this->db->get($this::TABLE_NAME)
@@ -73,11 +81,4 @@ class PasienModel extends CI_Model
 				 ->update();
 	}
 
-	public function getKepala_keluarga()
-	{
-		$query = $this->db->from('kepala_keluarga')
-						  ->get()
-						  ->result_array();
-		return $query;
-	}
 }

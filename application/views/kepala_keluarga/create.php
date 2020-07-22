@@ -36,13 +36,16 @@
 								<td>Dusun</td>
 								<td>:</td>
 								<td colspan="3">
-									<select class="form-control" name="kode_dusun" >
-									<?php foreach ($dusun as $dusun) : ?>
-										<option value="<?=$dusun['kode_dusun'];?>">
-											<?=$dusun['nama_dusun'] . ', ' . $dusun['nama_desa'];?>
-										</option>
-									<?php endforeach; ?>
+									<select class="form-control dusun" name="kode_dusun">
+										<option value="0">--Pilih dusun--</option>
 									</select>
+									<!-- <select class="form-control" name="kode_dusun" >
+									<php foreach ($dusun as $dusun) : ?>
+										<option value="<=$dusun['kode_dusun'];?>">
+											<=$dusun['nama_dusun'] . ', ' . $dusun['nama_desa'];?>
+										</option>
+									<php endforeach; ?>
+									</select> -->
 								</td>
 							</tr>
 							<tr>

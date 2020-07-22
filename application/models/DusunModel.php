@@ -32,6 +32,17 @@ class DusunModel extends CI_Model
 		return $query;
 	}
 
+	public function getDusunByName($nama_dusun, $column)
+	{
+		$query = $this->db->select('*')
+					 	  ->limit(10)
+					 	  ->from($this::TABLE_NAME)
+					 	  ->like($column,$nama_dusun)
+					 	  ->get()
+					 	  ->result_array();
+		return $query;
+	}
+
 	public function getSimbolByKode($kode_dusun)
 	{
 		$query = $this->db->select('simbol')
