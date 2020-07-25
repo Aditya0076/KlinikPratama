@@ -9,8 +9,9 @@
 		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet"  href="<?php echo base_url('');?>/assets/bootstrap/css/bootstrap.min.css" >
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('');?>/assets/DataTables/datatables.min.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('');?>/assets/select2/dist/css/select2.min.css">
+	<link rel="stylesheet" href="<?php echo base_url('');?>/assets/jquery-ui-1.12.1/jquery-ui.css">
+<!--	<link rel="stylesheet" type="text/css" href="--><?php //echo base_url('');?><!--/assets/DataTables/datatables.min.css">-->
+<!--	<link rel="stylesheet" type="text/css" href="--><?php //echo base_url('');?><!--/assets/select2/dist/css/select2.min.css">-->
 
 	<title>Klinik Pratama Avicena</title>
 </head>
@@ -38,7 +39,7 @@
 
 
 </style>
-<div class="klinik">
+<div class="container-fluid klinik">
 	<header>
             <span>
             <img src="<?php echo base_url('');?>/assets/doctor.png " style="width: 110px;height: 59px;left: 41px;top: 57px;">

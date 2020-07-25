@@ -1,7 +1,7 @@
 <?php
 ?>
 
-<div class="navbar navbar-expand-sm navbar-dark" style="width: 1266px;height: 82px;left: 46px;top: 45px; background: #1C3387;border-radius: 20px;">
+<div class="container-fluid navbar navbar-expand-sm navbar-dark" style="width: 1314px;height: 104px;left: 2px;top: 45px; background: #1C3387;border-radius: 20px;">
 	<ul class="navbar-nav m-auto">
 		<li class="nav-item " style="color: ghostwhite;">
 			<a class="nav-link" href="<?= base_url('');?>petugas/read">Beranda</a>
