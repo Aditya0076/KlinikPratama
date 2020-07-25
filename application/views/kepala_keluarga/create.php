@@ -30,17 +30,17 @@
 							<tr>
 								<td>Kode Keluarga</td>
 								<td>:</td>
-								<td colspan="3"><input class="form-control" type="text" name="kode_keluarga" placeholder="masukkan kode kepala keluarga"></td>
+								<td colspan="3"><input class="form-control" type="text" name="kode_keluarga" placeholder="masukkan kode kepala keluarga" autofocus></td>
 							</tr>
 							<tr>
 								<td>Dusun</td>
 								<td>:</td>
 								<td colspan="3">
 
-									<input type="text" name="kode_dusun" class="form-control dusun" placeholder="masukkan nama dusun">
-<!--									<select class=" form-control dusun" name="kode_dusun">-->
-<!--										<option value="0">--Pilih dusun--</option>-->
-<!--									</select>-->
+									<!-- <input type="text" name="kode_dusun" class="form-control dusun" placeholder="masukkan nama dusun"> -->
+									<select class=" form-control dusun" name="kode_dusun">
+										<option value="0">--Pilih dusun--</option>
+									</select>
 									<!-- <select class="form-control" name="kode_dusun" >
 									<php foreach ($dusun as $dusun) : ?>
 										<option value="<=$dusun['kode_dusun'];?>">
