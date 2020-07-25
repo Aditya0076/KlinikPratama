@@ -27,12 +27,11 @@ class Rekam_medis extends CI_Controller
 			$kode_pasien = $this->session->userdata['kode_pasien'];
 		}
 		
-		// die(var_dump($this->session->userdata['kode_pasien']));
 		$data['pasien'] = $this->model->getPasienByKode($kode_pasien);
 		//config pagination
 		$this->db->from('rekam_medis');
 		$this->db->where('kode_pasien',$kode_pasien);
-    	$config['base_url'] = 'http://localhost/KlinikPratama/rekam_medis/riwayat/'; // . $kode_pasien . '/';
+    	$config['base_url'] = 'http://localhost/KlinikPratama/rekam_medis/riwayat/'; 
 		$config['total_rows'] = $this->db->count_all_results();
 		$config['per_page'] = 2;
 

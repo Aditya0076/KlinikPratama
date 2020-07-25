@@ -28,7 +28,7 @@ class Desa extends CI_Controller
 			redirect('desa');
 		}
 	}
-
+	
 	public function update($kode_desa)
 	{
 		$data['pasien'] = $this->model->getDesa($kode_desa);

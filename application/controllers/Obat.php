@@ -31,8 +31,6 @@ class Obat extends CI_Controller
 			else
 				$data['keyword'] = null;
  		}
-		// $data['obat'] = $this->model->getAll();
-		// $this->load->view('obat/read',$data);
 
  		//config pagination
  		$this->db->like('nama_obat', $data['keyword']);

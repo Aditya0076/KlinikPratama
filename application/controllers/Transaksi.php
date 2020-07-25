@@ -53,7 +53,6 @@ class Transaksi extends CI_Controller
 	{
 		$kode_keluarga = $this->input->post('kode_keluarga');
 		$data = $this->model->getPasienonKeluarga($kode_keluarga);
-		// die(var_dump($data));
 		echo json_encode($data);
 	}
 }

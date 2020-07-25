@@ -10,8 +10,6 @@ class Belanja extends CI_Controller
 
 	public function index()
 	{
-		// $data['full'] = $this->model->getAll();
-		// $this->load->view('belanja/read',$data);
 		if($this->input->post('submit')){
 			$data['keyword'] = $this->input->post('keyword');
 			if(!strcmp($data['keyword'],'semua')){

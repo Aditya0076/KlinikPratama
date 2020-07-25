@@ -57,8 +57,7 @@ class Pasien extends CI_Controller
 
 	public function create()
 	{
-		// $data['kepala_keluarga'] = $this->model->getKepalaByName($nama_kepala,'nama_kepala');//Kepala_keluarga();
-		$this->load->view('pasien/create'); //,$data);
+		$this->load->view('pasien/create');
 	}
 
 	public function getKepala()

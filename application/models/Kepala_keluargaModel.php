@@ -61,7 +61,6 @@ class Kepala_keluargaModel extends CI_Model
 
 	public function update($kepala_keluarga,$kode_keluarga)
 	{
-		//$this->db->replace($this::TABLE_NAME, $kepala_keluarga);
 		$this->db->from('kepala_keluarga')
 				 ->where('kode_keluarga',$kode_keluarga)
 				 ->set($kepala_keluarga)

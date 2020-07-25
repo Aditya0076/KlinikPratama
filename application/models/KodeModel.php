@@ -22,7 +22,6 @@ class kodeModel extends CI_Model
 			$this->db->like('kode.kode_dusun',$keyword);
 
 		$query = $this->db->select('*')
-						  //->from($this::TABLE_NAME)
 						  ->join('dusun','dusun.kode_dusun = kode.kode_dusun')
 						  ->join('desa','desa.kode_desa = dusun.kode_desa')
 						  ->order_by('kode_terakhir')
@@ -41,7 +40,6 @@ class kodeModel extends CI_Model
 
 	public function update($kode,$kode_dusun)
 	{
-		//$this->db->replace($this::TABLE_NAME, $kepala_keluarga);
 		$this->db->from($this::TABLE_NAME)
 				 ->where('kode_dusun',$kode_dusun)
 				 ->set($kode)
