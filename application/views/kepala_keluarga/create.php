@@ -37,10 +37,10 @@
 								<td>:</td>
 								<td colspan="3">
 
-									<!-- <input type="text" name="kode_dusun" class="form-control dusun" placeholder="masukkan nama dusun"> -->
-									<select class=" form-control dusun" name="kode_dusun">
+									<input type="text" name="kode_dusun" class="dusun form-control" placeholder="masukkan nama dusun">
+									<!-- <select class=" form-control dusun" name="kode_dusun">
 										<option value="0">--Pilih dusun--</option>
-									</select>
+									</select> -->
 									<!-- <select class="form-control" name="kode_dusun" >
 									<php foreach ($dusun as $dusun) : ?>
 										<option value="<=$dusun['kode_dusun'];?>">

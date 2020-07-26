@@ -26,64 +26,64 @@ $('.tombol-hapus').on( 'click',function(e){
 	})
  });
 
-// $(document).ready(function () {
-// 	$('.dusun').autocomplete({
-// 		source:"http://localhost/KlinikPratama/kepala_keluarga/get_autocomplete"
+$(document).ready(function () {
+	$('dusun').autocomplete({
+		source:"http://localhost/KlinikPratama/kepala_keluarga/get_autocomplete"
+	});
+});
+
+// $(document).ready(function(){
+// 	$('.kepala_keluarga').select2({
+// 		ajax:{
+// 			url: "http://localhost/KlinikPratama/pasien/getKepala",
+// 			dataType: "json",
+// 			delay: 250,
+// 			data: function(params){
+// 				return{
+// 					nama_kepala: params.term
+// 				};
+// 			},
+// 			processResults: function(data){
+// 				var results = [];
+
+// 				$.each(data, function(index, item){
+// 					results.push({
+// 						id: item.kode_keluarga,
+// 						text: item.nama_kepala
+// 					});
+// 				});
+// 				return {
+// 					results: results
+// 				};
+// 			}
+// 		}
 // 	});
 // });
 
-$(document).ready(function(){
-	$('.kepala_keluarga').select2({
-		ajax:{
-			url: "http://localhost/KlinikPratama/pasien/getKepala",
-			dataType: "json",
-			delay: 250,
-			data: function(params){
-				return{
-					nama_kepala: params.term
-				};
-			},
-			processResults: function(data){
-				var results = [];
+// $(document).ready(function(){
+// 	$('.dusun').select2({
+// 		ajax:{
+// 			url: "http://localhost/KlinikPratama/kepala_keluarga/getDusun",
+// 			dataType: "json",
+// 			delay: 250,
+// 			data: function(params){
+// 				return {
+// 					dusun: params.term
+// 				};
+// 			},
+// 			processResults: function(data){
+// 				var results = [];
 
-				$.each(data, function(index, item){
-					results.push({
-						id: item.kode_keluarga,
-						text: item.nama_kepala
-					});
-				});
-				return {
-					results: results
-				};
-			}
-		}
-	});
-});
-
-$(document).ready(function(){
-	$('.dusun').select2({
-		ajax:{
-			url: "http://localhost/KlinikPratama/kepala_keluarga/getDusun",
-			dataType: "json",
-			delay: 250,
-			data: function(params){
-				return {
-					dusun: params.term
-				};
-			},
-			processResults: function(data){
-				var results = [];
-
-				$.each(data, function(index, item){
-					results.push({
-						id: item.kode_dusun,
-						text: item.nama_dusun
-					});
-				});
-				return {
-					results: results
-				};
-			}
-		}
-	});
-});
+// 				$.each(data, function(index, item){
+// 					results.push({
+// 						id: item.kode_dusun,
+// 						text: item.nama_dusun
+// 					});
+// 				});
+// 				return {
+// 					results: results
+// 				};
+// 			}
+// 		}
+// 	});
+// });
