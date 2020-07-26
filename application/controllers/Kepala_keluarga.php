@@ -73,21 +73,50 @@ class Kepala_keluarga extends CI_Controller
 	public function get_autocomplete()
 	{
 		$this->load->model('dusunModel','dusun');
-		if(isset($_GET['term'])){
-			$result = $this->dusun->getDusunByName($_GET['term'],'nama_dusun');
-			if(count($result) > 0){
-				foreach ($result as $row) {
-					$arr_result[] = array(
-						'kode' => $row['kode_dusun'],
-						'nama' => $row['nama_dusun']
-					);
+
+//		$companies = array(
+//			array( "label" => "JAVA", "value" => "1" ),
+//			array( "label" => "DATA IMAGE PROCESSING", "value" => "2" ),
+//			array( "label" => "JAVASCRIPT", "value" => "3" ),
+//			array( "label" => "DATA MANAGEMENT SYSTEM", "value" => "4" ),
+//			array( "label" => "COMPUTER PROGRAMMING", "value" => "5" ),
+//			array( "label" => "SOFTWARE DEVELOPMENT LIFE CYCLE", "value" => "6" ),
+//			array( "label" => "LEARN COMPUTER FUNDAMENTALS", "value" => "7" ),
+//			array( "label" => "IMAGE PROCESSING USING JAVA", "value" => "8" ),
+//			array( "label" => "CLOUD COMPUTING", "value" => "9" ),
+//			array( "label" => "DATA MINING", "value" => "10" ),
+//			array( "label" => "DATA WAREHOUSE", "value" => "11" ),
+//			array( "label" => "E-COMMERCE", "value" => "12" ),
+//			array( "label" => "DBMS", "value" => "13" ),
+//			array( "label" => "HTTP", "value" => "14" )
+//		);
+		$term = $_GET['term'];
+		if(isset($term)){
+			$tes = $this->dusun->getDusunByName($term,'nama_dusun');
+
+//			if(count($result) > 0){
+//				foreach ($result as $row) {
+//					$arr_result[] = array(
+//						'kode' => $row['kode_dusun'],
+//						'nama' => $row['nama_dusun']
+//					);
+//				}
+//					echo json_encode($arr_result);
+//			}
+//			else{
+//				echo "Data tidak ditemukan";
+//			}
+
+
+			$result = array();
+			foreach ($tes as $company){
+				$dusunLabel = $company['label'];
+				if (strpos(strtoupper($dusunLabel),strtoupper($term)) !== FALSE){
+					array_push($result,$company);
 				}
-					echo json_encode($arr_result);
-			}
-			else{
-				echo "Data tidak ditemukan";
 			}
 		}
+		echo json_encode($result);
 	}
 	public function insert()
 	{

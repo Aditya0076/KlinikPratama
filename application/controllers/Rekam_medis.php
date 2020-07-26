@@ -18,6 +18,28 @@ class Rekam_medis extends CI_Controller
 	}
 
 	public function riwayat(){
+
+		//ambil data searching
+//		if($this->input->post('submit')){
+//			$data['keyword'] = $this->input->post('keyword');
+//			if(!strcmp($data['keyword'],'semua')){
+//				$this->session->unset_userdata('keyword','kelas');
+//				$data['keyword'] = null;
+//			}else{
+//				$keyword = array(
+//					'kelas' => 'rekam_medis',
+//					'keyword' => $data['keyword']
+//				);
+//				$this->session->set_userdata($keyword);
+//			}
+//		}else{
+//			if(!strcmp($this->session->userdata('kelas'),'rekam_medis'))
+//				$data['keyword'] = $this->session->userdata('keyword');
+//			else
+//				$data['keyword'] = null;
+//		}
+
+//		die(var_dump($this->input->post('kode_pasien')));
 		//cek input dari view pasien/read
 		if($this->input->post('kode_pasien') != null){
 			$kode_pasien = $this->input->post('kode_pasien');
