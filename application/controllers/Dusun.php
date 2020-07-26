@@ -84,30 +84,33 @@ class Dusun extends CI_Controller
 
 	public function update($kode_dusun)
 	{
-		$data['dusun'] = $this->model->getDusun($kode_dusun);
-		$this->load->view('dusun/read',$data);
+		$data['dusun'] = $this->model->getDusun($kode_dusun); //die(
+		$data['desa'] = $this->model->getDesa();
+		$this->load->view('dusun/update',$data);
 	}
 
-	public function replace()
+	public function replace($kode_dusun_received)
 	{
-		$kode_dusun = $this->input->post('kode_dusun');
+		$kode_dusun = $kode_dusun_received;
 		$nama_dusun = $this->input->post('nama_dusun');
 		$kode_desa = $this->input->post('kode_desa');
+		$simbol = $this->input->post('simbol');
 
 		$dusun = array(
-			'kode_dusun' => $kode_dusun,
 			'nama_dusun' => $nama_dusun,
 			'kode_desa' => $kode_desa,
+			'simbol' => $simbol
 		);
 
+		// die(var_dump($dusun));
 		$this->form_validation->set_rules('nama_dusun','Nama Dusun','required');
-		$this->form_validation->set_rules('kode_desa','Kode Desa','required');
 		$this->form_validation->set_rules('kode_desa','Nama Desa','required');
+		// $this->form_validation->set_rules('simbol','Kode Dusun','required');
 		
 		if ($this->form_validation->run() == FALSE){
-			redirect('dusun/update/' . $kode_dusun);
+			// redirect('dusun/update/' . $kode_dusun);
 		}else{
-			$this->model->update($dusun);
+			$this->model->update($dusun,$kode_dusun);
 			$this->session->set_flashdata('flash','Diedit');
 			redirect('dusun');
 		}

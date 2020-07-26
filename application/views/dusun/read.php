@@ -33,7 +33,7 @@ require 'application/views/templete/navbar.php';
 				<?php if ($this->session->flashdata('flash')):?>
 					<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"></div>
 				<?php endif;?>
-				<!-- <tr><a type="button" class="btn btn-primary" href="<?= base_url('');?>kepala_keluarga/create">Tambah Data</a></tr>
+				<!-- <tr><a type="button" class="btn btn-primary" href="<= base_url('');?>kepala_keluarga/create">Tambah Data</a></tr>
 				<tr> -->
 				<th>No</th>
 				<th>Desa</th>

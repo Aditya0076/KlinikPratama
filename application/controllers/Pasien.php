@@ -38,7 +38,7 @@ class Pasien extends CI_Controller
 		$this->db->from('data_pasien');
     	$config['base_url'] = 'http://localhost/KlinikPratama/pasien/index/';
 		$config['total_rows'] = $this->db->count_all_results();
-		$config['per_page'] = 3;
+		$config['per_page'] = 15;
 
 		//initialize
 		$this->pagination->initialize($config);

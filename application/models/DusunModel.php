@@ -33,6 +33,7 @@ class DusunModel extends CI_Model
 	public function getDusun($kode_dusun)
 	{
 		$query = $this->db->where('kode_dusun',$kode_dusun)
+						  ->join('desa','desa.kode_desa = dusun.kode_desa')
 						  ->get($this::TABLE_NAME)
 						  ->row_array();
 		return $query;
@@ -68,9 +69,13 @@ class DusunModel extends CI_Model
 						  ->row_array();
 		return $query['simbol'];
 	}
-	public function update($dusun)
+
+	public function update($dusun,$kode_dusun)
 	{
-		$this->db->replace($this::TABLE_NAME, $dusun);
+		$this->db->from($this::TABLE_NAME)
+				 ->where('kode_dusun',$kode_dusun)
+				 ->set($dusun)
+				 ->update();
 	}
 
 	public function getDesa()

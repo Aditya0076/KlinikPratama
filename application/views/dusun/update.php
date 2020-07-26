@@ -31,7 +31,13 @@ require 'application/views/templete/navbar.php';
 						<td>Desa</td>
 						<td>:</td>
 						<td colspan="">
-							<input class="form-control" type="text" name="nama_desa" value="<?=$dusun['nama_desa'];?>">
+							<select class="form-control" type="text" name="kode_desa">
+							<?php foreach ($desa as $desa) : ?>
+								<option value="<?=$desa['kode_desa']?>">
+									<?=$desa['nama_desa']?>
+								</option>
+							<?php endforeach; ?>
+							</select>
 						</td>
 					</tr>
 
@@ -39,7 +45,8 @@ require 'application/views/templete/navbar.php';
 						<td>Kode Dusun</td>
 						<td>:</td>
 						<td colspan="">
-							<input class="form-control" type="text" name="simbol" value="<?=$dusun['simbol'];?>" disabled>
+							<input class="form-control" type="text" value="<?=$dusun['simbol'];?>" disabled>
+							<input type="text" name="simbol" value="<?=$dusun['simbol'];?>" hidden>
 						</td>
 					</tr>
 

@@ -55,7 +55,7 @@ class Rekam_medis extends CI_Controller
 		$this->db->where('kode_pasien',$kode_pasien);
     	$config['base_url'] = 'http://localhost/KlinikPratama/rekam_medis/riwayat/'; 
 		$config['total_rows'] = $this->db->count_all_results();
-		$config['per_page'] = 2;
+		$config['per_page'] = 15;
 
 		//initialize
 		$this->pagination->initialize($config);
