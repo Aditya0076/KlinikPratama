@@ -61,9 +61,10 @@ require 'application/views/templete/navbar.php';
 								<td>Nama Kepala Keluarga</td>
 								<td>:</td>
 								<td>
-									<select class="kepala_keluarga form-control" name="kode_keluarga">
-										<option value="0">--Pilih Kepala Keluarga</option>
-									</select>
+									<input type="text" name="kode_keluarga" class="form-control kepala_keluarga" placeholder="masukkan nama kepala keluarga">
+<!--									<select class="kepala_keluarga form-control" name="kode_keluarga">-->
+<!--										<option value="0">--Pilih Kepala Keluarga</option>-->
+<!--									</select>-->
 									<!-- <select class="form-control" name="kode_keluarga">
 									<php foreach ($kepala_keluarga as $kepala_keluarga) : ?>
 										<option value="<=$kepala_keluarga['kode_keluarga'];?>">

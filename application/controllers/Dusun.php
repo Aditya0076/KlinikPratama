@@ -11,7 +11,47 @@ class Dusun extends CI_Controller
 		$this->load->model('DusunModel', 'model');
 	}
 
-	public function index()
+	public function index(){
+		//ambil data searching
+		if($this->input->post('submit')){
+			$data['keyword'] = $this->input->post('keyword');
+			if(!strcmp($data['keyword'],'semua')){
+				$this->session->unset_userdata('keyword','kelas');
+				$data['keyword'] = null;
+			}else{
+				$keyword = array(
+					'kelas' => 'dusun',
+					'keyword' => $data['keyword']
+				);
+				$this->session->set_userdata($keyword);
+			}
+		}else{
+			if(!strcmp($this->session->userdata('kelas'),'dusun'))
+				$data['keyword'] = $this->session->userdata('keyword');
+			else
+				$data['keyword'] = null;
+		}
+
+		//config pagination
+		$this->db->like('nama_dusun',$data['keyword']);
+		$this->db->from('dusun');
+		$config['base_url'] = 'http://localhost/KlinikPratama/dusun/index/';
+		$config['total_rows'] = $this->db->count_all_results();
+		$config['per_page'] = 15;
+
+		//initialize
+		$this->pagination->initialize($config);
+
+		if(!strcmp($data['keyword'],'semua'))
+			$data['start'] = 1;
+		else
+			$data['start'] = $this->uri->segment(3);
+
+		$data['dusun'] = $this->model->getAll($config['per_page'],$data['start'],$data['keyword']);
+		$this->load->view('dusun/read',$data);
+	}
+
+	public function create()
 	{
 		$data['desa'] = $this->model->getDesa();
 		$this->load->view('dusun/create',$data);

@@ -25,13 +25,19 @@ $('.tombol-hapus').on( 'click',function(e){
 		}
 	})
  });
-
+//dusun
 $(document).ready(function () {
 	$('dusun').autocomplete({
 		source:"http://localhost/KlinikPratama/kepala_keluarga/get_autocomplete"
 	});
 });
 
+//kepala_keluarga
+$(document).ready(function () {
+	$('.kepala_keluarga').autocomplete({
+		source:"http://localhost/KlinikPratama/pasien/get_autocomplete"
+	});
+});
 // $(document).ready(function(){
 // 	$('.kepala_keluarga').select2({
 // 		ajax:{
@@ -59,7 +65,7 @@ $(document).ready(function () {
 // 		}
 // 	});
 // });
-
+//
 // $(document).ready(function(){
 // 	$('.dusun').select2({
 // 		ajax:{

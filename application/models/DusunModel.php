@@ -18,9 +18,15 @@ class DusunModel extends CI_Model
 				 ->delete($this::TABLE_NAME);
 	}
 
-	public function getAll()
+	public function getAll($limit, $start, $keyword = null)
 	{
-		$query = $this->db->get($this::TABLE_NAME);
+		if($keyword)
+			$this->db->like('nama_dusun', $keyword);
+
+		$query = $this->db->join('desa','desa.kode_desa = dusun.kode_desa')
+						  ->order_by('kode_dusun','DESC')
+						  ->get($this::TABLE_NAME,$limit,$start)
+						  ->result_array();;
 		return $query;
 	}
 
@@ -40,7 +46,18 @@ class DusunModel extends CI_Model
 					 	  ->like($column,$nama_dusun)
 					 	  ->get()
 					 	  ->result_array();
-		return $query;
+
+//		$result = array();
+		foreach ($query as $query){
+			$result[] = array(
+				//array(
+				'label' => $query['nama_dusun'],
+				'value' => $query['kode_dusun']//)
+			);
+		}
+
+//		die(var_dump($result));
+		return $result;
 	}
 
 	public function getSimbolByKode($kode_dusun)

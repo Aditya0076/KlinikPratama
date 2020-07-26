@@ -8,11 +8,20 @@
 		</li>
 		<li class="nav-item dropdown" style="color: ghostwhite;">
 			<a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Data Kepala Keluarga
+				Data Kepala Dusun
 			</a>
 			<div class="dropdown-menu"aria-labelledby="navbarDropdown">
 				<a class="dropdown-item" href="<?= base_url('');?>desa">Tambah Desa</a>
-				<a class="dropdown-item" href="<?= base_url('');?>dusun">Tambah Dusun</a>
+				<a class="dropdown-item" href="<?= base_url('');?>dusun/create">Tambah Dusun</a>
+				<a class="dropdown-item" href="<?= base_url('');?>dusun">Tampil Data Dusun</a>
+			</div>
+		</li>
+
+		<li class="nav-item dropdown" style="color: ghostwhite;">
+			<a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Data Kepala Keluarga
+			</a>
+			<div class="dropdown-menu"aria-labelledby="navbarDropdown">
 				<a class="dropdown-item" href="<?= base_url('');?>kepala_keluarga/create">Tambah Data Kepala Keluarga</a>
 				<a class="dropdown-item" href="<?= base_url('');?>kepala_keluarga">Tampil Data Kepala Keluarga</a>
 				<a class="dropdown-item" href="<?= base_url('');?>kode">Tampil Kode Terakhir Kepala Keluarga</a>

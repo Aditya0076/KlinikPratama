@@ -68,9 +68,27 @@ class Pasien extends CI_Controller
 
 	}
 
+	public function get_autocomplete()
+	{
+		$this->load->model('pasienModel','kepala_keluarga');
+		$term = $_GET['term'];
+		if(isset($term)){
+			$tes = $this->model->getKepalaByName($term, 'nama_kepala');
+
+			$result = array();
+			foreach ($tes as $company){
+				$kepalaLabel = $company['label'];
+				if (strpos(strtoupper($kepalaLabel),strtoupper($term)) !== FALSE){
+					array_push($result,$company);
+				}
+			}
+		}
+		echo json_encode($result);
+	}
+
 	public function insert()
 	{
-		$data['kepala_keluarga'] = $this->model->getKepala_keluarga();
+//		$data['kepala_keluarga'] = $this->model->getKepala_keluarga();
 		$kode_keluarga = $this->input->post('kode_keluarga');
 		$nama_pasien = $this->input->post('nama_pasien');
 		$umur = $this->input->post('umur');

@@ -54,7 +54,14 @@ class PasienModel extends CI_Model
 		$query = $this->db->like($column, $nama_kepala)
 						  ->get('kepala_keluarga',10)
 						  ->result_array();
-		return $query;
+		foreach ($query as $query){
+			$result[] = array(
+				//array(
+				'label' => $query['nama_kepala'],
+				'value' => $query['kode_keluarga']//)
+			);
+		}
+		return $result;
 	}
 
 	public function countAllPasien()

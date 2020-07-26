@@ -73,22 +73,20 @@ class Kepala_keluarga extends CI_Controller
 	public function get_autocomplete()
 	{
 		$this->load->model('dusunModel','dusun');
-		if(isset($_GET['term'])){
-			$result = $this->dusun->getDusunByName($_GET['term'],'nama_dusun');
-			if(count($result) > 0){
-				foreach ($result as $row) //{
-					$arr_result[] = $row['nama_dusun'];
-					// $arr_result[] = array(
-					// 	'kode' => $row['kode_dusun'],
-					// 	'nama' => $row['nama_dusun']
-					// );
-				// }
-					echo json_encode($arr_result);
-			}
-			else{
-				echo "Data tidak ditemukan";
+
+		$term = $_GET['term'];
+		if(isset($term)){
+			$tes = $this->dusun->getDusunByName($term,'nama_dusun');
+
+			$result = array();
+			foreach ($tes as $company){
+				$dusunLabel = $company['label'];
+				if (strpos(strtoupper($dusunLabel),strtoupper($term)) !== FALSE){
+					array_push($result,$company);
+				}
 			}
 		}
+		echo json_encode($result);
 	}
 	public function insert()
 	{
@@ -96,7 +94,7 @@ class Kepala_keluarga extends CI_Controller
 		$kode_dusun = $this->input->post('kode_dusun');
 		$nama_kepala = $this->input->post('nama_kepala');
 		$rt = $this->input->post('rt');
-//die(var_dump($kode_dusun));
+
 		//get simbol (eg: A,B,C...etc) from dusun
 		$this->load->model('dusunModel','dusun');
 		$simbol = $this->dusun->getSimbolByKode($kode_dusun);
