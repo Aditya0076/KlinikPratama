@@ -27,7 +27,7 @@ $('.tombol-hapus').on( 'click',function(e){
  });
 //dusun
 $(document).ready(function () {
-	$('dusun').autocomplete({
+	$('.dusun').autocomplete({
 		source:"http://localhost/KlinikPratama/kepala_keluarga/get_autocomplete"
 	});
 });
