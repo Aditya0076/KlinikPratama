@@ -154,6 +154,7 @@ class Pasien extends CI_Controller
 
 	public function delete($kode_pasien)
 	{
+		
 		$this->model->delete($kode_pasien);
 		$this->session->set_flashdata('flash','Dihapus');
 		redirect('pasien');
