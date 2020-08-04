@@ -153,7 +153,7 @@ class Rekam_medis extends CI_Controller
 		}else{
 			$this->model->update($rekam_medis,$kode_rekam);
 			$this->session->set_flashdata('flash','Diedit');
-			redirect('rekam_medis/riwayat/' . $kode_pasien);
+			redirect('rekam_medis/riwayat/');// . $kode_pasien);
 		}
 	}
 

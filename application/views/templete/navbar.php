@@ -23,7 +23,7 @@
 			</a>
 			<div class="dropdown-menu"aria-labelledby="navbarDropdown">
 				<a class="dropdown-item" href="<?= base_url('');?>kepala_keluarga/create">Tambah Data Kepala Keluarga</a>
-				<a class="dropdown-item" href="<?= base_url('');?>kepala_keluarga">Tampil Data Kepala Keluarga</a>
+				<a class="dropdown-item" href="<?= base_url('');?>kepala_keluarga/tampil_dusun">Tampil Data Kepala Keluarga</a>
 				<a class="dropdown-item" href="<?= base_url('');?>kode">Tampil Kode Terakhir Kepala Keluarga</a>
 			</div>
 		</li>

@@ -20,10 +20,10 @@ class Pasien extends CI_Controller
 				$this->session->unset_userdata('keyword','kelas');
 				$data['keyword'] = null; 
 			}else{
-				$keyword = [
+				$keyword = array(
 					'kelas' => 'pasien',
 					'keyword' => $data['keyword']
-				];
+				);
 				$this->session->set_userdata($keyword);
 			}
 		}else{

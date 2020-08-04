@@ -52,11 +52,12 @@ class PasienModel extends CI_Model
 	public function getKepalaByName($nama_kepala, $column)
 	{
 		$query = $this->db->like($column, $nama_kepala)
-						  ->get('kepala_keluarga',10)
+						  ->join('dusun','dusun.kode_dusun = kepala_keluarga.kode_dusun')
+						  ->get('kepala_keluarga')
 						  ->result_array();
 		foreach ($query as $query){
 			$result[] = array(
-				'label' => $query['nama_kepala'],
+				'label' => $query['nama_kepala'] . ',' . $query['nama_dusun'],
 				'value' => $query['kode_keluarga']
 			);
 		}

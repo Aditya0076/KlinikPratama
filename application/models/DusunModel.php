@@ -42,7 +42,6 @@ class DusunModel extends CI_Model
 	public function getDusunByName($nama_dusun, $column)
 	{
 		$query = $this->db->select('*')
-					 	  ->limit(10)
 					 	  ->from($this::TABLE_NAME)
 					 	  ->like($column,$nama_dusun)
 					 	  ->get()

@@ -18,15 +18,16 @@ require 'application/views/templete/navbar.php';
 					<td>Nama Kepala Keluarga</td>
 					<td>:</td>
 					<td colspan="2">
-						<select class="form-control" name="kode_keluarga" >
-							<?php foreach ($kepala as $kepala):
-								if($kepala['kode_keluarga'] == $pasien['kode_keluarga']){
-							?>
-								<option  value="<?=$pasien['kode_keluarga'];?>" selected><?=$pasien['nama_kepala'];?></option>
-							<?php }else{ ?>
-								<option value="<?=$kepala['kode_keluarga'];?>"><?=$kepala['nama_kepala'];?></option>
-							<?php }endforeach;?>
-						</select>
+						<input type="text" name="kode_keluarga" class="form-control kepala_keluarga" value="<?=$pasien['kode_keluarga'];?>">
+<!--						<select class="form-control" name="kode_keluarga" >-->
+<!--							--><?php //foreach ($kepala as $kepala):
+//								if($kepala['kode_keluarga'] == $pasien['kode_keluarga']){
+//							?>
+<!--								<option  value="--><?//=$pasien['kode_keluarga'];?><!--" selected>--><?//=$pasien['nama_kepala'];?><!--</option>-->
+<!--							--><?php //}else{ ?>
+<!--								<option value="--><?//=$kepala['kode_keluarga'];?><!--">--><?//=$kepala['nama_kepala'];?><!--</option>-->
+<!--							--><?php //}endforeach;?>
+<!--						</select>-->
 					</td>
 				</tr>
 

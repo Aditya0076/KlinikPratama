@@ -17,10 +17,10 @@ class Kepala_keluarga extends CI_Controller
 				$this->session->unset_userdata('keyword','kelas');
 				$data['keyword'] = null;
 			}else{
-				$keyword = [
+				$keyword = array(
 					'kelas' => 'kepala_keluarga',
 					'keyword' => $data['keyword']
-				];
+			);
 				$this->session->set_userdata($keyword);
 			}
 		}else{

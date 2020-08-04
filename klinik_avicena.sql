@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Jul 2020 pada 07.30
+-- Waktu pembuatan: 27 Jul 2020 pada 11.51
 -- Versi server: 10.3.16-MariaDB
 -- Versi PHP: 7.3.6
 
@@ -77,7 +77,8 @@ CREATE TABLE `data_pasien` (
 --
 
 INSERT INTO `data_pasien` (`kode_pasien`, `kode_keluarga`, `nama_pasien`, `umur`, `jenis_kelamin`) VALUES
-(1, 'A17', 'Aditya', 12, 'Laki-laki');
+(1, 'A1', 'Aditya', 12, 'Laki-laki'),
+(2, 'A164', 'habib muhammad thariq', 20, 'Laki-laki');
 
 -- --------------------------------------------------------
 
@@ -3987,13 +3988,13 @@ CREATE TABLE `obat` (
 --
 
 CREATE TABLE `rekam_medis` (
-  `kode_rekam` varchar(255) NOT NULL,
-  `waktu` varchar(255) NOT NULL,
-  `kode_pasien` varchar(255) NOT NULL,
-  `anamnese` varchar(255) NOT NULL,
-  `diagnosa` varchar(255) NOT NULL,
-  `terapi` varchar(255) NOT NULL,
-  `biaya` varchar(255) NOT NULL
+  `kode_rekam` int(11) NOT NULL,
+  `waktu` date NOT NULL,
+  `kode_pasien` int(11) NOT NULL,
+  `anamnese` text NOT NULL,
+  `diagnosa` text NOT NULL,
+  `terapi` text NOT NULL,
+  `biaya` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -4001,7 +4002,8 @@ CREATE TABLE `rekam_medis` (
 --
 
 INSERT INTO `rekam_medis` (`kode_rekam`, `waktu`, `kode_pasien`, `anamnese`, `diagnosa`, `terapi`, `biaya`) VALUES
-('', '2020-07-27', '1', 'adafaga', 'fafas', 'fafa', '100000');
+(1, '2020-07-28', 1, 'pusing', 'migran', 'pramex', 10000),
+(2, '2020-07-27', 2, 'tes', 'looh', 'yaa', 80000);
 
 -- --------------------------------------------------------
 
@@ -4055,6 +4057,13 @@ ALTER TABLE `kode`
   ADD KEY `fK_dusun_kode` (`kode_dusun`);
 
 --
+-- Indeks untuk tabel `rekam_medis`
+--
+ALTER TABLE `rekam_medis`
+  ADD PRIMARY KEY (`kode_rekam`),
+  ADD KEY `fk_kodepasien` (`kode_pasien`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -4062,7 +4071,7 @@ ALTER TABLE `kode`
 -- AUTO_INCREMENT untuk tabel `data_pasien`
 --
 ALTER TABLE `data_pasien`
-  MODIFY `kode_pasien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `kode_pasien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `desa`
@@ -4081,6 +4090,12 @@ ALTER TABLE `dusun`
 --
 ALTER TABLE `kode`
   MODIFY `id_kode` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `rekam_medis`
+--
+ALTER TABLE `rekam_medis`
+  MODIFY `kode_rekam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -4109,6 +4124,12 @@ ALTER TABLE `kepala_keluarga`
 --
 ALTER TABLE `kode`
   ADD CONSTRAINT `fK_dusun_kode` FOREIGN KEY (`kode_dusun`) REFERENCES `dusun` (`kode_dusun`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `rekam_medis`
+--
+ALTER TABLE `rekam_medis`
+  ADD CONSTRAINT `fk_kodepasien` FOREIGN KEY (`kode_pasien`) REFERENCES `data_pasien` (`kode_pasien`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

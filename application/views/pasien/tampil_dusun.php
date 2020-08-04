@@ -61,12 +61,10 @@ require 'application/views/templete/navbar.php';
 						<td><?=$dusun['nama_dusun'];?></td>
 						<td><?=$dusun['simbol'];?></td>
 						<td>
-<!--							<form method="post" action="--><?//= base_url('kepala_keluarga/')?><!--" >-->
-<!--								<input type="text" name="kode_pasien" value="--><?//=$pasien['kode_pasien']?><!--" hidden>-->
-<!--								<input type="submit" class="btn btn-info" value="Detail" >-->
-<!--							</form>-->
-							<a type="button" class="btn btn-warning" href="<?= base_url('dusun/update/'.$dusun['kode_dusun']);?>">Edit</a>
-							<a type="button" href="<?= base_url('dusun/delete/' . $dusun['kode_dusun']);?>" class="btn btn-danger tombol-hapus" >Hapus</a>
+							<form method="post" action="<?= base_url('kepala_keluarga/')?>" >
+								<input type="text" name="kode_pasien" value="<?=$pasien['kode_pasien']?>" hidden>
+								<input type="submit" class="btn btn-info" value="Tampil Data Kepala Keluarga" >
+							</form>
 						</td>
 					</tr>
 				<?php
