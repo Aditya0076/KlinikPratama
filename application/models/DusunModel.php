@@ -46,17 +46,12 @@ class DusunModel extends CI_Model
 					 	  ->like($column,$nama_dusun)
 					 	  ->get()
 					 	  ->result_array();
-
-//		$result = array();
 		foreach ($query as $query){
 			$result[] = array(
-				//array(
 				'label' => $query['nama_dusun'],
 				'value' => $query['kode_dusun']//)
 			);
 		}
-
-//		die(var_dump($result));
 		return $result;
 	}
 
