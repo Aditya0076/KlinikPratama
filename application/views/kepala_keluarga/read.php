@@ -38,8 +38,8 @@ require 'application/views/templete/navbar.php';
 				<tr> -->
 					<th>Kode Keluarga</th>
 					<th>Nama Kepala Keluarga</th>
-					<th>Dusun</th>
-					<th>Desa</th>
+					<!-- <th>Dusun</th> -->
+					<!-- <th>Desa</th> -->
 					<th>RT</th>
 					<th>Pilihan</th>
 				</tr>
@@ -63,8 +63,8 @@ require 'application/views/templete/navbar.php';
 <!--						<td>--><?//=$id++;?><!--</td>-->
 						<td><?=$kepala_keluarga['kode_keluarga'];?></td>
 						<td><?=$kepala_keluarga['nama_kepala'];?></td>
-						<td><?=$kepala_keluarga['nama_dusun'];?></td>
-						<td><?=$kepala_keluarga['nama_desa'];?></td>
+						<!-- <td><=$kepala_keluarga['nama_dusun'];?></td> -->
+						<!-- <td><=$kepala_keluarga['nama_desa'];?></td> -->
 						<td><?=$kepala_keluarga['rt'];?></td>
 						<td>
 							<a type="button" class="btn btn-warning" href="<?= base_url('kepala_keluarga/update/' . $kepala_keluarga['kode_keluarga']);?>">Edit</a>

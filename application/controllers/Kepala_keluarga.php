@@ -10,6 +10,14 @@ class Kepala_keluarga extends CI_Controller
 
 	public function index()
 	{
+		//get kode dusun from tampil_dusun page
+		if($this->input->post('kode_dusun')){
+			$kode_dusun = $this->input->post('kode_dusun');
+			$this->session->set_userdata('kode_dusun', $kode_dusun);
+		}else{
+			$kode_dusun = $this->session->userdata('kode_dusun');
+		}
+
 		//ambil data searching
 		if($this->input->post('submit')){
 			$data['keyword'] = $this->input->post('keyword');
@@ -32,6 +40,7 @@ class Kepala_keluarga extends CI_Controller
 
 		//config pagination
 		$this->db->like('nama_kepala',$data['keyword']);
+		$this->db->where('kode_dusun',$kode_dusun);
 		$this->db->from('kepala_keluarga');
     	$config['base_url'] = 'http://localhost/KlinikPratama/kepala_keluarga/index/';
 		$config['total_rows'] = $this->db->count_all_results();
@@ -44,7 +53,7 @@ class Kepala_keluarga extends CI_Controller
 			$data['start'] = 1;
 		else
 			$data['start'] = $this->uri->segment(3);
-		$data['kepala_keluarga'] = $this->model->getKepalas($config['per_page'],$data['start'],$data['keyword']);
+		$data['kepala_keluarga'] = $this->model->getKepalas($config['per_page'],$data['start'],$data['keyword'],$kode_dusun);
 		$this->load->view('kepala_keluarga/read',$data);
 	}
 
@@ -191,13 +200,13 @@ class Kepala_keluarga extends CI_Controller
 				$data['keyword'] = null;
 			}else{
 				$keyword = array(
-					'kelas' => 'dusun',
+					'kelas' => 'tampil_dusun',
 					'keyword' => $data['keyword']
 				);
 				$this->session->set_userdata($keyword);
 			}
 		}else{
-			if(!strcmp($this->session->userdata('kelas'),'dusun'))
+			if(!strcmp($this->session->userdata('kelas'),'tampil_dusun'))
 				$data['keyword'] = $this->session->userdata('keyword');
 			else
 				$data['keyword'] = null;
@@ -206,7 +215,7 @@ class Kepala_keluarga extends CI_Controller
 		//config pagination
 		$this->db->like('nama_dusun',$data['keyword']);
 		$this->db->from('dusun');
-		$config['base_url'] = 'http://localhost/KlinikPratama/dusun/index/';
+		$config['base_url'] = 'http://localhost/KlinikPratama/kepala_keluarga/tampil_dusun/';
 		$config['total_rows'] = $this->db->count_all_results();
 		$config['per_page'] = 15;
 

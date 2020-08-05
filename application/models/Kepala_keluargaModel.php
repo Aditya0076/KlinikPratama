@@ -26,16 +26,18 @@ class Kepala_keluargaModel extends CI_Model
 		return $query;
 	}
 
-	public function getKepalas($limit, $start, $keyword)
+	public function getKepalas($limit, $start, $keyword,$kode_dusun)
 	{
 		if($keyword){
 			$this->db->like('nama_kepala',$keyword);
 		}
 
-		$query = $this->db->join('dusun','dusun.kode_dusun = kepala_keluarga.kode_dusun')
-						  ->join('desa','desa.kode_desa = dusun.kode_desa')
+		$query = $this->db//->join('dusun','dusun.kode_dusun = kepala_keluarga.kode_dusun')
+						  //->join('desa','desa.kode_desa = dusun.kode_desa')
+						  ->where('kode_dusun',$kode_dusun)
 						  ->get($this::TABLE_NAME, $limit, $start)
 						  ->result_array();
+						   // die(var_dump($query));
 		return $query;
 	}
 

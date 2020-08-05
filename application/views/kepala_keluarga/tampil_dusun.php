@@ -62,7 +62,8 @@ require 'application/views/templete/navbar.php';
 						<td><?=$dusun['simbol'];?></td>
 						<td>
 							<form method="post" action="<?= base_url('kepala_keluarga/')?>" >
-								<input type="text" name="kode_pasien" value="<?=$pasien['kode_pasien']?>" hidden>
+							<?php $this->session->unset_userdata('keyword','kelas'); ?>
+								<input type="text" name="kode_dusun" value="<?=$dusun['kode_dusun']?>" hidden>
 								<input type="submit" class="btn btn-info" value="Tampil Data Kepala Keluarga" >
 							</form>
 						</td>
