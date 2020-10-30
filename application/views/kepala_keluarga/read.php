@@ -16,8 +16,11 @@ require 'application/views/templete/navbar.php';
 				<thead class="table-dark ">
 				<tr>
 				  <div class="row">
-				    <div class="col-12 col-md-8">
-					  <a type="button" class="btn btn-primary" href="<?= base_url('');?>kepala_keluarga/create">Tambah Data</a>				  	
+				    <div class="col-12 col-md-2">
+					  <a type="button" class="btn btn-primary" href="<?= base_url('');?>kepala_keluarga/create">Tambah Data</a>
+					</div>
+					<div class="col-6 col-md-6">
+						<a type="button" class="btn btn-info" href="<?= base_url('')?>kepala_keluarga/tampil_dusun">Kembali</a>
 					</div>
 					<div  class=" col-6 col-md-4">
 					  <form  action="" method="post">

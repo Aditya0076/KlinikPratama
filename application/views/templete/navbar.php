@@ -8,7 +8,7 @@
 		</li>
 		<li class="nav-item dropdown" style="color: ghostwhite;">
 			<a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Data Kepala Dusun
+				Data Dusun
 			</a>
 			<div class="dropdown-menu"aria-labelledby="navbarDropdown">
 				<a class="dropdown-item" href="<?= base_url('');?>desa">Tambah Desa</a>

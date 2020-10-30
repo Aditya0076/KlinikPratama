@@ -16,7 +16,6 @@ require 'application/views/templete/navbar.php';
 				<tr>
 					<div class="row">
 						<div class="col-12 col-md-8">
-							<a type="button" class="btn btn-primary" href="<?= base_url('');?>dusun/create">Tambah Data</a>
 						</div>
 						<div  class=" col-6 col-md-4">
 							<form  action="" method="post">
